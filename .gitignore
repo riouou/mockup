@@ -1,0 +1,8 @@
+.opencode/
+.vercel/
+node_modules/
+_qa*/
+_test*.png
+_check-*.png
+_r-*.png
+_cash.txt

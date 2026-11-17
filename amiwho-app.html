@@ -4,95 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>AmiWho — interactive prototype</title>
+<title>AmiWho · Document Control and Client Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    AMIWHO DESIGN SYSTEM
-   Type: one family; 11 / 13 / 15 / 17 / 20 / 24 / 30.
-   Space: 4px scale (--s-1 … --s-12). Radii: 8 / 10 / 12 / 16 / pill;
-          sheet and device radii are structural.
-   Colour: one deep teal primary; warm neutral scale; semantic pos/neg/warn/info.
-           Contrast (light): ink 16.7:1, ink-2 6.9:1, ink-3 5.6:1,
-           white on primary 8.1:1, semantic chips 5.4:1+.
-   Elevation: borders first; --e-1 for controls, --e-2 for overlays only.
-   Charts: teal / slate / sand / ink; muted grid; tabular numerals; A$.
-   Copy: sentence case; specific; A$12,480; 12 Nov 2026; no hype.
+   Direction: editorial ledger for hospitality operators.
+   Type: Source Serif 4 for mastheads and document titles;
+         Source Sans 3 for interface and tabular figures.
+   Scale: 11 / 13 / 15 / 17 / 20 / 24 / 30. Body 15/400, labels 11/600.
+   Space: 4px scale. Radii: stamp 2, control 3, button 4, sheet 8.
+   Colour: deep olive primary, warm paper neutrals, burnt clay accent;
+           forest positive, brick negative, ochre warning.
+   Detail: a 28px clay rule above every screen masthead and a book spine
+           on every document cover.
+   Elevation: hairline borders; shadows only on the device and sheets.
+   Charts: olive + taupe, clay for outflow; faint rules, tabular values.
    ============================================================ */
 :root{
-  --font-sans:"SF Pro Display","SF Pro Text",-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",system-ui,sans-serif;
+  --font-sans:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --font-serif:"Source Serif 4",Georgia,"Times New Roman",serif;
 
-  /* Type: 11 / 13 / 15 / 17 / 20 / 24 / 30. Seven steps, one family. */
   --text-2xs:11px; --text-xs:13px; --text-sm:13px; --text-base:15px; --text-md:17px; --text-lg:20px; --text-xl:24px; --text-2xl:30px;
 
-  /* Spacing: 4px base. */
   --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-8:32px; --s-10:40px; --s-12:48px;
 
-  /* Radii: control, button, card, pill. Sheet and device are structural. */
-  --r-sm:8px; --r-control:10px; --r-btn:12px; --r-card:16px; --r-pill:999px; --r-sheet:24px; --r-device:56px; --r-tablet:38px;
+  --r-stamp:2px; --r-sm:3px; --r-control:3px; --r-btn:4px; --r-card:2px; --r-pill:999px; --r-sheet:8px; --r-device:56px; --r-tablet:38px;
 
-  /* Elevation: borders first, two shadows for overlays. */
-  --e-1:0 1px 2px rgba(21,32,29,.07);
-  --e-2:0 16px 40px rgba(21,32,29,.18);
-  --device-edge:#C9C5BA;
-  --e-device:0 0 0 1px var(--device-edge),0 2px 4px rgba(21,32,29,.10),0 40px 80px -40px rgba(21,32,29,.55);
+  --e-1:none;
+  --e-2:0 18px 48px rgba(30,28,18,.20);
+  --device-edge:#C9C0AC;
+  --e-device:0 0 0 1px var(--device-edge),0 2px 4px rgba(30,28,18,.10),0 40px 80px -40px rgba(30,28,18,.55);
   --dur:160ms;
 
-  /* Surfaces and text. Contrast (light): ink 16.7:1, ink-2 6.9:1, ink-3 5.6:1
-     on white; ink-3 4.8:1 on surface-3. */
-  --stage:#E8E5DD; --stage-2:#F1EFE8; --line:#D6D2C8;
-  --bg:#F6F5F0; --surface:#FFFFFF; --surface-2:#FAF9F5; --surface-3:#F0EEE8;
-  --border:#E4E1D8; --border-strong:#CFCBBF; --border-control:#8B8F86;
-  --ink:#15201D; --ink-2:#4E5D58; --ink-3:#5E6B66;
+  --stage:#DED8C8; --stage-2:#E9E3D4; --line:#CDC6B4;
+  --bg:#F4F0E5; --surface:#FBF7EC; --surface-2:#F7F1E2; --surface-3:#ECE5D3;
+  --border:#DED5C1; --border-strong:#C9BFA8; --border-control:#8B8472;
+  --ink:#20241B; --ink-2:#4F5547; --ink-3:#666C5D;
 
-  /* Brand and semantics. on-primary/primary 8.1:1; chips 5.4:1+ on their tints. */
-  --primary:#0B5A52; --primary-press:#08463F; --primary-soft:#E2EEE9; --on-primary:#FFFFFF;
-  --pos:#0F6B44; --pos-soft:#E1F0E7;
-  --neg:#A33326; --neg-soft:#F7E5E1;
-  --warn:#855600; --warn-soft:#F6EDD8;
-  --info:#2E5A7A; --info-soft:#E7EFF5;
+  --primary:#3D4C33; --primary-press:#2E3B26; --primary-soft:#E5E8D8; --on-primary:#FBF7EC;
+  --accent:#A94D2C;
+  --pos:#2C6A45; --pos-soft:#E1EBDD;
+  --neg:#9A3A29; --neg-soft:#F3DED6;
+  --warn:#7F5515; --warn-soft:#F2E5C9;
+  --info:#365B6B; --info-soft:#E0E9EB;
 
-  /* Charts: teal, slate, sand, ink. No rainbow. */
-  --chart-1:var(--primary); --chart-2:#5A7480; --chart-3:#A98B4F; --chart-4:var(--ink);
+  --chart-1:var(--primary); --chart-2:#8C7E63; --chart-3:#B06A3D; --chart-4:var(--ink);
 
-  /* Document covers: flat stock colours. White text is AA on all five. */
-  --cover-teal:#0E5C54; --cover-clay:#8E4A33; --cover-sand:#6F5726; --cover-slate:#405A66; --cover-olive:#4F5B31;
-  --on-cover:#FFFFFF;
+  --cover-teal:#354A3B; --cover-clay:#8B4429; --cover-sand:#7A6128; --cover-slate:#3F4B50; --cover-olive:#4C532E;
+  --on-cover:#FBF7EC;
 
-  /* Fixed brand panel and paper. These do not flip with the theme. */
-  --brand-deep:#0B4A45; --on-brand:#F3F8F5; --on-brand-2:rgba(243,248,245,.78);
-  --paper:#FFFFFF; --paper-soft:#F6F8F5; --paper-ink:#16201D; --paper-2:#3F4D48; --paper-3:#68756F; --paper-rule:#E7E4DC; --paper-accent:#0B5A52;
+  --brand-deep:#2C3A28; --on-brand:#F3EEDF; --on-brand-2:rgba(243,238,223,.78);
+  --paper:#FFFDF7; --paper-soft:#F6F2E7; --paper-ink:#20241B; --paper-2:#454B3F; --paper-3:#6B7162; --paper-rule:#E4DCC9; --paper-accent:#3D4C33;
 
-  --device-black:#000; --on-danger:#FFFFFF; --switch-knob:#FFFFFF;
+  --device-black:#000; --on-danger:#FFFFFF; --switch-knob:#FFFDF7;
   --apple-bg:#000000; --apple-ink:#FFFFFF;
-  --scrim:rgba(8,13,11,.38); --shimmer:rgba(255,255,255,.45);
-  --focus:#2D7FF9; /* functional focus colour, not a brand colour */
+  --scrim:rgba(20,24,16,.42);
+  --focus:#A94D2C;
   --fit:1;
 }
 [data-theme="dark"]{
-  --stage:#080B0A; --stage-2:#0C1110; --line:#1E2724;
-  --bg:#0E1412; --surface:#151D1A; --surface-2:#1B2421; --surface-3:#212B27;
-  --border:#2A3732; --border-strong:#3A4A44; --border-control:#667571;
-  --ink:#EAF0ED; --ink-2:#A4B2AC; --ink-3:#95A39D;
+  --stage:#0B0D09; --stage-2:#11140F; --line:#24291F;
+  --bg:#12150F; --surface:#171B13; --surface-2:#1D2218; --surface-3:#252A1E;
+  --border:#2C3325; --border-strong:#3B4432; --border-control:#79806B;
+  --ink:#EFEADC; --ink-2:#B3B8A6; --ink-3:#969C89;
 
-  --primary:#7AC9BA; --primary-press:#94D6C9; --primary-soft:#16312B; --on-primary:#06231E;
-  --pos:#56C287; --pos-soft:#10301F;
-  --neg:#F08A77; --neg-soft:#381A15;
-  --warn:#DDB05C; --warn-soft:#30250F;
-  --info:#8FB8D6; --info-soft:#132633;
+  --primary:#B7C79E; --primary-press:#CBD9B4; --primary-soft:#26301F; --on-primary:#141A10;
+  --accent:#E09A72;
+  --pos:#7FC79A; --pos-soft:#16301F;
+  --neg:#E58E7A; --neg-soft:#381B13;
+  --warn:#D8B16A; --warn-soft:#2E250F;
+  --info:#93B9C7; --info-soft:#14262B;
 
-  --chart-1:var(--primary); --chart-2:#8CA4AF; --chart-3:#D2B36F; --chart-4:var(--ink);
+  --chart-1:var(--primary); --chart-2:#A99A7E; --chart-3:#D08A60; --chart-4:var(--ink);
 
-  --device-edge:#2B3833;
-  --e-1:0 1px 2px rgba(0,0,0,.4);
-  --e-2:0 16px 40px rgba(0,0,0,.55);
+  --device-edge:#2A3025;
+  --e-1:none;
+  --e-2:0 18px 48px rgba(0,0,0,.60);
   --e-device:0 0 0 1px var(--device-edge),0 2px 4px rgba(0,0,0,.50),0 40px 80px -30px rgba(0,0,0,.85);
-  --on-danger:#1A0F0C; --switch-knob:#EAF0ED;
+  --on-danger:#1A0F0C; --switch-knob:#EFEADC;
   --apple-bg:#FFFFFF; --apple-ink:#000000;
-  --scrim:rgba(0,0,0,.55); --shimmer:rgba(255,255,255,.07);
-  --focus:#8CB4FF;
+  --scrim:rgba(0,0,0,.60);
+  --focus:#E8B18C;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -109,26 +104,26 @@ input,select,textarea{font:inherit;color:inherit}
    DEMO CHROME
    ============================================================ */
 .demo-bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:var(--s-4);padding:var(--s-2) var(--s-5);background:var(--stage);border-bottom:1px solid var(--line);flex-wrap:wrap}
-.db-controls{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.db-controls{margin-left:auto;display:flex;align-items:center;gap:var(--s-3);flex-wrap:wrap}
 .ctl{display:flex;flex-direction:column;gap:2px}
 .ctl span{font-size:var(--text-2xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
-.ctl select{appearance:none;background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--r-sm);height:32px;padding:0 26px 0 var(--s-2);font-size:var(--text-xs);font-weight:500;color:var(--ink);background-image:linear-gradient(45deg,transparent 50%,var(--ink-3) 50%),linear-gradient(135deg,var(--ink-3) 50%,transparent 50%);background-position:calc(100% - 13px) 13px,calc(100% - 9px) 13px;background-size:4px 4px;background-repeat:no-repeat;cursor:pointer}
+.ctl select{background:var(--surface);border:1px solid var(--border-control);border-radius:var(--r-sm);height:32px;padding:0 var(--s-2);font-size:var(--text-xs);font-weight:500;color:var(--ink);cursor:pointer}
 .seg{display:flex;gap:2px;background:var(--surface-3);border-radius:var(--r-control);padding:2px;border:1px solid var(--border)}
 .seg button{height:28px;padding:0 var(--s-2);border-radius:var(--r-sm);font-size:var(--text-xs);font-weight:600;color:var(--ink-2);white-space:nowrap}
-.seg button.on{background:var(--surface);color:var(--ink);box-shadow:var(--e-1)}
+.seg button.on{background:var(--surface);color:var(--ink);box-shadow:inset 0 -2px 0 var(--accent)}
 .db-btn{display:inline-flex;align-items:center;gap:var(--s-1);height:32px;padding:0 var(--s-2);border-radius:var(--r-sm);border:1px solid var(--border-strong);background:var(--surface);font-size:var(--text-xs);font-weight:600;color:var(--ink-2)}
 .db-btn:hover{color:var(--ink)}
 .db-sep{width:1px;height:24px;background:var(--border-strong)}
 .stage{display:flex;justify-content:center;align-items:flex-start;gap:var(--s-10);padding:var(--s-6) var(--s-6) var(--s-10);min-height:calc(100vh - 106px)}
 .slot{display:flex;flex-direction:column;gap:var(--s-2);flex:none;zoom:var(--fit);transform-origin:top center}
 .slot.hidden{display:none}
-.slot-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 4px;min-height:20px}
+.slot-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);padding:0 var(--s-1);min-height:20px}
 .slot-head .lbl{font-size:var(--text-2xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
-.slot-head .lbl b{color:var(--ink-2);font-weight:600;text-transform:none;letter-spacing:0;font-size:11px;margin-left:6px}
-.slot-head .rot{display:inline-flex;align-items:center;gap:4px;font-size:var(--text-2xs);font-weight:600;color:var(--primary);white-space:nowrap}
+.slot-head .lbl b{color:var(--ink-2);font-weight:600;text-transform:none;letter-spacing:0;font-size:var(--text-2xs);margin-left:6px}
+.slot-head .rot{display:inline-flex;align-items:center;gap:var(--s-1);font-size:var(--text-2xs);font-weight:600;color:var(--primary);white-space:nowrap}
 .hint{max-width:900px;margin:0 auto var(--s-8);padding:0 var(--s-6);font-size:var(--text-xs);line-height:1.6;color:var(--ink-2);text-align:center}
 .hint b{color:var(--ink);font-weight:600}
-kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surface);border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:5px;padding:0 4px}
+kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surface);border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:5px;padding:0 var(--s-1)}
 
 /* ============================================================
    DEVICE
@@ -147,29 +142,32 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
    APP CHROME
    ============================================================ */
 .nav{flex:none;height:48px;display:flex;align-items:center;gap:var(--s-2);padding:0 12px;z-index:20}
-.nav .nav-title{font-size:var(--text-md);font-weight:600;letter-spacing:-.01em;margin:0 auto;padding:0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.nav .nav-side{display:flex;align-items:center;gap:4px;min-width:76px}
+.nav .nav-title{font-family:var(--font-serif);font-size:var(--text-md);font-weight:600;letter-spacing:-.01em;margin:0 auto;padding:0 var(--s-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav .nav-side{display:flex;align-items:center;gap:var(--s-1);min-width:76px}
 .nav .nav-side.right{justify-content:flex-end}
-.icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:var(--r-pill);color:var(--primary);flex:none}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:var(--r-sm);color:var(--primary);flex:none}
 .icon-btn:hover{background:var(--surface-3)}
 .lg-head{flex:none;padding:var(--s-1) var(--s-4) var(--s-3);display:flex;align-items:flex-start;gap:var(--s-2)}
 .lg-head .h{flex:1;min-width:0}
-.lg-head h1{font-size:var(--text-2xl);line-height:1.08;letter-spacing:-.028em;font-weight:700}
+.lg-head h1{font-family:var(--font-serif);font-size:var(--text-2xl);line-height:1.05;letter-spacing:-.02em;font-weight:600}
+.lg-head .h:before,.pad-head .pt:before{content:"";display:block;width:28px;height:2px;background:var(--accent);margin-bottom:var(--s-2)}
 .lg-head .sub{font-size:var(--text-xs);color:var(--ink-2);margin-top:var(--s-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.lg-head .spacer{display:flex;align-items:center;gap:8px;flex:none}
+.lg-head .spacer{display:flex;align-items:center;gap:var(--s-2);flex:none}
 .content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 var(--s-4) var(--s-4);display:flex;flex-direction:column;gap:var(--s-3);scrollbar-width:none;z-index:10;overscroll-behavior:contain}
 /* Scroll the column; never squash cards to fit. */
 .content > *,.pad-content > *{flex-shrink:0}
 .content::-webkit-scrollbar{display:none}
 .content.plain{padding:0;gap:0}
-.tabbar{flex:none;height:83px;display:grid;grid-template-columns:repeat(5,1fr);padding:var(--s-2) 6px 0;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(24px);border-top:1px solid var(--border);z-index:30;position:relative}
-.tab{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:var(--text-2xs);font-weight:500;color:var(--ink-3);padding-top:var(--s-1);min-height:44px}
-.tab.active{color:var(--primary);font-weight:600}
-.tab .badge{position:absolute;transform:translate(12px,-3px);background:var(--neg);color:var(--on-danger);font-size:var(--text-2xs);font-weight:700;min-width:17px;height:17px;border-radius:var(--r-pill);display:grid;place-items:center;padding:0 var(--s-1)}
+.tabbar{flex:none;height:83px;display:grid;grid-template-columns:repeat(5,1fr);padding:var(--s-2) 6px 0;background:var(--surface);border-top:1px solid var(--border);z-index:30;position:relative}
+.tab{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:var(--text-2xs);font-weight:500;color:var(--ink-3);padding-top:var(--s-1);min-height:44px}
+.tab.active{color:var(--ink);font-weight:600}
+.tab.active:before{content:"";position:absolute;top:-8px;left:26%;right:26%;height:2px;background:var(--accent)}
+.tab.active svg{color:var(--accent)}
+.tab .badge{position:absolute;transform:translate(12px,-3px);background:var(--neg);color:var(--on-danger);font-size:var(--text-2xs);font-weight:700;min-width:18px;height:18px;border-radius:var(--r-stamp);display:grid;place-items:center;padding:0 3px}
 
 /* ipad shell */
-.pad-body{flex:1;min-height:0;display:flex;gap:10px;padding:0 10px 10px}
-.sidebar{flex:none;width:264px;display:flex;flex-direction:column;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-card);padding:var(--s-3) var(--s-2) var(--s-2);overflow:hidden}
+.pad-body{flex:1;min-height:0;display:flex;gap:0;padding:0}
+.sidebar{flex:none;width:264px;display:flex;flex-direction:column;background:var(--surface-2);border:0;border-right:1px solid var(--border);border-radius:0;padding:var(--s-3) var(--s-2) var(--s-2);overflow:hidden}
 .pad:not(.landscape) .sidebar{width:232px}
 .pad .sidebar.collapsed{width:76px}
 .sidebar{transition:width var(--dur) ease, padding var(--dur) ease}
@@ -184,14 +182,14 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
 .sidebar.collapsed .side-item .count{position:absolute;top:2px;right:4px;margin:0}
 .sidebar.collapsed .ws-row{display:none}
 .sidebar.collapsed .side-user{justify-content:center;padding-left:0;padding-right:0}
-.side-brand{display:flex;align-items:center;gap:var(--s-2);padding:2px var(--s-2) var(--s-3);font-weight:600;letter-spacing:-.02em;font-size:var(--text-base)}
+.side-brand{display:flex;align-items:center;gap:var(--s-2);padding:2px var(--s-2) var(--s-3);font-family:var(--font-serif);font-weight:600;letter-spacing:-.01em;font-size:var(--text-md)}
 .side-sec{font-size:var(--text-2xs);font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);padding:var(--s-3) var(--s-2) var(--s-1)}
 .side-item{display:flex;align-items:center;gap:var(--s-2);height:44px;width:100%;padding:0 var(--s-2);border-radius:var(--r-control);font-size:var(--text-sm);font-weight:500;color:var(--ink-2);text-align:left}
 .side-item svg{color:var(--ink-3);flex:none}
 .side-item:hover{background:var(--surface-3)}
-.side-item.active{background:var(--primary-soft);color:var(--primary);font-weight:600}
-.side-item.active svg{color:var(--primary)}
-.side-item .count{margin-left:auto;font-size:var(--text-2xs);font-weight:700;background:var(--neg);color:var(--on-danger);border-radius:var(--r-pill);min-width:17px;height:17px;display:grid;place-items:center;padding:0 5px}
+.side-item.active{background:transparent;color:var(--ink);font-weight:600;box-shadow:inset 2px 0 0 var(--accent)}
+.side-item.active svg{color:var(--accent)}
+.side-item .count{margin-left:auto;font-size:var(--text-2xs);font-weight:700;background:var(--neg);color:var(--on-danger);border-radius:var(--r-stamp);min-width:18px;height:18px;display:grid;place-items:center;padding:0 5px}
 .side-foot{margin-top:auto;border-top:1px solid var(--border);padding-top:10px}
 .ws-label{font-size:var(--text-2xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding:2px var(--s-2) var(--s-1)}
 .ws-row{display:flex;align-items:center;gap:var(--s-2);height:44px;width:100%;padding:0 var(--s-2);border-radius:var(--r-control);font-size:var(--text-xs);color:var(--ink-2);text-align:left}
@@ -202,12 +200,12 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
 .side-user{display:flex;align-items:center;gap:var(--s-2);padding:var(--s-3) var(--s-2) var(--s-1);margin-top:var(--s-1);border-top:1px solid var(--border);width:100%;text-align:left;min-height:44px}
 .side-user .nm{font-size:var(--text-xs);font-weight:600;line-height:1.25}
 .side-user .rl{font-size:var(--text-2xs);color:var(--ink-3)}
-.pad-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--s-3);padding:var(--s-2) var(--s-4) var(--s-2) var(--s-2);min-height:0}
+.pad-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--s-3);padding:var(--s-4) var(--s-5) var(--s-2);min-height:0}
 .pad-head{flex:none;display:flex;align-items:flex-start;gap:16px;min-width:0}
 .pad-head .pt{flex:1;min-width:0}
-.pad-head h1{font-size:var(--text-xl);line-height:1.12;letter-spacing:-.025em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pad-head h1{font-family:var(--font-serif);font-size:var(--text-xl);line-height:1.08;letter-spacing:-.02em;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pad-head .sub{font-size:var(--text-xs);color:var(--ink-2);margin-top:var(--s-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pad-head .actions{margin-left:auto;display:flex;align-items:center;gap:8px;flex:none}
+.pad-head .actions{margin-left:auto;display:flex;align-items:center;gap:var(--s-2);flex:none}
 .pad-content{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:var(--s-3);padding-right:2px;scrollbar-width:none;overscroll-behavior:contain}
 .pad-content::-webkit-scrollbar{display:none}
 
@@ -218,11 +216,11 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
 .card:has(.tbl){overflow-x:auto}
 .card.pad0{padding:0;overflow:hidden}
 .card-h{display:flex;align-items:center;gap:var(--s-2);margin-bottom:var(--s-2);min-width:0}
-.card-h h4{font-size:var(--text-sm);font-weight:600;letter-spacing:-.005em;white-space:nowrap}
+.card-h h4{font-size:var(--text-2xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
 .card-h .sub{font-size:var(--text-2xs);color:var(--ink-3);white-space:nowrap}
 .card-h .more{margin-left:auto;font-size:var(--text-xs);font-weight:600;color:var(--primary);white-space:nowrap;padding:var(--s-1) 0}
 .label{font-size:var(--text-2xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
-.sec-title{font-size:var(--text-sm);font-weight:600;letter-spacing:-.005em;display:flex;align-items:center;gap:var(--s-2)}
+.sec-title{font-size:var(--text-2xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:var(--s-2)}
 .sec-title .more{margin-left:auto;font-size:var(--text-xs);font-weight:600;color:var(--primary)}
 .muted{color:var(--ink-2)}.faint{color:var(--ink-3)}
 .strong{font-weight:600}.b7{font-weight:700}
@@ -242,11 +240,11 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
 .btn.secondary:hover{background:var(--border)}
 .btn.outline:hover{background:var(--surface-2)}
 .btn.ghost:hover{background:var(--primary-soft)}
-.btn.lg{height:50px;border-radius:var(--r-btn);font-size:var(--text-md)}
+.btn.lg{height:48px;border-radius:var(--r-btn);font-size:var(--text-md)}
 .btn.sm{height:44px;border-radius:var(--r-sm);font-size:var(--text-xs);padding:0 var(--s-3)}
 .btn.full{width:100%}
 .btn.primary{background:var(--primary);color:var(--on-primary)}
-.btn.secondary{background:var(--surface-3);color:var(--ink)}
+.btn.secondary{background:var(--surface-2);border:1px solid var(--border);color:var(--ink)}
 .btn.outline{border:1px solid var(--border-control);background:transparent;color:var(--ink)}
 .btn.ghost{background:transparent;color:var(--primary);padding:0 6px}
 .btn.apple{background:var(--apple-bg);color:var(--apple-ink)}
@@ -258,15 +256,15 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
 .more,.sec-title .more,.card-h .more{position:relative}
 .more:after,.sec-title .more:after,.card-h .more:after{content:"";position:absolute;inset:-16px -8px}
 
-.chip{display:inline-flex;align-items:center;gap:var(--s-1);height:24px;padding:0 var(--s-2);border-radius:var(--r-pill);font-size:var(--text-2xs);font-weight:600;white-space:nowrap}
-.chip.pos{background:var(--pos-soft);color:var(--pos)}
-.chip.neg{background:var(--neg-soft);color:var(--neg)}
-.chip.warn{background:var(--warn-soft);color:var(--warn)}
-.chip.neutral{background:var(--surface-3);color:var(--ink-2)}
-.chip.primary{background:var(--primary-soft);color:var(--primary)}
+.chip{display:inline-flex;align-items:center;gap:var(--s-1);height:20px;padding:0 5px;border-radius:var(--r-stamp);border:1px solid var(--border-strong);background:transparent;font-size:var(--text-2xs);font-weight:600;letter-spacing:.03em;white-space:nowrap;color:var(--ink-2)}
+.chip.pos{border-color:color-mix(in srgb,var(--pos) 42%,var(--border));color:var(--pos)}
+.chip.neg{border-color:color-mix(in srgb,var(--neg) 42%,var(--border));color:var(--neg)}
+.chip.warn{border-color:color-mix(in srgb,var(--warn) 42%,var(--border));color:var(--warn)}
+.chip.neutral{border-color:var(--border);color:var(--ink-3)}
+.chip.primary{border-color:color-mix(in srgb,var(--primary) 42%,var(--border));color:var(--primary)}
 .chip.outline{border:1px solid var(--border-strong);color:var(--ink-2);background:transparent}
 .chip .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
-.fchip{display:inline-flex;align-items:center;gap:var(--s-1);height:44px;padding:0 var(--s-4);border-radius:var(--r-pill);border:1px solid var(--border);background:var(--surface);font-size:var(--text-xs);font-weight:500;color:var(--ink-2);white-space:nowrap;flex:none}
+.fchip{display:inline-flex;align-items:center;gap:var(--s-1);height:44px;padding:0 var(--s-3);border-radius:var(--r-sm);border:1px solid var(--border-control);background:var(--surface);font-size:var(--text-xs);font-weight:500;color:var(--ink-2);white-space:nowrap;flex:none}
 .fchip:hover{border-color:var(--border-strong)}
 .fchip.on{background:var(--primary);border-color:var(--primary);color:var(--on-primary);font-weight:600}
 
@@ -274,7 +272,7 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
 .field>label{font-size:var(--text-2xs);font-weight:600;letter-spacing:.03em;color:var(--ink-2)}
 .input{height:44px;border-radius:var(--r-control);border:1px solid var(--border-control);background:var(--surface);display:flex;align-items:center;gap:var(--s-2);padding:0 var(--s-3);font-size:var(--text-base);color:var(--ink);min-width:0}
 .input:focus-within,.search:focus-within{border-color:var(--border-strong);box-shadow:none;outline:2px solid var(--focus);outline-offset:2px}
-.input input{border:0;background:transparent;outline:0;width:100%;min-width:0;font-size:var(--text-base);color:var(--ink);padding:0}
+.input input{border:0;background:transparent;outline:0;width:100%;min-width:0;font-size:var(--text-base);color:var(--ink);padding:0;font-variant-numeric:tabular-nums}
 .input input::placeholder{color:var(--ink-3)}
 .input .end{margin-left:auto;font-size:var(--text-xs);font-weight:600;color:var(--primary);flex:none}
 .input svg{color:var(--ink-3);flex:none}
@@ -288,17 +286,17 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
 .search input::placeholder{color:var(--ink-3)}
 select.mini{height:44px;border-radius:var(--r-sm);border:1px solid var(--border-control);background:var(--surface);padding:0 var(--s-2);font-size:var(--text-xs);font-weight:600;color:var(--ink)}
 .switch{width:50px;height:44px;border-radius:var(--r-pill);background:transparent;position:relative;flex:none}
-.switch:before{content:"";position:absolute;left:0;top:7px;width:50px;height:30px;border-radius:var(--r-pill);background:var(--border-strong);transition:background var(--dur) ease}
+.switch:before{content:"";position:absolute;left:0;top:7px;width:50px;height:30px;border-radius:var(--r-pill);background:var(--border-control);transition:background var(--dur) ease}
 .switch.on:before{background:var(--pos)}
-.switch:after{content:"";position:absolute;top:9px;left:2px;width:26px;height:26px;border-radius:var(--r-pill);background:var(--switch-knob);box-shadow:var(--e-1);transition:left var(--dur) ease}
+.switch:after{content:"";position:absolute;top:9px;left:2px;width:26px;height:26px;border-radius:var(--r-pill);background:var(--switch-knob);transition:left var(--dur) ease}
 .switch.on:after{left:22px}
 .toggle-row{display:flex;align-items:center;justify-content:space-between;gap:var(--s-2);min-height:44px}
 .seg2{display:flex;gap:2px;background:var(--surface-3);border-radius:var(--r-control);padding:3px}
 .seg2 button{flex:1;min-height:44px;font-size:var(--text-xs);font-weight:600;padding:var(--s-3) var(--s-1);border-radius:var(--r-sm);color:var(--ink-2);white-space:nowrap}
-.seg2 button.on{background:var(--surface);color:var(--ink);box-shadow:var(--e-1)}
+.seg2 button.on{background:var(--surface);color:var(--ink);box-shadow:inset 0 -2px 0 var(--accent)}
 .seg2.pill{background:transparent;padding:0;gap:var(--s-2);border-radius:0}
-.seg2.pill button{min-height:44px;border:1px solid var(--border);border-radius:var(--r-pill);padding:var(--s-3) var(--s-3);font-size:var(--text-xs);flex:none;background:var(--surface)}
-.seg2.pill button.on{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.seg2.pill button{min-height:44px;border:1px solid var(--border-control);border-radius:var(--r-sm);padding:var(--s-3) var(--s-3);font-size:var(--text-xs);flex:none;background:var(--surface)}
+.seg2.pill button.on{background:var(--surface);color:var(--ink);border-color:var(--border-strong);box-shadow:inset 0 -2px 0 var(--accent)}
 
 .list{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden}
 .list .item{display:flex;align-items:center;gap:var(--s-3);padding:var(--s-3) var(--s-4);border-top:1px solid var(--border);min-height:48px;width:100%;text-align:left;color:inherit}
@@ -315,16 +313,18 @@ select.mini{height:44px;border-radius:var(--r-sm);border:1px solid var(--border-
 .avatar.a3{background:var(--neg-soft);color:var(--neg)}
 .avatar.a4{background:var(--surface-3);color:var(--ink-2)}
 
-.cover{position:relative;border-radius:var(--r-sm);overflow:hidden;color:var(--on-cover);display:flex;flex-direction:column;justify-content:flex-end;padding:var(--s-3);flex:none;border:1px solid rgba(255,255,255,.18);background:var(--cover-teal)}
+.cover{position:relative;border-radius:var(--r-card);overflow:hidden;color:var(--on-cover);display:flex;flex-direction:column;justify-content:flex-end;padding:var(--s-3);flex:none;border:0;background:var(--cover-teal)}
+.cover:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:rgba(0,0,0,.22)}
 .cover.t-teal{background:var(--cover-teal)}
 .cover.t-clay{background:var(--cover-clay)}
 .cover.t-sand{background:var(--cover-sand)}
 .cover.t-slate{background:var(--cover-slate)}
 .cover.t-olive{background:var(--cover-olive)}
 .cover .cover-text{margin-top:auto}
-.cover .mono{font-size:20px;font-weight:600;line-height:1;opacity:.92}
+.cover .mono{font-family:var(--font-serif);font-size:var(--text-lg);font-weight:600;line-height:1;opacity:.95}
 .cover .cat{font-size:var(--text-2xs);font-weight:700;letter-spacing:.13em;text-transform:uppercase;opacity:.82}
-.cover .ttl{font-size:var(--text-xs);font-weight:600;line-height:1.25;letter-spacing:-.01em}
+.pad .cover:not(.sm):not(.mini) .ttl{font-size:var(--text-base)}
+.cover .ttl{font-family:var(--font-serif);font-size:var(--text-xs);font-weight:600;line-height:1.2;letter-spacing:0}
 .cover .ver{font-size:var(--text-2xs);opacity:.78;margin-top:var(--s-1)}
 .cover.sm,.cover.mini{display:grid;place-items:center;justify-content:center;align-content:center;padding:0}
 .cover.sm .mono,.cover.mini .mono{font-size:var(--text-base)}
@@ -335,14 +335,14 @@ select.mini{height:44px;border-radius:var(--r-sm);border:1px solid var(--border-
 .kpis.three{grid-template-columns:repeat(3,1fr)}
 .kpis.four{grid-template-columns:repeat(4,1fr)}
 .pad:not(.landscape) .kpis.four{grid-template-columns:1fr 1fr}
-.kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);padding:var(--s-3);min-width:0}
-.kpi .lbl{font-size:var(--text-2xs);font-weight:500;color:var(--ink-2);display:flex;align-items:center;gap:var(--s-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.kpi .val{font-size:var(--text-xl);font-weight:600;letter-spacing:-.025em;margin-top:var(--s-1);font-variant-numeric:tabular-nums}
+.kpi{background:transparent;border:0;border-top:1px solid var(--border);border-radius:0;padding:var(--s-2) 0 var(--s-1);min-width:0}
+.kpi .lbl{font-size:var(--text-2xs);font-weight:600;letter-spacing:.04em;color:var(--ink-2);display:flex;align-items:center;gap:var(--s-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .val{font-size:var(--text-xl);font-weight:600;letter-spacing:-.02em;margin-top:var(--s-1);font-variant-numeric:tabular-nums}
 .kpi .foot{display:flex;align-items:center;gap:var(--s-1);margin-top:var(--s-1);font-size:var(--text-2xs);font-weight:600;white-space:nowrap}
 .kpi .foot .vs{color:var(--ink-3);font-weight:400}
 .up{color:var(--pos)}.down{color:var(--neg)}
-.bar{height:6px;border-radius:3px;background:var(--surface-3);overflow:hidden}
-.bar i{display:block;height:100%;border-radius:var(--r-pill);background:var(--primary);transition:width var(--dur) ease}
+.bar{height:5px;border-radius:0;background:var(--surface-3);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:0;background:var(--primary);transition:width var(--dur) ease}
 .bar.thin{height:4px}
 .bar.warn i{background:var(--warn)}
 .bar.pos i{background:var(--pos)}
@@ -350,36 +350,36 @@ select.mini{height:44px;border-radius:var(--r-sm);border:1px solid var(--border-
 .chart{position:relative;min-width:0}
 .chart svg{width:100%;height:auto;overflow:visible}
 .legend{display:flex;align-items:center;gap:var(--s-3);flex-wrap:wrap;font-size:var(--text-2xs);color:var(--ink-2);margin-top:var(--s-2)}
-.legend i{display:inline-block;width:7px;height:7px;border-radius:2px;margin-right:4px}
-.tip{position:absolute;transform:translate(-50%,-118%);background:var(--ink);color:var(--bg);font-size:var(--text-2xs);font-weight:600;padding:var(--s-1) var(--s-2);border-radius:var(--r-sm);white-space:nowrap;pointer-events:none;z-index:3;font-variant-numeric:tabular-nums}
-.tip:after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--ink)}
+.legend i{display:inline-block;width:8px;height:3px;border-radius:0;margin-right:5px}
+.tip{position:absolute;transform:translate(-50%,-118%);background:var(--surface);color:var(--ink);border:1px solid var(--border-strong);font-size:var(--text-2xs);font-weight:600;padding:4px 7px;border-radius:var(--r-stamp);white-space:nowrap;pointer-events:none;z-index:3;font-variant-numeric:tabular-nums}
+.tip:after{display:none}
 .spark{display:block}
 
 .tbl{width:100%;border-collapse:collapse}
-.tbl th{text-align:left;font-size:var(--text-2xs);font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);padding:var(--s-2);border-bottom:1px solid var(--border);white-space:nowrap}
-.tbl td{padding:var(--s-2);border-bottom:1px solid var(--border);font-size:var(--text-xs);white-space:nowrap}
+.tbl th{text-align:left;font-size:var(--text-2xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding:var(--s-2);border-bottom:1px solid var(--border-strong);white-space:nowrap}
+.tbl td{padding:var(--s-2);border-bottom:1px solid var(--border);font-size:var(--text-xs);white-space:nowrap;font-variant-numeric:tabular-nums}
 .tbl.compact th{font-size:var(--text-2xs);padding:var(--s-1) 6px}
-.tbl.compact td{font-size:11px;padding:var(--s-1) 6px}
+.tbl.compact td{font-size:var(--text-2xs);padding:var(--s-1) 6px}
 .tbl.tight th,.tbl.tight td{padding-left:6px;padding-right:6px}
-.tbl.tight td .avatar.sm{width:24px;height:24px;font-size:10px}
+.tbl.tight td .avatar.sm{width:24px;height:24px;font-size:var(--text-2xs)}
 .tbl tr:last-child td{border-bottom:0}
 .tbl tbody tr:hover{background:var(--surface-2)}
 .tbl .num{text-align:right;font-variant-numeric:tabular-nums}
 .tbl .muted{color:var(--ink-2)}
 .tbl th.num{text-align:right}
 
-.privacy{display:inline-flex;align-items:center;gap:var(--s-1);font-size:var(--text-2xs);font-weight:500;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-pill);padding:var(--s-1) var(--s-2);white-space:nowrap}
+.privacy{display:inline-flex;align-items:center;gap:var(--s-1);font-size:var(--text-2xs);font-weight:600;letter-spacing:.04em;color:var(--ink-3);background:transparent;border:0;border-radius:0;padding:0;white-space:nowrap}
 .privacy svg{color:var(--primary)}
-.banner{display:flex;align-items:center;gap:var(--s-2);border-radius:var(--r-control);padding:var(--s-3);font-size:var(--text-xs);font-weight:500;background:var(--primary-soft);color:var(--primary);border:1px solid color-mix(in srgb,var(--primary) 22%,transparent)}
-.banner.warn{background:var(--warn-soft);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 25%,transparent)}
-.banner.neg{background:var(--neg-soft);color:var(--neg);border-color:color-mix(in srgb,var(--neg) 25%,transparent)}
+.banner{display:flex;align-items:center;gap:var(--s-2);border-radius:0;border:0;border-left:3px solid var(--accent);padding:var(--s-2) var(--s-3);font-size:var(--text-xs);font-weight:500;background:var(--surface-2);color:var(--ink-2)}
+.banner.warn{background:var(--warn-soft);color:var(--ink);border-left-color:var(--warn)}
+.banner.neg{background:var(--neg-soft);color:var(--ink);border-left-color:var(--neg)}
 .banner .grow{font-weight:500}
 
 /* auth */
 .auth{flex:1;display:flex;flex-direction:column;padding:var(--s-1) var(--s-6) var(--s-6);min-height:0;overflow-y:auto;scrollbar-width:none}
 .auth::-webkit-scrollbar{display:none}
-.wmark{display:flex;align-items:center;gap:var(--s-2);font-weight:600;letter-spacing:-.02em;font-size:var(--text-md)}
-.auth h1{font-size:var(--text-2xl);line-height:1.1;letter-spacing:-.03em;font-weight:700;margin-top:var(--s-6)}
+.wmark{display:flex;align-items:center;gap:var(--s-2);font-family:var(--font-serif);font-weight:600;letter-spacing:-.01em;font-size:var(--text-md)}
+.auth h1{font-family:var(--font-serif);font-size:var(--text-2xl);line-height:1.05;letter-spacing:-.02em;font-weight:600;margin-top:var(--s-6)}
 .auth .lead{font-size:var(--text-base);line-height:1.5;color:var(--ink-2);margin-top:var(--s-2);max-width:36ch}
 .auth .form{margin-top:var(--s-5);display:flex;flex-direction:column;gap:var(--s-3)}
 .or{display:flex;align-items:center;gap:var(--s-2);font-size:var(--text-2xs);font-weight:600;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;margin:var(--s-1) 0}
@@ -388,33 +388,35 @@ select.mini{height:44px;border-radius:var(--r-sm);border:1px solid var(--border-
 .link{color:var(--primary);font-weight:600;text-decoration:none}
 .auth .spacer{margin-top:auto}
 .auth-split{flex:1;display:grid;grid-template-columns:43% 1fr;min-height:0}
-.auth-brand{position:relative;background:var(--brand-deep);color:var(--on-brand);padding:var(--s-10);display:flex;flex-direction:column;overflow:hidden}
-.auth-brand .ab-logo{display:flex;align-items:center;gap:var(--s-3);font-size:20px;font-weight:600;position:relative}
-.auth-brand h2{font-size:var(--text-2xl);line-height:1.1;letter-spacing:-.03em;font-weight:600;margin-top:auto;position:relative;max-width:14ch}
+.auth-brand{position:relative;background:var(--brand-deep);border-right:1px solid rgba(255,255,255,.10);color:var(--on-brand);padding:var(--s-10);display:flex;flex-direction:column;overflow:hidden}
+.auth-brand .ab-logo svg rect{fill:var(--on-brand)}
+.auth-brand .ab-logo svg path{stroke:var(--brand-deep)}
+.auth-brand .ab-logo{display:flex;align-items:center;gap:var(--s-3);font-family:var(--font-serif);font-size:var(--text-lg);font-weight:600;position:relative}
+.auth-brand h2{font-family:var(--font-serif);font-size:var(--text-2xl);line-height:1.05;letter-spacing:-.02em;font-weight:600;margin-top:auto;position:relative;max-width:14ch}
 .auth-brand p{font-size:var(--text-base);line-height:1.55;color:var(--on-brand-2);margin-top:var(--s-3);position:relative;max-width:34ch}
 .auth-brand .ab-foot{display:flex;gap:var(--s-3);margin-top:var(--s-6);position:relative;font-size:var(--text-2xs);color:var(--on-brand-2)}
 .auth-form{padding:44px 60px;display:flex;flex-direction:column;justify-content:center;gap:var(--s-3);min-width:0;overflow-y:auto;scrollbar-width:none}
 .auth-form::-webkit-scrollbar{display:none}
-.auth-form h3{font-size:var(--text-xl);letter-spacing:-.025em;font-weight:700}
+.auth-form h3{font-family:var(--font-serif);font-size:var(--text-xl);letter-spacing:-.01em;font-weight:600}
 .auth-form .sub{font-size:var(--text-xs);color:var(--ink-2);margin-bottom:var(--s-1)}
 
 /* sheets */
 .dim{position:absolute;inset:0;background:var(--scrim);z-index:60;animation:fade .18s ease}
-.sheet{position:absolute;left:8px;right:8px;bottom:8px;background:var(--surface);border-radius:var(--r-sheet);padding:var(--s-2) var(--s-5) var(--s-5);z-index:61;box-shadow:var(--e-2);text-align:center;border:1px solid var(--border);animation:up .18s ease}
+.sheet{position:absolute;left:8px;right:8px;bottom:8px;background:var(--surface);border-radius:var(--r-sheet);padding:var(--s-2) var(--s-5) var(--s-5);z-index:61;box-shadow:var(--e-2);text-align:center;border:1px solid var(--border-strong);animation:up .18s ease}
 .sheet.wide{left:16px;right:16px;text-align:left;padding:var(--s-4) 20px 18px}
 .sheet .grab{width:38px;height:5px;border-radius:3px;background:var(--border-strong);margin:0 auto 14px}
 .sheet .sheet-ic{width:40px;height:40px;border-radius:0;background:transparent;color:var(--primary);display:grid;place-items:center;margin:0 auto var(--s-2)}
 .sheet h3{font-size:var(--text-md);font-weight:600;letter-spacing:-.01em}
 .sheet p{font-size:var(--text-xs);color:var(--ink-2);margin-top:var(--s-1);line-height:1.45}
 .sheet .btn{margin-top:var(--s-3)}
-.sheet .list{margin-top:12px;text-align:left}
+.sheet .list{margin-top:var(--s-3);text-align:left}
 @keyframes up{from{transform:translateY(24px);opacity:.5}to{transform:none;opacity:1}}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 
 /* secure document paper: fixed white in both themes, like a PDF */
 .doc-page{background:var(--paper);color:var(--paper-ink);border:1px solid var(--paper-rule);border-radius:var(--r-control);padding:var(--s-5);position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:360px}
 .doc-page .doc-kicker{display:flex;justify-content:space-between;gap:var(--s-3);font-size:var(--text-2xs);letter-spacing:.08em;text-transform:uppercase;color:var(--paper-3)}
-.doc-page h2{font-size:var(--text-lg);font-weight:700;letter-spacing:-.02em;margin-top:var(--s-4);color:var(--paper-ink)}
+.doc-page h2{font-family:var(--font-serif);font-size:var(--text-lg);font-weight:600;letter-spacing:-.01em;margin-top:var(--s-4);color:var(--paper-ink)}
 .doc-page p{font-size:var(--text-xs);line-height:1.65;color:var(--paper-2);margin-top:var(--s-2);max-width:72ch}
 .doc-page .doc-sub{font-size:var(--text-xs);font-weight:600;color:var(--paper-accent);margin-top:var(--s-4)}
 .doc-page table{width:100%;border-collapse:collapse;font-size:var(--text-2xs);color:var(--paper-2);margin-top:var(--s-2)}
@@ -429,17 +431,17 @@ select.mini{height:44px;border-radius:var(--r-sm);border:1px solid var(--border-
 /* misc */
 .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--s-2);padding:var(--s-8) var(--s-6);min-height:320px}
 .empty .e-ic{width:28px;height:28px;border-radius:0;background:transparent;border:0;display:grid;place-items:center;color:var(--primary);margin-bottom:var(--s-1)}
-.empty h3{font-size:var(--text-md);font-weight:600;letter-spacing:-.01em}
+.empty h3{font-family:var(--font-serif);font-size:var(--text-lg);font-weight:600;letter-spacing:-.01em}
 .empty p{font-size:var(--text-sm);color:var(--ink-2);line-height:1.5;max-width:34ch}
 .empty .btn{margin-top:var(--s-2)}
-.skel{background:var(--surface-3);border-radius:var(--r-sm);position:relative;overflow:hidden}
-.skel:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--shimmer),transparent);transform:translateX(-100%);animation:shimmer 1.6s infinite}
-@keyframes shimmer{to{transform:translateX(100%)}}
-.toast{position:absolute;left:50%;bottom:96px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:var(--text-xs);font-weight:600;padding:var(--s-2) var(--s-4);border-radius:var(--r-pill);z-index:70;box-shadow:var(--e-2);max-width:86%;text-align:center;pointer-events:none}
+.skel{background:var(--surface-3);border-radius:var(--r-stamp);position:relative;overflow:hidden}
+.skel:after{content:none}
+
+.toast{position:absolute;left:50%;bottom:96px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:var(--text-xs);font-weight:600;padding:var(--s-2) var(--s-3);border-radius:var(--r-sm);z-index:70;max-width:86%;text-align:center;pointer-events:none}
 @keyframes toastin{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
 .steps{display:flex;align-items:center;gap:var(--s-2)}
 .step{display:flex;align-items:center;gap:var(--s-2);font-size:var(--text-2xs);font-weight:600;color:var(--ink-3);white-space:nowrap}
-.step b{width:24px;height:24px;border-radius:var(--r-pill);background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-size:var(--text-2xs);font-weight:700}
+.step b{width:24px;height:24px;border-radius:var(--r-stamp);background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-size:var(--text-2xs);font-weight:700}
 .step.done b{background:var(--pos-soft);color:var(--pos)}
 .step.on{color:var(--ink)}
 .step.on b{background:var(--primary);color:var(--on-primary)}
@@ -462,6 +464,7 @@ select.mini{height:44px;border-radius:var(--r-sm);border:1px solid var(--border-
 .frames-grid > *{align-self:start}
 .catalog-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3)}
 .pad:not(.landscape) .catalog-grid{grid-template-columns:1fr}
+.plans-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3)}
 .lib-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:var(--s-3);align-items:start;align-content:start}
 .pad:not(.landscape) .lib-grid{grid-template-columns:1fr}
 .pad:not(.landscape) .frames-grid{grid-template-columns:1fr}
@@ -472,9 +475,9 @@ button.switch{padding:0;border:0}
 .pad:not(.landscape) .dash-grid{grid-template-columns:1fr}
 
 @media (max-width:900px){
-  .demo-bar{padding:8px 12px;gap:10px}
-  .db-controls{gap:8px}
-  .stage{padding:16px 8px 24px;gap:20px;flex-wrap:wrap}
+  .demo-bar{padding:8px 12px;gap:var(--s-2)}
+  .db-controls{gap:var(--s-2)}
+  .stage{padding:var(--s-4) 8px 24px;gap:20px;flex-wrap:wrap}
   .hint{padding:0 16px}
 }
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
@@ -590,7 +593,7 @@ const ICONS={
 function icon(n,s=22,sw=1.7){
   return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]||''}</svg>`;
 }
-const MARK=(s=26)=>`<svg width="${s}" height="${s}" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--primary)"/><path d="M9.2 23.4 16 8.6l6.8 14.8M12.2 18.1h7.6" stroke="var(--on-primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
+const MARK=(s=26)=>`<svg width="${s}" height="${s}" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="3" fill="var(--primary)"/><path d="M9.2 23.4 16 8.6l6.8 14.8M12.2 18.1h7.6" stroke="var(--on-primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
 const appleIcon=(s=17)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${ICONS.apple}</svg>`;
 
 /* ============================================================
@@ -726,7 +729,7 @@ function niceMax(v){
   const f=n<=1?1:n<=1.2?1.2:n<=1.5?1.5:n<=2?2:n<=2.5?2.5:n<=3?3:n<=4?4:n<=5?5:n<=6?6:n<=8?8:10;
   return f*mag;
 }
-function lineChart({labels,series,w=336,h=148,yMin=0,yMax=null,fmt=v=>v,area=true,tip=null,padL=34,padR=8,padT=12,padB=20,ticks=4}){
+function lineChart({labels,series,w=336,h=148,yMin=0,yMax=null,fmt=v=>v,area=false,tip=null,padL=34,padR=8,padT=12,padB=20,ticks=4}){
   yMax = yMax ?? niceMax(Math.max(...series.flatMap(s=>s.values))*1.12);
   const iw=w-padL-padR, ih=h-padT-padB;
   const X=i=>padL+(labels.length===1?iw/2:(i/(labels.length-1))*iw);
@@ -735,7 +738,7 @@ function lineChart({labels,series,w=336,h=148,yMin=0,yMax=null,fmt=v=>v,area=tru
   const nT=(yMax%4===0)?4:5;
   for(let i=0;i<=nT;i++){
     const v=yMin+(yMax-yMin)*i/nT, y=Y(v);
-    g+=`<line x1="${padL}" x2="${w-padR}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--border)" stroke-width="1" opacity="${i===0?.9:.6}"/>`;
+    g+=`<line x1="${padL}" x2="${w-padR}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--border)" stroke-width="1" opacity="${i===0?.8:.35}"/>`;
     g+=`<text x="${padL-6}" y="${(y+3.2).toFixed(1)}" text-anchor="end" font-size="11" fill="var(--ink-3)">${fmt(v)}</text>`;
   }
   const step=Math.ceil(labels.length/6);
@@ -747,10 +750,10 @@ function lineChart({labels,series,w=336,h=148,yMin=0,yMax=null,fmt=v=>v,area=tru
   series.forEach((s,si)=>{
     const pts=s.values.map((v,i)=>`${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
     if(area&&si===0){
-      g+=`<polygon points="${padL},${(padT+ih).toFixed(1)} ${pts} ${w-padR},${(padT+ih).toFixed(1)}" fill="${s.color}" fill-opacity=".10"/>`;
+      g+=`<polygon points="${padL},${(padT+ih).toFixed(1)} ${pts} ${w-padR},${(padT+ih).toFixed(1)}" fill="${s.color}" fill-opacity=".08"/>`;
     }
     g+=`<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="${s.width||2}" stroke-linejoin="round" stroke-linecap="round" ${s.dash?`stroke-dasharray="${s.dash}"`:''}/>`;
-    if(s.dots!==false){
+    if(s.dots===true){
       s.values.forEach((v,i)=>{g+=`<circle cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="2.2" fill="var(--surface)" stroke="${s.color}" stroke-width="1.7"><title>${s.name||''} ${labels[i]}: ${fmt(v)}</title></circle>`;});
     }
   });
@@ -771,7 +774,7 @@ function barChart({labels,groups,w=336,h=148,yMax=null,fmt=v=>v,line=null,tip=nu
   const nT=(yMax%4===0)?4:5;
   for(let i=0;i<=nT;i++){
     const v=yMax*i/nT, y=Y(v);
-    g+=`<line x1="${padL}" x2="${w-padR}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--border)" stroke-width="1" opacity="${i===0?.9:.6}"/>`;
+    g+=`<line x1="${padL}" x2="${w-padR}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--border)" stroke-width="1" opacity="${i===0?.8:.35}"/>`;
     g+=`<text x="${padL-6}" y="${(y+3.2).toFixed(1)}" text-anchor="end" font-size="11" fill="var(--ink-3)">${fmt(v)}</text>`;
   }
   labels.forEach((l,i)=>{
@@ -779,7 +782,7 @@ function barChart({labels,groups,w=336,h=148,yMax=null,fmt=v=>v,line=null,tip=nu
     g+=`<text x="${cx.toFixed(1)}" y="${h-5}" text-anchor="middle" font-size="11" fill="var(--ink-3)">${l}</text>`;
     groups.forEach((gr,gi)=>{
       const x=cx-(groups.length*bw)/2+gi*bw+1, y=Y(gr.values[i]);
-      g+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(bw-2).toFixed(1)}" height="${Math.max(1,(padT+ih-y)).toFixed(1)}" rx="2.5" fill="${gr.color}"><title>${gr.name} ${l}: ${fmt(gr.values[i])}</title></rect>`;
+      g+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(bw-2).toFixed(1)}" height="${Math.max(1,(padT+ih-y)).toFixed(1)}" rx="0" fill="${gr.color}"><title>${gr.name} ${l}: ${fmt(gr.values[i])}</title></rect>`;
     });
   });
   if(line){
@@ -838,6 +841,7 @@ const ROLE_EMAIL={customer:'manager@marlowandfern.com.au',client:'priya@marlowan
 const roleEmail=()=>ROLE_EMAIL[app.role]||ROLE_EMAIL.customer;
 const roleOrg=()=>app.role==='client'||app.role==='customer'?CLIENT.name:'AmiWho';
 const fmtDate=t=>new Date(t).toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'});
+const monthsAgo=(v,m)=>{const t=Date.parse(v);if(!t)return 'Earlier';const d=new Date(t);d.setMonth(d.getMonth()-m);return d.toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'})};
 const renewDate=()=>app.renewsOn?fmtDate(app.renewsOn):'next billing date';
 
 /* ============================================================
@@ -907,40 +911,40 @@ function sheetHTML(dev){
   const s=ui[dev].sheet;
   if(!s)return '';
   const close=`<div class="dim" data-act="sheet-close" aria-hidden="true"></div>`;
-  if(s.type==='processing')return `<div class="dim" aria-hidden="true"></div><div class="sheet" role="dialog" aria-modal="true"><div class="sheet-ic">${icon('refresh',26)}</div><h3>Processing payment</h3><p>Contacting your bank…</p><div class="t-11 faint" style="margin-top:10px">Secure · 256-bit TLS</div></div>`;
+  if(s.type==='processing')return `<div class="dim" aria-hidden="true"></div><div class="sheet" role="dialog" aria-modal="true"><div class="sheet-ic">${icon('refresh',26)}</div><h3>Processing payment</h3><p>Contacting your bank…</p><div class="t-11 faint" style="margin-top:var(--s-2)">Secure · 256-bit TLS</div></div>`;
   if(s.type==='faceid'){
     return `${close}<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div class="sheet-ic">${icon('faceid',28)}</div><h3>Sign in with Face ID</h3><p>AmiWho will confirm it’s you. Your password stays on this device.</p><button class="btn primary full lg" data-act="faceid-ok">Continue</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
   }
   if(s.type==='applepay'){
     const c=app.cart||{title:'Labour Cost Playbook',price:49};
-    return `${close}<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div class="row" style="justify-content:center;gap:var(--s-2)">${appleIcon(20)}<b style="font-size:15px">Apple Pay</b></div><div class="card" style="margin-top:12px;text-align:left"><div class="between t-12"><span class="muted">${esc(c.title)}</span><span>${money(c.price)}</span></div><div class="between t-12" style="margin-top:var(--s-1)"><span class="muted">GST included</span><span>${money((c.price/11).toFixed(2))}</span></div><div class="divider" style="margin:8px 0"></div><div class="between"><b>${roleOrg()} · Visa 4242</b><span class="b7">${money(c.price)}</span></div></div><button class="btn primary full lg" data-act="pay-confirm">${icon('faceid',17)}Pay with Face ID</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
+    return `${close}<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div class="row" style="justify-content:center;gap:var(--s-2)">${appleIcon(20)}<b style="font-size:var(--text-base)">Apple Pay</b></div><div class="card" style="margin-top:var(--s-3);text-align:left"><div class="between t-12"><span class="muted">${esc(c.title)}</span><span>${money(c.price)}</span></div><div class="between t-12" style="margin-top:var(--s-1)"><span class="muted">GST included</span><span>${money((c.price/11).toFixed(2))}</span></div><div class="divider" style="margin:8px 0"></div><div class="between"><b>${roleOrg()} · Visa 4242</b><span class="b7">${money(c.price)}</span></div></div><button class="btn primary full lg" data-act="pay-confirm">${icon('faceid',17)}Pay with Face ID</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
   }
   if(s.type==='bundle'){
-    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:17px;font-weight:600">Add to a bundle</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>Buy the bundle once and keep every document current.</p><div class="list">${BUNDLES.map(b=>`<button class="item" data-act="choose-bundle" data-id="${b.id}">${C.cover({...b,cat:'Bundle'},44,56,true,true)}<div class="grow"><div class="t1">${esc(b.t)}</div><div class="t2">${b.v} · ${b.save}</div></div><span class="t-13 strong">${money(b.price)}</span>${icon('chevR',16)}</button>`).join('')}</div></div>`;
+    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:var(--text-md);font-weight:600">Add to a bundle</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>Buy the bundle once. Every document stays current.</p><div class="list">${BUNDLES.map(b=>`<button class="item" data-act="choose-bundle" data-id="${b.id}">${C.cover({...b,cat:'Bundle'},44,56,true,true)}<div class="grow"><div class="t1">${esc(b.t)}</div><div class="t2">${b.v} · ${b.save}</div></div><span class="t-13 strong">${money(b.price)}</span>${icon('chevR',16)}</button>`).join('')}</div></div>`;
   }
   if(s.type==='upload'){
     const d=docById(s.docId);
-    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:17px;font-weight:600">Upload new version</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>${esc(d.t)} · current ${d.v}</p><div class="stack" style="gap:var(--s-2);margin-top:12px">
+    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:var(--text-md);font-weight:600">Upload new version</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>${esc(d.t)} · current ${d.v}</p><div class="stack" style="gap:var(--s-2);margin-top:var(--s-3)">
       <div class="field"><label>Version</label><div class="input"><input id="verInput" value="v${(parseFloat(d.v.slice(1))+0.1).toFixed(1)}" aria-label="Version"></div></div>
       <div class="field"><label>Price (AUD)</label><div class="input"><input id="priceInput" inputmode="decimal" value="${d.price}" aria-label="Price in Australian dollars"></div></div>
-      <div class="dropzone" style="padding:12px">${icon('uploadCloud',20)}<div class="t-11" style="margin-top:4px">${d.id}-${d.v.replace('.','-')}.pdf · 18.4 MB</div></div>
+      <div class="dropzone" style="padding:var(--s-3)">${icon('uploadCloud',20)}<div class="t-11" style="margin-top:var(--s-1)">${d.id}-${d.v.replace('.','-')}.pdf · 18.4 MB</div></div>
       <div class="field"><label>What changed</label><div class="input"><input id="noteInput" placeholder="QLD penalty rates updated" aria-label="What changed"></div></div>
-    </div><button class="btn primary full lg" data-act="upload-publish" data-id="${d.id}" style="margin-top:12px">Publish version</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
+    </div><button class="btn primary full lg" data-act="upload-publish" data-id="${d.id}" style="margin-top:var(--s-3)">Publish version</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
   }
   if(s.type==='price'){
     const d=docById(s.docId);
-    return `${close}<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><h3>Edit price</h3><p>${esc(d.t)}</p><div class="field" style="margin-top:12px;text-align:left"><label>Price (AUD)</label><div class="input"><input id="priceOnly" inputmode="decimal" value="${d.price}" aria-label="Price in Australian dollars"></div></div><button class="btn primary full lg" data-act="price-save" data-id="${d.id}" style="margin-top:12px">Save price</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
+    return `${close}<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><h3>Edit price</h3><p>${esc(d.t)}</p><div class="field" style="margin-top:var(--s-3);text-align:left"><label>Price (AUD)</label><div class="input"><input id="priceOnly" inputmode="decimal" value="${d.price}" aria-label="Price in Australian dollars"></div></div><button class="btn primary full lg" data-act="price-save" data-id="${d.id}" style="margin-top:var(--s-3)">Save price</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
   }
   if(s.type==='role'){
     const u=app.users.find(x=>x.id===s.userId);
-    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:17px;font-weight:600">Change role</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>${esc(u.n)} · ${esc(u.client)}</p><div class="list">${['Admin','Staff','Client','Customer'].map(r=>`<button class="item" data-act="set-role" data-id="${u.id}" data-role="${r}"><div class="grow"><div class="t1">${r}</div><div class="t2">${r==='Admin'?'Full access to both apps and all clients':r==='Staff'?'Manages documents, no client financials':r==='Client'?'Private dashboard for one venue':'Buys documents only'}</div></div>${u.role===r?icon('checkCircle',20):''}</button>`).join('')}</div></div>`;
+    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:var(--text-md);font-weight:600">Change role</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>${esc(u.n)} · ${esc(u.client)}</p><div class="list">${['Admin','Staff','Client','Customer'].map(r=>`<button class="item" data-act="set-role" data-id="${u.id}" data-role="${r}"><div class="grow"><div class="t1">${r}</div><div class="t2">${r==='Admin'?'Full access to both apps and all clients':r==='Staff'?'Manages documents, no client financials':r==='Client'?'Private dashboard for one venue':'Buys documents only'}</div></div>${u.role===r?icon('checkCircle',20):''}</button>`).join('')}</div></div>`;
   }
   if(s.type==='invite'){
     const roles=['Client','Customer','Staff','Admin'];
-    return `${close}<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:17px;font-weight:600">Invite a user</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>They receive a secure sign-in link.</p><div class="stack" style="gap:var(--s-2);margin-top:12px">
+    return `${close}<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:var(--text-md);font-weight:600">Invite a user</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>They receive a secure sign-in link.</p><div class="stack" style="gap:var(--s-2);margin-top:var(--s-3)">
       <div class="field"><label>Email</label><div class="input"><input id="inviteEmail" type="email" placeholder="name@venue.com.au" aria-label="Email"></div></div>
       <div class="field"><label>Role</label><select class="mini" id="inviteRole" aria-label="Role" style="width:100%">${roles.map(r=>`<option>${r}</option>`).join('')}</select></div>
-    </div><button class="btn primary full lg" data-act="invite-send" style="margin-top:12px">Send invite</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
+    </div><button class="btn primary full lg" data-act="invite-send" style="margin-top:var(--s-3)">Send invite</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
   }
   return '';
 }
@@ -965,12 +969,12 @@ function authBody(dev,{pad=false}={}){
     <button class="btn primary lg full" data-act="signin">${mode==='create'?'Create account':'Sign in'}</button>`;
   const apple=`<div class="or">or</div><button class="btn apple lg full" data-act="apple">${appleIcon(18)}Continue with Apple</button>`;
   const footer=`<p class="fine">${mode==='create'?`Already have an account? <button class="link" data-act="auth-mode" data-mode="signin">Sign in</button>`:`New to AmiWho? <button class="link" data-act="auth-mode" data-mode="create">Create an account</button>`}</p>
-  <p class="fine" style="margin-top:8px">${app.role==='client'?'Only you can see this workspace.':'Same login for Document Control and the Client Dashboard.'}</p>`;
+  <p class="fine" style="margin-top:var(--s-2)">${app.role==='client'?'Only you can see this workspace.':'Same login for Document Control and the Client Dashboard.'}</p>`;
   if(pad){
     return `<div class="seg2" style="align-self:flex-start;margin-bottom:6px"><button data-act="auth-mode" data-mode="signin" class="${mode==='signin'?'on':''}">Sign in</button><button data-act="auth-mode" data-mode="create" class="${mode==='create'?'on':''}">Create account</button></div>
       <h3>${mode==='create'?'Create your account':greeting()+', '+p.name}</h3>
       <p class="sub">${app.role==='client'?esc(CLIENT.name)+' · '+esc(CLIENT.sub):'Use the email your consultant invited.'}</p>
-      ${app.role==='client'?`<div class="card" style="background:var(--primary-soft);border-color:transparent;padding:var(--s-3);margin-bottom:4px"><div class="row"><div class="avatar a2">MF</div><div class="grow"><div class="t-12 strong">Marlow &amp; Fern</div><div class="t-11 faint">Private client workspace</div></div>${icon('lock',15)}</div></div>`:''}
+      ${app.role==='client'?`<div class="banner" style="margin-bottom:4px"><div class="row"><div class="avatar a2">MF</div><div class="grow"><div class="t-12 strong">Marlow &amp; Fern</div><div class="t-11 faint">Private client workspace</div></div>${icon('lock',15)}</div></div>`:''}
       ${fields}${apple}${footer}`;
   }
   return `<div class="auth">
@@ -995,15 +999,16 @@ function authScreen(dev){
 }
 function workspaceScreen(dev){
   const tiles=[['doc','Document Control','Store, bundles, library and admin.','book'],['client','Client Dashboard','Private performance for Marlow & Fern.','chart']];
-  const cards=tiles.map(([a,t,s,ic])=>`<button class="card" style="text-align:left;padding:16px;border:1px solid var(--border)" data-act="workspace" data-app="${a}">
-    <span style="width:40px;height:40px;border-radius:var(--r-btn);background:var(--primary-soft);color:var(--primary);display:grid;place-items:center">${icon(ic,20)}</span>
-    <div class="t-15 strong" style="margin-top:10px">${t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${s}</div>
-    <div class="row" style="gap:4px;margin-top:var(--s-2);color:var(--primary);font-size:var(--text-2xs);font-weight:600">Open ${icon('arrowRight',13)}</div>
+  const cards=tiles.map(([a,t,s,ic])=>`<button class="card" style="text-align:left;padding:var(--s-4);position:relative" data-act="workspace" data-app="${a}">
+    <span style="color:var(--primary);display:grid;place-items:center;width:24px;height:24px">${icon(ic,20)}</span>
+    <div style="font-family:var(--font-serif);font-size:var(--text-lg);font-weight:600;letter-spacing:-.01em;margin-top:var(--s-3)">${t}</div>
+    <div class="t-12 faint" style="margin-top:var(--s-1)">${s}</div>
+    <span style="position:absolute;right:var(--s-4);top:var(--s-4);color:var(--ink-3)">${icon('arrowRight',16)}</span>
   </button>`).join('');
   if(dev==='pad'){
     return `${statusBar()}<div class="auth-split">
       <div class="auth-brand"><div class="ab-logo">${MARK(30)} AmiWho</div><h2>One login.<br>Two apps.</h2><p>Signed in as ${USER_NAME[app.role]}. Your role gives you both workspaces — client data stays private to each venue.</p><div class="ab-foot"><span>Admin console</span><span>·</span><span>${new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})}</span></div></div>
-      <div class="auth-form"><h3>Choose a workspace</h3><p class="sub">Switch at any time from the sidebar.</p><div class="stack" style="gap:12px">${cards}</div><button class="btn ghost" data-act="signout" style="margin-top:8px;align-self:flex-start">Sign out</button></div>
+      <div class="auth-form"><h3>Choose a workspace</h3><p class="sub">Switch at any time from the sidebar.</p><div class="stack" style="gap:var(--s-3)">${cards}</div><button class="btn ghost" data-act="signout" style="margin-top:var(--s-2);align-self:flex-start">Sign out</button></div>
     </div>`;
   }
   return `${statusBar()}<div class="auth">
@@ -1163,33 +1168,33 @@ function screenHome(dev){
   const pad=dev==='pad';
   const first=(USER_NAME[app.role]||'Alex').split(' ')[0];
   const hero=`<button class="card pad0" data-act="open-doc" data-id="${DOCS[0].id}" style="text-align:left;width:100%;display:block">
-    <div class="row" style="gap:var(--s-3);padding:12px">
+    <div class="row" style="gap:var(--s-3);padding:var(--s-3)">
       ${C.cover(DOCS[0],pad?150:94,pad?190:116)}
       <div class="grow">
         <div class="label">Featured · ${DOCS[0].cat}</div>
-        <div class="${pad?'t-22 b7':'t-15 strong'}" style="margin-top:4px;line-height:1.2;letter-spacing:-.02em">${DOCS[0].t}</div>
-        <div class="t-11 faint" style="margin-top:4px">${DOCS[0].v} · Updated ${DOCS[0].upd}</div>
-        <div class="row" style="margin-top:8px">${C.chip(money(DOCS[0].price),'primary')}${app.subscribed?C.chip('In Pro','pos'):'<span class="t-11 muted">Buy once</span>'}</div>
+        <div class="${pad?'t-22 b7':'t-15 strong'}" style="margin-top:var(--s-1);line-height:1.2;letter-spacing:-.02em">${DOCS[0].t}</div>
+        <div class="t-11 faint" style="margin-top:var(--s-1)">${DOCS[0].v} · Updated ${DOCS[0].upd}</div>
+        <div class="row" style="margin-top:var(--s-2)">${C.chip(money(DOCS[0].price),'primary')}${app.subscribed?C.chip('In Pro','pos'):'<span class="t-11 muted">One-time purchase</span>'}</div>
       </div>
       ${pad?``:''}
     </div>
   </button>`;
   const bundleCards=`<div class="between" style="margin-top:var(--s-1)"><span class="sec-title">Bundles</span><button class="more t-11 strong" style="color:var(--primary)" data-act="plans-bundles">View all</button></div>
     <div class="${pad?'stack':'row'}" style="gap:var(--s-2)">
-      ${BUNDLES.slice(0,pad?3:2).map(b=>pad?`<button class="card" data-act="open-bundle" data-id="${b.id}" style="display:flex;gap:12px;padding:var(--s-3);align-items:center;text-align:left">
+      ${BUNDLES.slice(0,pad?3:2).map(b=>pad?`<button class="card" data-act="open-bundle" data-id="${b.id}" style="display:flex;gap:var(--s-3);padding:var(--s-3);align-items:center;text-align:left">
         ${C.cover(b,44,56,true,true)}<div class="grow"><div class="t-13 strong">${b.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${b.v} · <span style="color:var(--pos);font-weight:600">${b.save}</span></div></div><div class="right"><div class="t-13 strong">${money(b.price)}</div><div class="t-11 strong" style="color:var(--primary)">View</div></div>
       </button>`:`<button class="card" data-act="open-bundle" data-id="${b.id}" style="flex:1;padding:var(--s-3);text-align:left">
-        <div class="row" style="gap:10px;align-items:flex-start">${C.cover(b,36,46,true)}
+        <div class="row" style="gap:var(--s-2);align-items:flex-start">${C.cover(b,36,46,true)}
           <div class="grow"><div class="t-12 strong" style="line-height:1.25">${b.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${b.v}</div><div class="t-11" style="margin-top:var(--s-1);color:var(--pos);font-weight:600">${b.save}</div></div></div>
-        <div class="t-13 strong" style="margin-top:8px">${money(b.price)}</div>
+        <div class="t-13 strong" style="margin-top:var(--s-2)">${money(b.price)}</div>
       </button>`).join('')}
     </div>`;
   const cats=`<div class="between" style="margin-top:var(--s-1)"><span class="sec-title">Categories</span><button class="t-11 strong tap" style="color:var(--primary)" data-act="catalog-all">All</button></div>
     <div class="row wrap" style="gap:var(--s-2)">${CATS.slice(1).map((c,i)=>`<button class="fchip ${app.cat===c?'on':''}" data-act="catalog-cat" data-cat="${c}">${c}</button>`).join('')}</div>`;
   const updated=`<div class="between" style="margin-top:var(--s-1)"><span class="sec-title">Updated for you</span>${app.subscribed?C.chip('Pro','primary'):C.chip('Pro','neutral')}</div>
     ${app.subscribed?`<div class="list">${DOCS.slice(1,4).map(d=>docRow(d,C.chip('New','pos'))).join('')}</div>`
-    :`<button class="card" data-act="plans" style="text-align:left;background:var(--primary-soft);border-color:transparent">
-      <div class="row">${icon('refresh',18)}<div class="grow"><div class="t-13 strong">Get every new version</div><div class="t-11" style="margin-top:var(--s-1);color:var(--ink-2)">New versions arrive automatically. From A$29/month.</div></div>${icon('chevR',16)}</div>
+    :`<button class="banner" data-act="plans" style="width:100%;text-align:left">
+      <div class="row"><span style="color:var(--accent)">${icon('refresh',18)}</span><div class="grow"><div class="t-13 strong">Every document stays current</div><div class="t-11" style="margin-top:var(--s-1);color:var(--ink-2)">New versions, automatically.</div></div>${icon('chevR',16)}</div>
     </button>`}`;
   const adminBanner=(app.role==='admin'||app.role==='staff')?`<button class="banner" data-act="side" data-screen="${app.role==='admin'?'admin':'documents'}" style="width:100%;text-align:left">
     ${icon('sliders',17)}<span class="grow">${app.role==='admin'?'Open the admin console':'Manage documents'}</span>${icon('chevR',15)}
@@ -1199,11 +1204,11 @@ function screenHome(dev){
   </div>`;
   if(pad){
     return {
-      header:padHead('Home',`${app.subscribed?'Pro is active':unreadCount()+' unread updates'}`,`<button class="btn outline" data-act="tab" data-tab="catalog" style="width:190px;justify-content:flex-start">${icon('search',15)}<span class="t-12">Browse catalog</span></button><button class="icon-btn" data-act="tab" data-tab="updates" aria-label="Updates">${icon('bell',20)}</button>${userBtn()}`),
+      header:padHead(`${greeting()}, ${first}`,`${app.subscribed?'Pro is active':unreadCount()+' unread updates'}`,`<button class="btn outline" data-act="tab" data-tab="catalog" style="width:190px;justify-content:flex-start">${icon('search',15)}<span class="t-12">Browse catalog</span></button><button class="icon-btn" data-act="tab" data-tab="updates" aria-label="Updates">${icon('bell',20)}</button>${userBtn()}`),
       body:`${hero}
         <div class="frames-grid" style="flex:1;align-items:start;grid-template-columns:1.3fr 1fr">
-          <div class="stack" style="gap:12px">${bundleCards}${recently}${adminBanner}</div>
-          <div class="stack" style="gap:12px">${updated}${cats}<div class="banner" style="margin-top:auto">${icon('shield',17)}<span class="grow">AmiWho Pro includes every new version.</span></div></div>
+          <div class="stack" style="gap:var(--s-3)">${bundleCards}${recently}${adminBanner}</div>
+          <div class="stack" style="gap:var(--s-3)">${updated}${cats}</div>
         </div>`
     };
   }
@@ -1227,7 +1232,7 @@ function catalogItems(dev){
   const list=visibleDocs();
   if(!list.length)return `<div class="empty" style="min-height:240px"><div class="e-ic">${icon('search',26)}</div><h3>No documents found</h3><p>Try another category or clear the search.</p><button class="btn secondary sm" data-act="clear-search">Clear search</button></div>`;
   if(dev==='pad'){
-    return `<div class="catalog-grid">${list.map(d=>`<button class="card" data-act="open-doc" data-id="${d.id}" style="display:flex;gap:12px;padding:12px;text-align:left">${C.cover(d,72,92,true,true)}<div class="grow" style="min-width:0"><div class="label">${d.cat}</div><div class="t-13 strong" style="margin-top:var(--s-1);line-height:1.25">${d.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${d.v} · ${d.pages} pages</div><div class="between" style="margin-top:8px"><span class="t-14 strong">${money(d.price)}</span>${ownsDoc(d.id)?C.chip('Owned','pos'):C.chip('Updated','neutral')}</div></div></button>`).join('')}</div>`;
+    return `<div class="catalog-grid">${list.map(d=>`<button class="card" data-act="open-doc" data-id="${d.id}" style="display:flex;gap:var(--s-3);padding:var(--s-3);text-align:left">${C.cover(d,72,92,true,true)}<div class="grow" style="min-width:0"><div class="label">${d.cat}</div><div class="t-13 strong" style="margin-top:var(--s-1);line-height:1.25">${d.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${d.v} · ${d.pages} pages</div><div class="between" style="margin-top:var(--s-2)"><span class="t-14 strong">${money(d.price)}</span>${ownsDoc(d.id)?C.chip('Owned','pos'):C.chip('Updated','neutral')}</div></div></button>`).join('')}</div>`;
   }
   return `<div class="list">${list.map(d=>docRow(d,`<div class="right"><div class="t-13 strong">${money(d.price)}</div><div class="t-11 faint">${d.pages} pp</div></div>`)).join('')}</div>`;
 }
@@ -1235,13 +1240,13 @@ function screenCatalog(dev){
   const pad=dev==='pad';
   const n=visibleDocs().length;
   const controls=`<div class="search">${icon('search',16)}<input id="search-${dev}" data-input="search" placeholder="Search documents, topics, versions" aria-label="Search documents" value="${esc(app.search)}"></div>
-    <div class="row" style="gap:8px;flex:none;flex-wrap:wrap;padding-bottom:2px">${CATS.map(c=>`<button class="fchip ${app.cat===c?'on':''}" data-act="cat" data-cat="${c}">${c}</button>`).join('')}</div>
+    <div class="row" style="gap:var(--s-2);flex:none;flex-wrap:wrap;padding-bottom:var(--s-1)">${CATS.map(c=>`<button class="fchip ${app.cat===c?'on':''}" data-act="cat" data-cat="${c}">${c}</button>`).join('')}</div>
     <div class="between"><span class="t-11 muted" id="cat-count-${dev}">${n} document${n===1?'':'s'}</span><label class="row" style="gap:var(--s-2)"><span class="t-11 faint">Sort</span><select class="mini" data-select="sort" aria-label="Sort"><option ${app.sort==='Popular'?'selected':''}>Popular</option><option ${app.sort==='Price: low'?'selected':''}>Price: low</option><option ${app.sort==='Price: high'?'selected':''}>Price: high</option></select></label></div>`;
   if(pad){
     return {
       header:padHead('Catalog','Updated weekly',`<button class="btn outline sm" data-act="plans-bundles">${icon('grid',15)}Bundles</button>`),
       body:`<div style="display:grid;grid-template-columns:214px 1fr;gap:var(--s-4);align-items:start">
-        <div class="card stack" style="gap:8px">
+        <div class="card stack" style="gap:var(--s-2)">
           <div class="label">Search</div>
           <div class="search">${icon('search',15)}<input id="search-${dev}" data-input="search" placeholder="Find a document" aria-label="Find a document" value="${esc(app.search)}"></div>
           <div class="divider"></div>
@@ -1265,29 +1270,30 @@ function screenCatalog(dev){
 function screenDoc(dev){
   const pad=dev==='pad', d=docById(nav[dev].params.id||'labour');
   const owned=ownsDoc(d.id)||app.subscribed;
-  const buy=`${app.subscribed?`<button class="btn primary lg full" data-act="open-library">${icon('book',17)}Open in library</button>`:owned?`<button class="btn primary lg full" data-act="open-viewer" data-id="${d.id}">${icon('eye',17)}Open document</button><button class="btn secondary full" data-act="open-library">In your library</button>`:`<button class="btn primary lg full" data-act="buy-doc" data-id="${d.id}">Buy once · ${money(d.price)}</button><div class="row" style="gap:8px"><button class="btn secondary" style="flex:1" data-act="add-bundle" data-id="${d.id}">Add to bundle</button><button class="btn ghost" data-act="plans">Subscribe</button></div>`}`;
+  const buy=`${app.subscribed?`<button class="btn primary lg full" data-act="open-library">${icon('book',17)}Open in library</button>`:owned?`<button class="btn primary lg full" data-act="open-viewer" data-id="${d.id}">${icon('eye',17)}Open document</button><button class="btn secondary full" data-act="open-library">In your library</button>`:`<button class="btn primary lg full" data-act="buy-doc" data-id="${d.id}">Buy once · ${money(d.price)}</button><div class="row" style="gap:var(--s-2)"><button class="btn secondary" style="flex:1" data-act="add-bundle" data-id="${d.id}">Add to bundle</button><button class="btn ghost" data-act="plans">Subscribe</button></div>`}`;
   const inside=(INSIDE[d.id]||['Current procedure','Checklist and sign-off points','Version history']).map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-xs)">${icon('check',14,2.4)}<span>${t}</span></div>`).join('');
-  const history=[[d.v,d.upd,d.note||'Current release'],[prevVersion(d.v),'3 months earlier','Previous release']];
+  const history=[[d.v,d.upd,d.note||'Current release'],[prevVersion(d.v),monthsAgo(d.upd,3),'Previous release']];
   if(pad){
     return {
       header:padHead(d.t,`${d.cat} · ${d.v} · Updated ${d.upd}`,``,true),
       body:`<div class="frames-grid" style="flex:1;align-items:start">
         <div class="stack" style="gap:var(--s-3)">
-          <div class="card">${C.cover(d,200,260)}
-            <div class="row" style="margin-top:10px">${C.chip(d.v+' · current','pos',true)}${C.chip(d.pages+' pages','neutral')}</div>
-            <div class="t-26 b7" style="margin-top:8px;letter-spacing:-.03em">${money(d.price)}</div>
+          <div class="card"><div class="row" style="gap:var(--s-5);align-items:flex-start">${C.cover(d,200,260)}<div class="grow">
+            <div class="row" style="margin-top:0">${C.chip(d.v+' · current','pos',true)}${C.chip(d.pages+' pages','neutral')}</div>
+            <div class="t-26 b7" style="margin-top:var(--s-3);letter-spacing:-.03em">${money(d.price)}</div>
             <div class="t-11 faint">or included with AmiWho Pro</div>
-            <div class="stack" style="gap:8px;margin-top:12px">${app.subscribed?`<button class="btn primary lg full" data-act="open-library">${icon('book',17)}Open in library</button>`:owned?`<button class="btn primary lg full" data-act="open-viewer" data-id="${d.id}">${icon('eye',17)}Open document</button>`:`<button class="btn primary lg full" data-act="buy-doc" data-id="${d.id}">Buy once</button><button class="btn secondary full" data-act="add-bundle" data-id="${d.id}">Add to bundle</button><button class="btn outline full" data-act="plans">Get all documents with Pro</button>`}</div>
+            <div class="stack" style="gap:var(--s-2);margin-top:var(--s-3)">${app.subscribed?`<button class="btn primary lg full" data-act="open-library">${icon('book',17)}Open in library</button>`:owned?`<button class="btn primary lg full" data-act="open-viewer" data-id="${d.id}">${icon('eye',17)}Open document</button>`:`<button class="btn primary lg full" data-act="buy-doc" data-id="${d.id}">Buy once</button><button class="btn secondary full" data-act="add-bundle" data-id="${d.id}">Add to bundle</button><button class="btn outline full" data-act="plans">Get all documents with Pro</button>`}</div>
+            </div></div>
           </div>
           <div class="card"><div class="card-h"><h4>Bundles with this document</h4></div><div class="stack tight">${BUNDLES.slice(0,2).map(b=>`<button class="row" data-act="open-bundle" data-id="${b.id}" style="text-align:left;width:100%">${C.cover(b,34,44,true,true)}<div class="grow"><div class="t-12 strong">${b.t}</div><div class="t-11 faint">${b.v} · ${money(b.price)}</div></div>${icon('chevR',14)}</button>`).join('')}</div></div>
         </div>
         <div class="stack" style="gap:var(--s-3)">
-          <div class="card"><div class="label">About this document</div><p class="t-13 muted" style="line-height:1.55;margin-top:var(--s-2)">${d.desc}</p><div class="stack tight" style="margin-top:10px">${inside}</div></div>
+          <div class="card"><div class="label">About this document</div><p class="t-13 muted" style="line-height:1.55;margin-top:var(--s-2)">${d.desc}</p><div class="stack tight" style="margin-top:var(--s-2)">${inside}</div></div>
           <div class="card"><div class="card-h"><h4>Version history</h4>${C.chip('2 updates this year','neutral')}</div>
             <table class="tbl"><thead><tr><th scope="col">Version</th><th scope="col">Published</th><th scope="col">Changes</th></tr></thead><tbody>
               ${history.map(([v,when,note],i)=>`<tr><td><b>${v}</b>${i===0?C.chip('Current','pos'):''}</td><td class="muted">${when}</td><td class="muted">${note}</td></tr>`).join('')}
             </tbody></table>
-            <div class="banner" style="margin-top:10px">${icon('download',16)}<span class="grow">Downloads are licensed to your workspace. Secure links expire after 72 hours.</span></div>
+            <div class="banner" style="margin-top:var(--s-2)">${icon('download',16)}<span class="grow">Downloads are licensed to your workspace. Secure links expire after 72 hours.</span></div>
           </div>
         </div>
       </div>`
@@ -1295,11 +1301,11 @@ function screenDoc(dev){
   }
   return {
     header:navBar('Document',{back:true,actions:`<button class="icon-btn" data-act="share" aria-label="Share">${icon('share',19)}</button>`}),
-    body:`<div class="row" style="gap:var(--s-4)">${C.cover(d,104,132)}<div class="grow"><div class="label">${d.cat}</div><div class="t-17 b7" style="margin-top:4px;line-height:1.2;letter-spacing:-.02em">${d.t}</div><div class="row wrap" style="gap:var(--s-2);margin-top:8px">${C.chip(d.v,'outline')}${C.chip(d.pages+' pages','neutral')}</div><div class="t-11 faint" style="margin-top:8px">Updated ${d.upd}</div><div class="t-22 b7" style="margin-top:var(--s-1)">${money(d.price)}</div></div></div>
+    body:`<div class="row" style="gap:var(--s-4)">${C.cover(d,104,132)}<div class="grow"><div class="label">${d.cat}</div><div class="t-17 b7" style="margin-top:var(--s-1);line-height:1.2;letter-spacing:-.02em">${d.t}</div><div class="row wrap" style="gap:var(--s-2);margin-top:var(--s-2)">${C.chip(d.v,'outline')}${C.chip(d.pages+' pages','neutral')}</div><div class="t-11 faint" style="margin-top:var(--s-2)">Updated ${d.upd}</div><div class="t-22 b7" style="margin-top:var(--s-1)">${money(d.price)}</div></div></div>
       <p class="t-13 muted" style="line-height:1.5">${d.desc}</p>
       <div class="divider"></div><div class="label">What’s inside</div><div class="stack tight">${inside}</div>
       <div class="banner">${icon('refresh',16)}<span class="grow">Includes 12 months of updates.</span></div>
-      <div class="stack" style="gap:8px">${buy}</div>
+      <div class="stack" style="gap:var(--s-2)">${buy}</div>
 `,
     tab:'catalog'
   };
@@ -1317,28 +1323,28 @@ function screenPlans(dev){
     <div class="t-11 faint">${billingPer()} · cancel anytime</div>
     <div class="divider"></div>
     <div class="stack tight">${[`All ${DOCS.length} documents, including future titles`,'Every new version, automatically','Up to 5 seats for your venue','Secure download links on any device'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-sm)">${icon('check',14,2.4)}<span>${t}</span></div>`).join('')}</div>
-    ${app.subscribed?`<button class="btn secondary lg full" data-act="open-library" style="margin-top:10px">Open library</button>`:`<button class="btn primary lg full" data-act="subscribe" style="margin-top:10px">Subscribe · ${money(price)}/${annual?'year':'month'}</button>`}
+    ${app.subscribed?`<button class="btn secondary lg full" data-act="open-library" style="margin-top:var(--s-2)">Open library</button>`:`<button class="btn primary lg full" data-act="subscribe" style="margin-top:var(--s-2)">Subscribe · ${money(price)}/${annual?'year':'month'}</button>`}
     <div class="t-11 faint center" style="margin-top:var(--s-2)">${app.subscribed?'Renews '+renewDate():'Billed '+(annual?'yearly':'monthly')+'. Cancel in Settings.'}</div>
   </div>`;
-  const bundles=`<div class="stack" style="gap:10px">${BUNDLES.map(b=>`<div class="card" style="display:flex;gap:12px;padding:12px">
+  const bundles=(cls='stack')=>`<div class="${cls}" style="gap:var(--s-2)">${BUNDLES.map(b=>`<div class="card" style="display:flex;gap:var(--s-3);padding:var(--s-3)">
     ${C.cover(b,pad?74:52,pad?94:66,true,true)}
     <div class="grow">
       <div class="t-13 strong">${b.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${b.v} · one-time</div>
       <div class="row" style="gap:var(--s-1);margin-top:var(--s-2)">${b.save?C.chip(b.save,'pos'):''}</div>
-      <div class="between" style="margin-top:8px"><span class="t-15 b7">${money(b.price)}</span><button class="btn sm outline" data-act="buy-bundle" data-id="${b.id}">${app.subscribed?'Buy for someone':'Add bundle'}</button></div>
+      <div class="between" style="margin-top:var(--s-2)"><span class="t-15 b7">${money(b.price)}</span><button class="btn sm outline" data-act="buy-bundle" data-id="${b.id}">${app.subscribed?'Buy for someone':'Add bundle'}</button></div>
     </div>
   </div>`).join('')}</div>`;
   const head=pad?padHead('Bundles & plans','Buy once, bundle, or keep everything current',``):navBar('Plans & bundles',{back:true});
   if(pad){
     return {header:head,body:`<div class="stack" style="gap:var(--s-3);max-width:760px">
-      <div><div class="between" style="margin-bottom:var(--s-2)"><span class="sec-title">Bundles</span><span class="t-11 faint">${BUNDLES.length} collections</span></div>${bundles}</div>
+      <div><div class="between" style="margin-bottom:var(--s-2)"><span class="sec-title">Bundles</span><span class="t-11 faint">${BUNDLES.length} collections</span></div>${bundles('plans-grid')}</div>
       <div><div class="between" style="margin-bottom:var(--s-2)"><span class="sec-title">Plans</span>${toggle}</div>${plans}
         <div class="card" style="margin-top:var(--s-3)"><div class="card-h"><h4>Monthly</h4><span class="t-11 faint">Switch anytime</span></div><div class="between"><div><div class="t-17 b7">A$29<span class="t-11 muted">/mo</span></div><div class="t-11 faint">No lock-in</div></div><button class="btn outline sm" data-act="billing" data-value="monthly">Choose monthly</button></div></div>
       </div></div>`};
 
   }
   return {header:head,body:`<div class="seg2"><button class="${tab==='bundles'?'on':''}" data-act="plans-tab" data-tab="bundles">Bundles</button><button class="${tab==='plans'?'on':''}" data-act="plans-tab" data-tab="plans">Plans</button></div>
-    ${tab==='plans'?`${toggle}${plans}<div class="card"><div class="card-h"><h4>Monthly</h4><span class="t-11 faint">Switch anytime</span></div><div class="between"><div><div class="t-17 b7">A$29<span class="t-11 muted">/mo</span></div><div class="t-11 faint">Cancel anytime</div></div><button class="btn outline sm" data-act="billing" data-value="monthly">Choose</button></div></div>`:bundles}`,
+    ${tab==='plans'?`${toggle}${plans}<div class="card"><div class="card-h"><h4>Monthly</h4><span class="t-11 faint">Switch anytime</span></div><div class="between"><div><div class="t-17 b7">A$29<span class="t-11 muted">/mo</span></div><div class="t-11 faint">Cancel anytime</div></div><button class="btn outline sm" data-act="billing" data-value="monthly">Choose</button></div></div>`:bundles()}`,
     tab:'catalog'};
 }
 
@@ -1349,8 +1355,8 @@ function screenCheckout(dev){
   const pad=dev==='pad', c=app.cart;
   if(!c)return {header:navBar('Checkout',{back:true}),body:`<div class="empty"><div class="e-ic">${icon('card',26)}</div><h3>Nothing to check out</h3><p>Choose a document or bundle first.</p><button class="btn primary sm" data-act="tab" data-tab="catalog">Browse catalog</button></div>`,tab:'catalog'};
   const gst=Math.round(c.price/11*100)/100, sub=Math.round((c.price-gst)*100)/100;
-  const summary=`<div class="card"><div class="row">${c.kind==='bundle'?C.cover(BUNDLES.find(b=>b.id===c.id)||BUNDLES[0],56,72,true,true):C.cover(docById(c.id),56,72,true,true)}<div class="grow"><div class="t-13 strong">${esc(c.title)}</div><div class="t-11 faint">${esc(c.meta||'One-time purchase')}</div></div><div class="t-13 strong">${money2(c.price)}</div></div><div class="divider"></div><div class="between t-12"><span class="muted">Subtotal</span><span class="tnum">${money(sub)}</span></div><div class="between t-12" style="margin-top:4px"><span class="muted">GST 10%</span><span class="tnum">${money(gst)}</span></div><div class="between" style="margin-top:var(--s-2)"><span class="t-13 strong">Total AUD</span><span class="t-15 b7 tnum">${money2(c.price)}</span></div></div>`;
-  const pay=`<div class="label">Pay with</div><button class="btn apple lg full" data-act="applepay">${appleIcon(18)}Pay</button><div class="list"><button class="item" data-act="select-card"><span style="width:32px;height:22px;border-radius:4px;background:var(--primary-soft);color:var(--primary);display:grid;place-items:center">${icon('card',16)}</span><div class="grow"><div class="t1">Visa ···· 4242</div><div class="t2">Expires 08/28</div></div><span style="color:var(--primary)">${icon('checkCircle',20)}</span></button><button class="item" data-act="add-card">${icon('plus',18)}<div class="grow"><div class="t1" style="color:var(--primary)">Add a card</div></div></button></div><div class="field"><label>Receipt email</label><div class="input"><input id="receipt-${dev}" value="${roleEmail()}" aria-label="Receipt email" autocomplete="email"></div></div><div class="row" style="gap:var(--s-2)">${icon('lock',14)}<span class="t-11 faint">Secured by Apple Pay. Card details never touch AmiWho.</span></div><button class="btn primary lg full" data-act="pay-card">Pay by card · ${money2(c.price)}</button>`;
+  const summary=`<div class="card"><div class="row">${c.kind==='bundle'?C.cover(BUNDLES.find(b=>b.id===c.id)||BUNDLES[0],56,72,true,true):C.cover(docById(c.id),56,72,true,true)}<div class="grow"><div class="t-13 strong">${esc(c.title)}</div><div class="t-11 faint">${esc(c.meta||'One-time purchase')}</div></div><div class="t-13 strong">${money2(c.price)}</div></div><div class="divider"></div><div class="between t-12"><span class="muted">Subtotal</span><span class="tnum">${money(sub)}</span></div><div class="between t-12" style="margin-top:var(--s-1)"><span class="muted">GST 10%</span><span class="tnum">${money(gst)}</span></div><div class="between" style="margin-top:var(--s-2)"><span class="t-13 strong">Total AUD</span><span class="t-15 b7 tnum">${money2(c.price)}</span></div></div>`;
+  const pay=`<div class="label">Pay with</div><button class="btn apple lg full" data-act="applepay">${appleIcon(18)}Pay</button><div class="list"><button class="item" data-act="select-card"><span style="color:var(--ink-3);display:grid;place-items:center;width:24px;height:22px">${icon('card',18)}</span><div class="grow"><div class="t1">Visa ···· 4242</div><div class="t2">Expires 08/28</div></div><span style="color:var(--primary)">${icon('checkCircle',20)}</span></button><button class="item" data-act="add-card">${icon('plus',18)}<div class="grow"><div class="t1" style="color:var(--primary)">Add a card</div></div></button></div><div class="field"><label>Receipt email</label><div class="input"><input id="receipt-${dev}" value="${roleEmail()}" aria-label="Receipt email" autocomplete="email"></div></div><div class="row" style="gap:var(--s-2)">${icon('lock',14)}<span class="t-11 faint">Secured by Apple Pay. Card details never touch AmiWho.</span></div><button class="btn primary lg full" data-act="pay-card">Pay by card · ${money2(c.price)}</button>`;
   if(pad){
     return {header:padHead('Checkout','One item · secure server-side fulfilment',`${C.chip('Secure','neutral')}`),body:`<div class="frames-grid" style="flex:1;align-items:start">
       <div class="stack" style="gap:var(--s-3)">${summary}<div class="card"><div class="card-h"><h4>What you get</h4></div><div class="stack tight">${['Instant download and library copy','Free v.x updates','Secure links on iPhone, iPad and Mac','30-day refund on first purchase'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-sm)">${icon('check',14,2.4)}<span>${t}</span></div>`).join('')}</div></div></div>
@@ -1372,7 +1378,7 @@ function screenSuccess(dev){
   const body=`<div class="empty" style="min-height:${pad?'420px':'440px'};padding-top:24px">
     <div class="success-ic">${icon('check',34,2.4)}</div>
     <h3 class="t-22" style="margin-top:var(--s-2)">${title}</h3><p>${sub}</p>
-    <div class="row" style="gap:8px;margin-top:12px;width:100%;max-width:${pad?'420px':'300px'}">
+    <div class="row" style="gap:var(--s-2);margin-top:var(--s-3);width:100%;max-width:${pad?'420px':'300px'}">
       <button class="btn primary lg" style="flex:1" data-act="${isPlan?'open-library':`download-purchase`}">${icon(isPlan?'book':'download',17)}${isPlan?'Open library':'Download now'}</button>
       <button class="btn secondary lg" style="flex:1" data-act="${isPlan?'open-account':'open-library'}">${isPlan?'Account':'Open library'}</button>
     </div>
@@ -1476,7 +1482,7 @@ function screenAccount(dev){
   const pad=dev==='pad', role=app.role;
   const current=role==='client'?'client':currentApp(nav[dev].screen);
   const apps=role==='admin'?[['doc','Document Control','Buy documents and manage the store'],['client','Client Dashboard','Private performance for clients']]:role==='client'?[['client','Client Dashboard','Your private workspace'],['doc','Document Control','Not included in your role']]:role==='staff'?[['doc','Document Control','Store plus documents admin'],['client','Client Dashboard','Not included in your role']]:[['doc','Document Control','Your store and library'],['client','Client Dashboard','Not included in your role']];
-  const plan=app.subscribed?`<div class="card" style="border:1px solid color-mix(in srgb,var(--primary) 35%,var(--border))"><div class="between"><div class="label">AmiWho Pro · ${app.billing==='annual'?'Annual':'Monthly'}</div>${C.chip('Active','pos',true)}</div><div class="t-15 strong" style="margin-top:var(--s-1)">${app.billing==='annual'?'A$290/yr':'A$29/mo'}</div><div class="t-11 faint">Renews ${renewDate()} · cancel anytime</div><div class="row" style="gap:8px;margin-top:var(--s-2)"><button class="btn outline sm" data-act="plans">Manage plan</button><button class="btn ghost sm" data-act="open-library">Library</button></div></div>`
+  const plan=app.subscribed?`<div class="card" style="border:1px solid color-mix(in srgb,var(--primary) 35%,var(--border))"><div class="between"><div class="label">AmiWho Pro · ${app.billing==='annual'?'Annual':'Monthly'}</div>${C.chip('Active','pos',true)}</div><div class="t-15 strong" style="margin-top:var(--s-1)">${app.billing==='annual'?'A$290/yr':'A$29/mo'}</div><div class="t-11 faint">Renews ${renewDate()} · cancel anytime</div><div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn outline sm" data-act="plans">Manage plan</button><button class="btn ghost sm" data-act="open-library">Library</button></div></div>`
   :`<div class="card"><div class="between"><div><div class="label">Subscription</div><div class="t-13 strong" style="margin-top:var(--s-1)">No active plan</div><div class="t-11 faint">Documents are bought once.</div></div><button class="btn primary sm" data-act="plans">See plans</button></div></div>`;
   const toggles=Object.entries(app.accountToggles).map(([k,v])=>`<div class="toggle-row"><div><div class="t-12">${k==='versions'?'New versions':k==='receipts'?'Receipts and invoices':k==='renewals'?'Renewal reminders':'Product news'}</div><div class="t-11 faint">${k==='versions'?'Update alerts for purchased documents':'Email only'}</div></div>${C.toggle(v,'acct-'+k)}</div>`).join('');
   const adminLinks=(role==='admin'||role==='staff')?`<div class="card"><div class="card-h"><h4>Admin</h4></div><div class="stack tight">
@@ -1486,11 +1492,11 @@ function screenAccount(dev){
   </div></div>`:'';
   const profile=`<div class="card"><div class="row"><div class="avatar lg ${role==='client'?'a2':''}">${USER_INIT[role]}</div><div class="grow"><div class="t-15 strong">${USER_NAME[role]}</div><div class="t-11 faint">${role==='client'?'priya@marlowandfern.com.au':role==='admin'?'sam@amiwho.com.au':role==='staff'?'mira@amiwho.com.au':'manager@marlowandfern.com.au'}</div><div class="row" style="gap:var(--s-1);margin-top:var(--s-1)">${C.chip(role==='admin'?'Admin':role==='staff'?'Staff':role==='client'?'Client':'Customer','primary')}${role==='client'?C.chip(CLIENT.name,'neutral'):role==='admin'||role==='staff'?C.chip('AmiWho','neutral'):C.chip('Marlow & Fern','neutral')}</div></div></div></div>`;
   const workspace=`<div class="card"><div class="card-h"><h4>Apps</h4></div><div class="stack tight">${apps.map(([a,t,s])=>`<button class="row" data-act="workspace" data-app="${a}" style="width:100%;text-align:left;padding:8px 0;border-bottom:1px solid var(--border)"><span class="app-ic" aria-hidden="true">${icon(a==='doc'?'file':'chart',18)}</span><div class="grow"><div class="t-12 strong">${t}</div><div class="t-11 faint">${s}</div></div>${a===current?C.chip('Current','pos'):app.role==='admin'?icon('chevR',14):C.chip('Locked','neutral')}</button>`).join('')}</div></div>`;
-  const settings=`<div class="card"><div class="card-h"><h4>Notifications</h4></div>${toggles}</div><div class="card"><div class="card-h"><h4>Privacy &amp; security</h4></div><div class="stack" style="gap:8px">${['Download links expire after 72 hours','Documents watermarked to your workspace','Face ID required on launch'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('lock',14)}<span>${t}</span></div>`).join('')}</div></div><div class="card"><div class="card-h"><h4>Account</h4></div><div class="stack tight"><div class="between t-12"><span>Receipts</span><span class="strong">${roleEmail()}</span></div><div class="between t-12"><span>Support</span><a class="strong" href="mailto:support@amiwho.com.au" style="color:var(--primary)">Contact</a></div><button class="between t-12" style="color:var(--neg);min-height:44px" data-act="signout"><span>Sign out</span>${icon('arrowRight',14)}</button></div></div>`;
+  const settings=`<div class="card"><div class="card-h"><h4>Notifications</h4></div>${toggles}</div><div class="card"><div class="card-h"><h4>Privacy &amp; security</h4></div><div class="stack" style="gap:var(--s-2)">${['Download links expire after 72 hours','Documents watermarked to your workspace','Face ID required on launch'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('lock',14)}<span>${t}</span></div>`).join('')}</div></div><div class="card"><div class="card-h"><h4>Account</h4></div><div class="stack tight"><div class="between t-12"><span>Receipts</span><span class="strong">${roleEmail()}</span></div><div class="between t-12"><span>Support</span><a class="strong" href="mailto:support@amiwho.com.au" style="color:var(--primary)">Contact</a></div><button class="between t-12" style="color:var(--neg);min-height:44px" data-act="signout"><span>Sign out</span>${icon('arrowRight',14)}</button></div></div>`;
   if(pad){
     return {header:padHead('Account',`${USER_NAME[role]} · ${role==='client'||role==='customer'?CLIENT.name:'AmiWho'}`,``),body:`<div class="acct-grid"><div class="stack" style="gap:var(--s-3)">${profile}${workspace}${adminLinks}</div><div class="stack" style="gap:var(--s-3)">${plan}<div class="card"><div class="card-h"><h4>Payment</h4></div><div class="row">${icon('card',20)}<div class="grow"><div class="t-12 strong">Visa ···· 4242</div><div class="t-11 faint">Expires 08/28 · default</div></div></div></div>${settings}</div></div>`};
   }
-  return {header:lgHead('Account',role==='client'||role==='customer'?CLIENT.name:'AmiWho',`<button class="avatar ${role==='client'?'a2':''}" data-act="open-account" aria-label="Account">${USER_INIT[role]}</button>`),body:`${profile}${workspace}${plan}${adminLinks}<div class="card"><div class="card-h"><h4>Payment</h4></div><div class="row">${icon('card',20)}<div class="grow"><div class="t-12 strong">Visa ···· 4242</div><div class="t-11 faint">Expires 08/28 · default</div></div></div></div><div class="card"><div class="card-h"><h4>Account</h4></div><div class="stack tight"><div class="between t-12"><span>Receipts</span><span class="strong">${roleEmail()}</span></div><div class="between t-12"><span>Support</span><a class="strong" href="mailto:support@amiwho.com.au" style="color:var(--primary)">Contact</a></div></div></div><div class="card"><div class="card-h"><h4>Notifications</h4></div>${toggles}</div><div class="card"><div class="card-h"><h4>Privacy &amp; security</h4></div><div class="stack" style="gap:8px">${['Download links expire after 72 hours','Documents watermarked to your workspace','Face ID required on launch'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('lock',14)}<span>${t}</span></div>`).join('')}</div></div><div class="list"><button class="item" data-act="signout" style="color:var(--neg)">${icon('logout',17)}<div class="grow"><div class="t1" style="color:var(--neg)">Sign out</div></div></button></div>`,tab:'account'};
+  return {header:lgHead('Account',role==='client'||role==='customer'?CLIENT.name:'AmiWho',`<button class="avatar ${role==='client'?'a2':''}" data-act="open-account" aria-label="Account">${USER_INIT[role]}</button>`),body:`${profile}${workspace}${plan}${adminLinks}<div class="card"><div class="card-h"><h4>Payment</h4></div><div class="row">${icon('card',20)}<div class="grow"><div class="t-12 strong">Visa ···· 4242</div><div class="t-11 faint">Expires 08/28 · default</div></div></div></div><div class="card"><div class="card-h"><h4>Account</h4></div><div class="stack tight"><div class="between t-12"><span>Receipts</span><span class="strong">${roleEmail()}</span></div><div class="between t-12"><span>Support</span><a class="strong" href="mailto:support@amiwho.com.au" style="color:var(--primary)">Contact</a></div></div></div><div class="card"><div class="card-h"><h4>Notifications</h4></div>${toggles}</div><div class="card"><div class="card-h"><h4>Privacy &amp; security</h4></div><div class="stack" style="gap:var(--s-2)">${['Download links expire after 72 hours','Documents watermarked to your workspace','Face ID required on launch'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('lock',14)}<span>${t}</span></div>`).join('')}</div></div><div class="list"><button class="item" data-act="signout" style="color:var(--neg)">${icon('logout',17)}<div class="grow"><div class="t1" style="color:var(--neg)">Sign out</div></div></button></div>`,tab:'account'};
 }
 
 /* ============================================================
@@ -1500,7 +1506,7 @@ function screenAdmin(dev){
   const pad=dev==='pad';
   const kpis=`<div class="kpis ${pad?'four':''}">${C.kpi('Sales','A$14,307','+8.2%','up','vs prior 30d')}${C.kpi('Downloads','1,284','+112','up','vs prior 30d')}${C.kpi('Active seats','342','+18','up','vs prior 30d')}${C.kpi('Refunds','A$240','−A$80','up','vs prior 30d')}</div>`;
   const rev=barChart({labels:['Jun','Jul','Aug','Sep','Oct','Nov'],groups:[{name:'Sales',color:'var(--primary)',values:[8.4,9.1,9.8,10.4,11.2,14.3]}],w:pad?420:326,h:pad?186:130,padL:44,fmt:v=>'A$'+v.toFixed(0)+'k',tip:{i:5,v:14.3,text:'Nov · A$14.3k'}});
-  const downloads=lineChart({labels:['W1','W2','W3','W4','W5','W6'],series:[{name:'Downloads',color:'var(--primary)',values:[268,301,288,332,356,384]}],w:pad?250:326,h:pad?186:120,fmt:v=>Math.round(v)});
+  const downloads=lineChart({labels:['W1','W2','W3','W4','W5','W6'],series:[{name:'Downloads',color:'var(--primary)',values:[268,301,288,332,356,384]}],w:pad?250:326,h:pad?186:120,yMin:200,fmt:v=>Math.round(v)});
   const topTable=`<table class="tbl"><thead><tr><th scope="col">Document</th><th scope="col">Version</th><th scope="col" class="num">Sales</th><th scope="col" class="num">Revenue</th><th scope="col" class="num">Refunds</th></tr></thead><tbody>
     ${[[DOCS[0],126,'A$6,174'],[DOCS[4],84,'A$4,956'],[DOCS[2],61,'A$2,379'],[DOCS[3],42,'A$798']].map(([d,s,r])=>`<tr><td><div class="row" style="gap:var(--s-2)">${C.cover(d,20,26,true,true)}<span style="font-weight:600">${d.t}</span></div></td><td class="muted">${d.v}</td><td class="num">${s}</td><td class="num"><b>${r}</b></td><td class="num muted">${s<50?'2':'1'}</td></tr>`).join('')}
   </tbody></table>`;
@@ -1512,25 +1518,25 @@ function screenAdmin(dev){
         <div class="card" style="grid-column:span 2"><div class="card-h"><h4>Revenue</h4><span class="sub">AUD · last 6 months</span></div>${rev}${C.legend([['Sales','var(--primary)']])}</div>
         <div class="card"><div class="card-h"><h4>Downloads</h4><span class="sub">weekly</span></div>${downloads}${C.legend([['Downloads','var(--primary)']])}</div>
         <div class="card" style="grid-column:span 2"><div class="card-h"><h4>Top documents</h4><span class="sub">by revenue, 30 days</span><button class="more" data-act="side" data-screen="documents">Catalog</button></div>${topTable}</div>
-        <div class="card"><div class="card-h"><h4>Activity</h4></div><div class="stack" style="gap:var(--s-2)">${activity.map(([t,s])=>`<div class="row" style="gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--primary);flex:none"></span><div><div class="t-11" style="font-weight:500">${t}</div><div class="t-11 faint">${s}</div></div></div>`).join('')}</div></div>
+        <div class="card"><div class="card-h"><h4>Activity</h4></div><div class="stack" style="gap:var(--s-2)">${activity.map(([t,s])=>`<div class="row" style="gap:var(--s-2)"><span style="width:6px;height:6px;border-radius:50%;background:var(--primary);flex:none"></span><div><div class="t-11" style="font-weight:500">${t}</div><div class="t-11 faint">${s}</div></div></div>`).join('')}</div></div>
       </div>`};
   }
-  return {header:navBar('Admin overview',{back:true,actions:`<button class="t-11 strong tap" style="color:var(--primary)" data-act="export">Export</button>`}),body:`${kpis}<div class="card"><div class="card-h"><h4>Revenue</h4><span class="sub">AUD · monthly</span></div>${rev}</div><div class="card"><div class="card-h"><h4>Downloads</h4><span class="sub">weekly</span></div>${lineChart({labels:['W1','W2','W3','W4','W5','W6'],series:[{name:'Downloads',color:'var(--primary)',values:[268,301,288,332,356,384]}],w:326,h:100,fmt:v=>Math.round(v)})}</div><div class="card"><div class="card-h"><h4>Top documents</h4><span class="sub">by revenue</span></div><div class="stack tight">${[[DOCS[0],'A$6,174'],[DOCS[4],'A$4,956'],[DOCS[2],'A$2,379']].map(([d,r])=>`<div class="between"><div class="row" style="gap:var(--s-2)">${C.cover(d,22,28,true,true)}<span class="t-12 strong">${d.t}</span></div><span class="t-12 strong">${r}</span></div>`).join('')}</div></div><div class="card"><div class="card-h"><h4>Activity</h4></div><div class="stack" style="gap:var(--s-2)">${activity.map(([t,s])=>`<div class="row" style="gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--primary);flex:none"></span><div><div class="t-11" style="font-weight:500">${t}</div><div class="t-11 faint">${s}</div></div></div>`).join('')}</div></div><div class="card"><div class="card-h"><h4>Recent orders</h4></div><div class="stack tight">${recentOrders.map(([o,t,p,a])=>`<div class="between" style="font-size:var(--text-2xs)"><div><span class="t-11 faint">${o}</span><div class="strong">${t}</div></div><div class="right"><div class="strong">${p}</div><div class="t-11 faint">${a}</div></div></div>`).join('')}</div></div>`,tab:'account'};
+  return {header:navBar('Admin overview',{back:true,actions:`<button class="t-11 strong tap" style="color:var(--primary)" data-act="export">Export</button>`}),body:`${kpis}<div class="card"><div class="card-h"><h4>Revenue</h4><span class="sub">AUD · monthly</span></div>${rev}</div><div class="card"><div class="card-h"><h4>Downloads</h4><span class="sub">weekly</span></div>${lineChart({labels:['W1','W2','W3','W4','W5','W6'],series:[{name:'Downloads',color:'var(--primary)',values:[268,301,288,332,356,384]}],w:326,h:100,yMin:200,fmt:v=>Math.round(v)})}</div><div class="card"><div class="card-h"><h4>Top documents</h4><span class="sub">by revenue</span></div><div class="stack tight">${[[DOCS[0],'A$6,174'],[DOCS[4],'A$4,956'],[DOCS[2],'A$2,379']].map(([d,r])=>`<div class="between"><div class="row" style="gap:var(--s-2)">${C.cover(d,22,28,true,true)}<span class="t-12 strong">${d.t}</span></div><span class="t-12 strong">${r}</span></div>`).join('')}</div></div><div class="card"><div class="card-h"><h4>Activity</h4></div><div class="stack" style="gap:var(--s-2)">${activity.map(([t,s])=>`<div class="row" style="gap:var(--s-2)"><span style="width:6px;height:6px;border-radius:50%;background:var(--primary);flex:none"></span><div><div class="t-11" style="font-weight:500">${t}</div><div class="t-11 faint">${s}</div></div></div>`).join('')}</div></div><div class="card"><div class="card-h"><h4>Recent orders</h4></div><div class="stack tight">${recentOrders.map(([o,t,p,a])=>`<div class="between" style="font-size:var(--text-2xs)"><div><span class="t-11 faint">${o}</span><div class="strong">${t}</div></div><div class="right"><div class="strong">${p}</div><div class="t-11 faint">${a}</div></div></div>`).join('')}</div></div>`,tab:'account'};
 }
 function screenDocuments(dev){
   const pad=dev==='pad';
-  const rows=DOCS.map(d=>`<div class="card" style="display:flex;gap:10px;padding:var(--s-3);align-items:center">
-    ${C.cover(d,40,52,true,true)}<div class="grow" style="min-width:0"><div class="t-12 strong">${d.t}</div><div class="t-11 faint">${d.cat} · ${d.v} · ${money(d.price)}</div><div class="row" style="gap:4px;margin-top:4px">${C.chip('Live','pos')}${d.id==='menu'?C.chip('Update queued','warn'):''}</div></div>
-    <div class="row" style="gap:4px"><button class="btn sm outline" data-act="upload-open" data-id="${d.id}">${icon('upload',13)}Version</button><button class="btn sm outline" data-act="price-open" data-id="${d.id}">Price</button></div>
+  const rows=DOCS.map(d=>`<div class="card" style="display:flex;gap:var(--s-2);padding:var(--s-3);align-items:center">
+    ${C.cover(d,40,52,true,true)}<div class="grow" style="min-width:0"><div class="t-12 strong">${d.t}</div><div class="t-11 faint">${d.cat} · ${d.v} · ${money(d.price)}</div><div class="row" style="gap:var(--s-1);margin-top:var(--s-1)">${C.chip('Live','pos')}${d.id==='menu'?C.chip('Update queued','warn'):''}</div></div>
+    <div class="row" style="gap:var(--s-1)"><button class="btn sm outline" data-act="upload-open" data-id="${d.id}">${icon('upload',13)}Version</button><button class="btn sm outline" data-act="price-open" data-id="${d.id}">Price</button></div>
   </div>`).join('');
   if(pad){
     return {header:padHead('Documents',`${DOCS.length} documents · ${BUNDLES.length} bundles`,''),body:
       `<div class="frames-grid" style="flex:1;align-items:start">
         <div class="card"><div class="card-h"><h4>Publish a new version</h4><span class="sub">PDF · max 50 MB</span></div>
           <div class="dropzone" role="button" tabindex="0" data-act="upload-open" data-id="labour"><div class="dz-ic">${icon('uploadCloud',20)}</div><div class="t-12 strong" style="color:var(--ink)">Drop a file or choose from Files</div><div class="t-11 faint" style="margin-top:var(--s-1)">The current version stays live until you publish.</div></div>
-          <div class="stack tight" style="margin-top:10px"><div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',14,2.4)}<span>Version number and price are set at publish</span></div><div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',14,2.4)}<span>Bundles update automatically</span></div><div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',14,2.4)}<span>Subscribers are notified</span></div></div>
+          <div class="stack tight" style="margin-top:var(--s-2)"><div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',14,2.4)}<span>Version number and price are set at publish</span></div><div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',14,2.4)}<span>Bundles update automatically</span></div><div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',14,2.4)}<span>Subscribers are notified</span></div></div>
         </div>
-        <div class="stack" style="gap:10px"><div class="between"><span class="sec-title">Catalog</span><span class="t-11 faint">Sorted by updated</span></div>${rows}</div>
+        <div class="stack" style="gap:var(--s-2)"><div class="between"><span class="sec-title">Catalog</span><span class="t-11 faint">Sorted by updated</span></div>${rows}</div>
       </div>`};
   }
   return {header:navBar('Documents',{back:true}),body:
@@ -1541,7 +1547,7 @@ function screenUsers(dev){
   const pad=dev==='pad', f=app.userFilter||'All';
   const list=app.users.filter(u=>f==='All'||u.role===f);
   const rows=list.map(u=>`<button class="item" data-act="user-open" data-id="${u.id}"><div class="avatar ${u.tone}">${u.initials}</div><div class="grow"><div class="t1">${u.n}</div><div class="t2" title="${u.e}" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${u.e}</div></div>${C.chip(u.role,u.role==='Admin'?'primary':'neutral')}${icon('chevR',14)}</button>`).join('');
-  const chips=`<div class="row" style="gap:8px;flex:none;flex-wrap:wrap">${['All','Admin','Staff','Client','Customer'].map(r=>`<button class="fchip ${f===r?'on':''}" data-act="user-filter" data-value="${r}">${r}</button>`).join('')}</div>`;
+  const chips=`<div class="row" style="gap:var(--s-2);flex:none;flex-wrap:wrap">${['All','Admin','Staff','Client','Customer'].map(r=>`<button class="fchip ${f===r?'on':''}" data-act="user-filter" data-value="${r}">${r}</button>`).join('')}</div>`;
   if(pad){
     return {header:padHead('Users & roles',`${app.users.length} people · ${app.users.filter(u=>u.role==='Admin').length} admin${app.users.filter(u=>u.role==='Admin').length===1?'':'s'}`,`<button class="btn primary sm" data-act="invite">${icon('plus',15)}Invite</button>`),body:`${chips}<div class="card" style="padding:0"><div class="list" style="border:0;border-radius:var(--r-card)">${rows}</div></div><div class="banner">${icon('shield',16)}<span class="grow">Roles decide which app opens after sign-in. Client data is visible only to that client and AmiWho admins.</span></div>`};
   }
@@ -1571,20 +1577,20 @@ const projectDone=id=>projectTasks(id).filter(t=>t.done).length;
    ============================================================ */
 function dashboardState(dev){
   if(app.dataState==='loading'){
-    return `<div class="kpis">${[0,1,2,3].map(()=>`<div class="card"><div class="skel" style="height:10px;width:60%"></div><div class="skel" style="height:22px;width:75%;margin-top:8px"></div><div class="skel" style="height:9px;width:45%;margin-top:8px"></div></div>`).join('')}</div><div class="card" style="padding:var(--s-4)"><div class="skel" style="height:12px;width:35%"></div><div class="skel" style="height:150px;margin-top:12px;border-radius:var(--r-control)"></div></div>`;
+    return `<div class="kpis">${[0,1,2,3].map(()=>`<div class="card"><div class="skel" style="height:10px;width:60%"></div><div class="skel" style="height:22px;width:75%;margin-top:var(--s-2)"></div><div class="skel" style="height:9px;width:45%;margin-top:var(--s-2)"></div></div>`).join('')}</div><div class="card" style="padding:var(--s-4)"><div class="skel" style="height:12px;width:35%"></div><div class="skel" style="height:150px;margin-top:var(--s-3);border-radius:var(--r-control)"></div></div>`;
   }
   if(app.dataState==='empty'){
-    return `<div class="empty" style="min-height:420px"><div class="e-ic">${icon('chart',28)}</div><h3>No data for October</h3><p>Your consultant hasn’t published this period yet. September is still available.</p><div class="row" style="gap:8px;margin-top:8px"><button class="btn primary sm" data-act="view-month" data-month="Sep">View September</button><button class="btn ghost sm" data-act="tab" data-tab="settings">Contact</button></div></div>`;
+    return `<div class="empty" style="min-height:420px"><div class="e-ic">${icon('chart',28)}</div><h3>No data for October</h3><p>Your consultant hasn’t published this period yet. September is still available.</p><div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn primary sm" data-act="view-month" data-month="Sep">View September</button><button class="btn ghost sm" data-act="tab" data-tab="settings">Contact</button></div></div>`;
   }
   if(app.dataState==='error'){
-    return `<div class="empty" style="min-height:420px"><div class="e-ic neg">${icon('alert',28)}</div><h3>We couldn’t load your dashboard</h3><p>This is usually temporary. Your data is safe — try again in a moment.</p><div class="row" style="gap:8px;margin-top:8px"><button class="btn primary sm" data-act="retry">Retry</button><button class="btn ghost sm" data-act="tab" data-tab="settings">Contact your consultant</button></div></div>`;
+    return `<div class="empty" style="min-height:420px"><div class="e-ic neg">${icon('alert',28)}</div><h3>We couldn’t load your dashboard</h3><p>This is usually temporary. Your data is safe — try again in a moment.</p><div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn primary sm" data-act="retry">Retry</button><button class="btn ghost sm" data-act="tab" data-tab="settings">Contact your consultant</button></div></div>`;
   }
   return null;
 }
 function screenOverview(dev){
   const pad=dev==='pad', month=app.clientMonth||'Oct', m=CLIENT_DATA[month];
   const state=dashboardState(dev);
-  const head=pad?padHead('Overview',`${CLIENT.name} · ${m.label}`,`<button class="btn outline sm" data-act="view-month" data-month="${month==='Oct'?'Sep':'Oct'}">${month==='Oct'?'View September':'View October'}</button><button class="btn outline sm" data-act="financial">${icon('chart',14)}Details</button><button class="icon-btn" data-act="dataentry" aria-label="Data entry" ${app.role!=='admin'?'hidden':''}>${icon('plus',20)}</button>`)
+  const head=pad?padHead('Overview',`${CLIENT.name} · ${m.label}`,`<button class="btn outline sm" data-act="view-month" data-month="${month==='Oct'?'Sep':'Oct'}">${month==='Oct'?'View September':'View October'}</button><button class="btn ghost sm" data-act="financial">${icon('chart',14)}Details</button><button class="icon-btn" data-act="dataentry" aria-label="Data entry" ${app.role!=='admin'?'hidden':''}>${icon('plus',20)}</button>`)
     :lgHead('Overview',`${CLIENT.name} · ${m.label}`,`<button class="avatar a2" data-act="open-account" aria-label="Account">MF</button>`);
   if(state)return {header:head,body:`${pad?'':`<div class="between"><span class="privacy">${icon('lock',13)}Only you can see this data</span><span class="t-11 faint">${m.label}</span></div>`}${state}`,tab:'overview'};
   const kpis=C.kpi('Revenue (AUD)',m.rev,m.revD,'up','vs prior')+C.kpi('Profit margin',m.margin,m.marginD,'up','vs prior')+C.kpi('Cash position',m.cash,m.cashD,'up','vs Sep')+C.kpi('Labour',m.labour,m.labourD,'up','vs target');
@@ -1626,7 +1632,7 @@ function screenFinancial(dev){
     :navBar('Financial performance',{back:true,actions:`<button class="icon-btn" data-act="share" aria-label="Share">${icon('share',18)}</button>`});
   if(pad){
     return {header:head,body:`<div class="between"><span class="privacy">${icon('lock',13)}Only you can see this data</span><button class="btn ghost sm" data-act="compare">Compare: ${app.compare?'on':'off'}</button></div>
-      <div class="frames-grid" style="flex:none;align-items:start"><div class="card"><div class="card-h"><h4>Revenue</h4><span class="sub">${r.short}</span>${C.legend([['Revenue','var(--primary)'],...(app.compare?[['Prior','var(--chart-2)']]:[])])}</div>${chart}</div><div class="stack" style="gap:var(--s-3)">${summary}<div class="card"><div class="label">Reading this</div><p class="t-12 muted" style="margin-top:var(--s-2);line-height:1.5">Revenue is ${r.summary.change} ahead of the prior period. Margin is ${r.summary.margin}.</p><button class="btn outline sm" style="margin-top:8px" data-act="cashflow">Cash flow detail</button></div></div></div>${table}`};
+      <div class="frames-grid" style="flex:none;align-items:start"><div class="card"><div class="card-h"><h4>Revenue</h4><span class="sub">${r.short}</span>${C.legend([['Revenue','var(--primary)'],...(app.compare?[['Prior','var(--chart-2)']]:[])])}</div>${chart}</div><div class="stack" style="gap:var(--s-3)">${summary}<div class="card"><div class="label">Reading this</div><p class="t-12 muted" style="margin-top:var(--s-2);line-height:1.5">Revenue is ${r.summary.change} ahead of the prior period. Margin is ${r.summary.margin}.</p><button class="btn outline sm" style="margin-top:var(--s-2)" data-act="cashflow">Cash flow detail</button></div></div></div>${table}`};
   }
   return {header:head,body:`<div class="between"><span class="privacy">${icon('lock',13)}Only you can see this data</span><span class="t-11 faint">${r.label}</span></div>${rangeSeg}<div class="between"><span class="t-12 strong">Compare to prior</span>${C.toggle(app.compare,'compare')}</div><div class="card"><div class="card-h"><h4>Revenue</h4><span class="sub">${r.short}</span></div>${chart}${C.legend([['Revenue','var(--primary)'],...(app.compare?[['Prior','var(--chart-2)']]:[])])}</div>${summary}${phoneTable}`,tab:'overview'};
 }
@@ -1682,7 +1688,7 @@ function screenProjects(dev){
   if(pad){
     return {header:head,body:`${chips}${list.length?`<div class="card" style="padding:0"><table class="tbl tight"><thead><tr><th scope="col">Project</th><th scope="col">Progress</th><th scope="col">Owner</th><th scope="col">Due</th><th scope="col">Status</th></tr></thead><tbody>${list.map(p=>`<tr><td><button class="strong tap" style="text-align:left" data-act="open-project" data-id="${p.id}">${p.t}</button></td><td><div style="width:84px">${C.bar(p.pct,p.status==='Watch'?'warn':'')}</div><span class="t-11 faint">${p.pct}%</span></td><td><div class="row" style="gap:var(--s-2)"><div class="avatar sm ${p.tone}">${p.initials}</div>${p.owner.split(' ')[0]}</div></td><td class="muted">${p.due}</td><td>${statusChip(p.status)}</td></tr>`).join('')}</tbody></table></div>`:`<div class="empty" style="min-height:280px"><div class="e-ic">${icon('folder',26)}</div><h3>No projects here</h3><p>Try another filter.</p><button class="btn secondary sm" data-act="project-filter" data-value="All">Show all</button></div>`}<div class="banner">${icon('calendar',16)}<span class="grow">Spring Events Series is due 22 Nov.</span></div>`};
   }
-  return {header:head,body:`${chips}<div class="stack" style="gap:10px">${cards}</div>`,tab:'projects'};
+  return {header:head,body:`${chips}<div class="stack" style="gap:var(--s-2)">${cards}</div>`,tab:'projects'};
 }
 
 /* ============================================================
@@ -1696,7 +1702,7 @@ function screenProject(dev){
     <button class="icon-btn" style="color:${t.done?'var(--pos)':'var(--ink-3)'}" data-act="toggle-task" data-id="${t.id}" aria-label="${t.done?'Mark task incomplete':'Mark task complete'}">${icon(t.done?'checkCircle':'circle',20)}</button>
     <div class="grow"><div class="t-12 ${t.done?'faint':''}" style="font-weight:500;text-decoration:${t.done?'line-through':'none'}">${esc(t.t)}</div><div class="t-11 faint">${t.assignee} · ${t.status}</div></div><div class="avatar sm ${t.tone}">${t.initials}</div><span class="t-11 faint">${t.due}</span>
   </div>`).join(''):`<div class="empty" style="min-height:160px"><p>No tasks yet.</p></div>`;
-  const addTask=`<div class="row" style="gap:var(--s-2);margin-top:10px"><div class="search grow">${icon('plus',15)}<input id="newtask-${dev}" placeholder="Add a task" data-input="newtask"></div><button class="btn primary sm" data-act="add-task" data-project="${p.id}">Add</button></div>`;
+  const addTask=`<div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><div class="search grow">${icon('plus',15)}<input id="newtask-${dev}" placeholder="Add a task" data-input="newtask"></div><button class="btn primary sm" data-act="add-task" data-project="${p.id}">Add</button></div>`;
   const meta=`<div class="card"><div class="between"><div class="label">Overall progress</div><span class="t-12 strong">${p.pct}%</span></div><div style="margin-top:var(--s-2)">${C.bar(p.pct)}</div><div class="divider" style="margin:12px 0"></div><div class="stack tight">
     <div class="between t-12"><span class="faint">Owner</span><div class="row" style="gap:var(--s-2)"><div class="avatar sm ${p.tone}">${p.initials}</div><span class="strong">${p.owner}</span></div></div>
     <div class="between t-12"><span class="faint">Due</span><span class="strong">${p.due} 2026</span></div>
@@ -1718,7 +1724,7 @@ function screenTasks(dev){
   const filters=['All','To do','In progress','Blocked','Done'];
   const list=app.tasks.filter(t=>f==='All'||t.status===f);
   const row=t=>`<div class="item" style="align-items:flex-start"><button class="icon-btn" style="color:${t.done?'var(--pos)':'var(--ink-3)'}" data-act="toggle-task" data-id="${t.id}" aria-label="${t.done?'Mark task incomplete':'Mark task complete'}">${icon(t.done?'checkCircle':'circle',20)}</button><div class="grow"><div class="t1" style="text-decoration:${t.done?'line-through':'none'};color:${t.done?'var(--ink-3)':'var(--ink)'}">${esc(t.t)}</div><div class="t2">${PROJECTS.find(p=>p.id===t.project)?.t||''} · ${t.assignee}</div><div class="row" style="gap:var(--s-2);margin-top:var(--s-1)">${statusChip(t.status)}<span class="t-11 faint">${t.due}</span><div class="avatar sm ${t.tone}">${t.initials}</div></div></div></div>`;
-  const chips=`<div class="row" style="gap:8px;flex:none;flex-wrap:wrap">${filters.map(x=>`<button class="fchip ${f===x?'on':''}" data-act="task-filter" data-value="${x}">${x}</button>`).join('')}</div>`;
+  const chips=`<div class="row" style="gap:var(--s-2);flex:none;flex-wrap:wrap">${filters.map(x=>`<button class="fchip ${f===x?'on':''}" data-act="task-filter" data-value="${x}">${x}</button>`).join('')}</div>`;
   const openCount=app.tasks.filter(t=>!t.done).length, blockedCount=app.tasks.filter(t=>t.status==='Blocked').length;
   const head=pad?padHead('Tasks',`${openCount} open · ${blockedCount} blocked`,`<button class="btn outline sm" data-act="projects">Projects</button>`):lgHead('Tasks',`${openCount} open · ${blockedCount} blocked`);
   if(pad){
@@ -1734,9 +1740,9 @@ function screenTasks(dev){
 function screenSettings(dev){
   const pad=dev==='pad';
   const toggles=Object.entries(app.accountToggles).map(([k,v])=>`<div class="toggle-row"><div><div class="t-12">${k==='versions'?'New versions':k==='receipts'?'Receipts and invoices':k==='renewals'?'Renewal reminders':'Product news'}</div><div class="t-11 faint">${k==='versions'?'When your documents change':'Email only'}</div></div>${C.toggle(v,'acct-'+k)}</div>`).join('');
-  const workspace=`<div class="card"><div class="card-h"><h4>Workspace</h4>${C.chip(app.role==='client'?'Client':app.role==='customer'?'Customer':app.role==='staff'?'Viewing':'Viewing',app.role==='admin'||app.role==='staff'?'neutral':'primary')}</div><div class="row"><div class="avatar a2">MF</div><div class="grow"><div class="t-13 strong">${CLIENT.name}</div><div class="t-11 faint">${CLIENT.sub}</div></div></div>${app.role==='admin'?`<button class="btn outline sm full" style="margin-top:10px" data-act="workspace" data-app="doc">${icon('book',14)}Switch to Document Control</button>`:''}</div>`;
+  const workspace=`<div class="card"><div class="card-h"><h4>Workspace</h4>${C.chip(app.role==='client'?'Client':app.role==='customer'?'Customer':app.role==='staff'?'Viewing':'Viewing',app.role==='admin'||app.role==='staff'?'neutral':'primary')}</div><div class="row"><div class="avatar a2">MF</div><div class="grow"><div class="t-13 strong">${CLIENT.name}</div><div class="t-11 faint">${CLIENT.sub}</div></div></div>${app.role==='admin'?`<button class="btn outline sm full" style="margin-top:var(--s-2)" data-act="workspace" data-app="doc">${icon('book',14)}Switch to Document Control</button>`:''}</div>`;
   const admin=(app.role==='admin')?`<div class="card"><div class="card-h"><h4>Admin tools</h4></div><div class="stack tight"><button class="row" style="width:100%;text-align:left" data-act="dataentry">${icon('edit',16)}<span class="grow t-12">Manual data entry</span>${icon('chevR',14)}</button><button class="row" style="width:100%;text-align:left" data-act="import">${icon('upload',16)}<span class="grow t-12">CSV import</span>${icon('chevR',14)}</button></div></div>`:'';
-  const privacy=`<div class="card" style="background:var(--primary-soft);border-color:transparent"><div class="row">${icon('lock',18)}<div class="grow"><div class="t-12 strong">Only you can see this data</div><div class="t-11" style="margin-top:var(--s-1);color:var(--ink-2)">Your consultant can publish data to your workspace but cannot see your private notes. Documents are watermarked to ${CLIENT.name}.</div></div></div></div>`;
+  const privacy=`<div class="banner"><div class="row" style="width:100%">${icon('lock',18)}<div class="grow"><div class="t-12 strong">Only you can see this data</div><div class="t-11" style="margin-top:var(--s-1);color:var(--ink-2)">Your consultant can publish data to your workspace but cannot see your private notes. Documents are watermarked to ${CLIENT.name}.</div></div></div></div>`;
   const head=pad?padHead('Settings',`${CLIENT.name} · privacy and notifications`,``):lgHead('Settings',CLIENT.name);
   if(pad){
     return {header:head,body:`<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3);align-items:start"><div class="stack" style="gap:var(--s-3)">${workspace}${privacy}</div><div class="stack" style="gap:var(--s-3)"><div class="card"><div class="card-h"><h4>Notifications</h4></div>${toggles}</div>${admin}<div class="list"><button class="item" data-act="signout" style="color:var(--neg)">${icon('logout',17)}<div class="grow"><div class="t1" style="color:var(--neg)">Sign out</div></div></button></div></div></div>`};
@@ -1788,13 +1794,13 @@ function entryForm(dev){
     <div class="field" style="margin-top:var(--s-2)"><label>Notes for the client</label><div class="input area"><input data-entry="notes" data-input="entry" value="${esc(entryFor(app.entryClient).notes)}" placeholder="Context for this month" aria-label="Notes for the client"></div></div>
     <div class="inset"><div class="between"><div><div class="label">Profit</div><div class="t-17 b7 calc-profit">${money(calc.profit)}</div></div><div class="right"><div class="label">Margin</div><div class="t-17 b7 calc-margin">${calc.margin.toFixed(1)}%</div></div></div></div>
     ${app.entryPublished?`<div class="banner" style="margin-top:var(--s-2)">${icon('checkCircle',15)}<span class="grow">Published to ${CLIENTS.find(c=>c.id===app.entryClient)?.n||CLIENT.name}</span></div>`:''}
-    <div class="row" style="gap:8px;margin-top:10px"><button class="btn secondary" style="flex:1" data-act="save-draft">Save draft</button><button class="btn primary" style="flex:1" data-act="publish">Publish</button></div>
+    <div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn secondary" style="flex:1" data-act="save-draft">Save draft</button><button class="btn primary" style="flex:1" data-act="publish">Publish</button></div>
     <p class="t-11 faint" style="margin-top:var(--s-2)">Last published ${app.lastPublished||'4 Nov 2026'} by Sam T. Publishing replaces the client’s live figures for this period.</p>
   </div>`;
 }
 function screenDataEntry(dev){
   const pad=dev==='pad', c=CLIENTS.find(x=>x.id===app.entryClient)||CLIENTS[0];
-  const clients=CLIENTS.map(x=>`<button class="item ${x.id===app.entryClient?'':''}" style="${x.id===app.entryClient?'background:var(--primary-soft)':''}" data-act="client-select" data-id="${x.id}"><div class="avatar ${x.tone}">${x.initials}</div><div class="grow"><div class="t1">${x.n}</div><div class="t2">${x.sub}</div></div>${x.id===app.entryClient?C.chip('Editing','primary'):icon('chevR',14)}</button>`).join('');
+  const clients=CLIENTS.map(x=>`<button class="item ${x.id===app.entryClient?'':''}" style="${x.id===app.entryClient?'background:var(--surface-2);box-shadow:inset 2px 0 0 var(--accent)':''}" data-act="client-select" data-id="${x.id}"><div class="avatar ${x.tone}">${x.initials}</div><div class="grow"><div class="t1">${x.n}</div><div class="t2">${x.sub}</div></div>${x.id===app.entryClient?C.chip('Editing','primary'):icon('chevR',14)}</button>`).join('');
   const head=pad?padHead('Manual data entry',`${c.n} · ${c.sub}`,''):navBar('Data entry',{back:true});
   if(pad){
     return {header:head,body:`<div style="display:grid;grid-template-columns:250px 1fr;gap:var(--s-3);align-items:start"><div class="card" style="padding:0;overflow:hidden"><div style="padding:var(--s-3) 12px"><div class="label">Client · 5 of 42</div></div><div class="list" style="border:0;border-radius:0">${clients}</div></div><div class="stack" style="gap:var(--s-3)">${entryForm(dev)}<div class="banner">${icon('shield',16)}<span class="grow">Only AmiWho admins and ${c.n} can see these figures.</span></div></div></div>`};
@@ -1813,7 +1819,7 @@ function csvStepper(step){
 const CSV_ROWS=[['01 Oct 2026','6,240.00','1,890.00','1,760.00'],['02 Oct 2026','5,480.00','1,720.00','1,610.00'],['03 Oct 2026','7,120.00','2,060.00','1,940.00'],['04 Oct 2026','6,880.00','1,980.00','1,870.00']];
 function csvMapping(){
   const opts={date:['Date','Period'],gross:['Gross sales','Net sales'],wages:['Wages','Labour'],food:['Food purchases','COGS']};
-  return `<div class="card"><div class="card-h"><h4>Column mapping</h4><span class="sub">4 of 4 mapped</span></div><div class="stack" style="gap:8px">${[['date','Date'],['gross','Gross sales'],['wages','Wages'],['food','Food purchases']].map(([k,l])=>`<div class="field"><label>${l}</label><select class="mini" data-select="csv-map" data-key="${k}" aria-label="Map ${l}" style="width:100%">${opts[k].map(o=>`<option ${app.csvMap[k]===o?'selected':''}>${o}</option>`).join('')}</select></div>`).join('')}</div><div class="banner" style="margin-top:var(--s-2)">${icon('checkCircle',15)}<span class="grow">31 rows detected · 1 header row skipped</span></div></div>`;
+  return `<div class="card"><div class="card-h"><h4>Column mapping</h4><span class="sub">4 of 4 mapped</span></div><div class="stack" style="gap:var(--s-2)">${[['date','Date'],['gross','Gross sales'],['wages','Wages'],['food','Food purchases']].map(([k,l])=>`<div class="field"><label>${l}</label><select class="mini" data-select="csv-map" data-key="${k}" aria-label="Map ${l}" style="width:100%">${opts[k].map(o=>`<option ${app.csvMap[k]===o?'selected':''}>${o}</option>`).join('')}</select></div>`).join('')}</div><div class="banner" style="margin-top:var(--s-2)">${icon('checkCircle',15)}<span class="grow">31 rows detected · 1 header row skipped</span></div></div>`;
 }
 function csvPreview(){
   return `<div class="card"><div class="card-h"><h4>Preview</h4><span class="sub">first 4 of 31</span>${C.chip('31 valid','pos')}</div><table class="tbl compact"><thead><tr><th scope="col">Date</th><th scope="col" class="num">Revenue</th><th scope="col" class="num">Labour</th><th scope="col" class="num">Food</th></tr></thead><tbody>${CSV_ROWS.map(r=>`<tr>${r.map((c,i)=>`<td class="${i?'num':''}">${i?`A$${c}`:c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
@@ -1822,10 +1828,10 @@ function screenImport(dev){
   const pad=dev==='pad', step=app.csvStep;
   const head=pad?padHead('CSV import',`October sales · ${CLIENTS.find(c=>c.id===app.entryClient)?.n||CLIENT.name}`,''):navBar('Import CSV',{back:true});
   let content='';
-  if(step===1)content=`${csvStepper(1)}<div class="dropzone" role="button" tabindex="0" data-act="csv-file" style="padding:26px 18px"><div class="dz-ic">${icon('uploadCloud',22)}</div><div class="t-14 strong" style="color:var(--ink)">Choose a CSV file</div><div class="t-11 faint" style="margin-top:var(--s-1)">Date, gross sales, wages and food purchases. Max 5 MB.</div><button class="btn primary sm" style="margin-top:10px" data-act="csv-file">Choose file</button></div><div class="card"><div class="card-h"><h4>Expected format</h4></div><div class="stack tight">${['One row per day','AUD, no currency symbols','Header row included'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',13,2.4)}<span>${t}</span></div>`).join('')}</div></div>`;
-  else if(step===2)content=`${csvStepper(2)}<div class="card" style="display:flex;gap:10px;align-items:center;padding:var(--s-3)">${icon('file',20)}<div class="grow"><div class="t-12 strong">october-sales.csv</div><div class="t-11 faint">31 rows · 18 KB</div></div>${C.chip('Ready','pos')}</div>${csvMapping()}<button class="btn primary full lg" data-act="csv-next">Continue to preview</button>`;
+  if(step===1)content=`${csvStepper(1)}<div class="dropzone" role="button" tabindex="0" data-act="csv-file" style="padding:var(--s-5) var(--s-4)"><div class="dz-ic">${icon('uploadCloud',22)}</div><div class="t-14 strong" style="color:var(--ink)">Choose a CSV file</div><div class="t-11 faint" style="margin-top:var(--s-1)">Date, gross sales, wages and food purchases. Max 5 MB.</div><button class="btn primary sm" style="margin-top:var(--s-2)" data-act="csv-file">Choose file</button></div><div class="card"><div class="card-h"><h4>Expected format</h4></div><div class="stack tight">${['One row per day','AUD, no currency symbols','Header row included'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',13,2.4)}<span>${t}</span></div>`).join('')}</div></div>`;
+  else if(step===2)content=`${csvStepper(2)}<div class="card" style="display:flex;gap:var(--s-2);align-items:center;padding:var(--s-3)">${icon('file',20)}<div class="grow"><div class="t-12 strong">october-sales.csv</div><div class="t-11 faint">31 rows · 18 KB</div></div>${C.chip('Ready','pos')}</div>${csvMapping()}<button class="btn primary full lg" data-act="csv-next">Continue to preview</button>`;
   else if(step===3)content=`${csvStepper(3)}${csvPreview()}<div class="banner">${icon('checkCircle',15)}<span class="grow">Checked: 31 rows, no missing dates, no duplicate days.</span></div><div class="row" style="gap:var(--s-2)"><button class="btn secondary" style="flex:1" data-act="csv-back">Back</button><button class="btn primary" style="flex:1" data-act="csv-confirm">Import 31 rows</button></div>`;
-  else content=`<div class="empty" style="min-height:380px"><div class="e-ic" style="background:var(--pos-soft);border-color:transparent;color:var(--pos)">${icon('check',30,2.4)}</div><h3>Import complete</h3><p>31 rows imported to ${CLIENT.name} for October.</p><div class="row" style="gap:8px;margin-top:8px"><button class="btn primary sm" data-act="csv-reset">Import another</button><button class="btn ghost sm" data-act="overview">Back to overview</button></div></div>`;
+  else content=`<div class="empty" style="min-height:380px"><div class="e-ic" style="color:var(--pos)">${icon('check',30,2.4)}</div><h3>Import complete</h3><p>31 rows imported to ${CLIENT.name} for October.</p><div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn primary sm" data-act="csv-reset">Import another</button><button class="btn ghost sm" data-act="overview">Back to overview</button></div></div>`;
   if(pad){
     if(step===1||step===4)return {header:head,body:content};
     if(step===2)return {header:head,body:`${csvStepper(2)}${csvMapping()}${csvPreview()}<div class="banner">${icon('checkCircle',15)}<span class="grow">Map each column, then preview.</span></div><div class="row" style="gap:var(--s-2)"><button class="btn secondary" data-act="csv-back">Back</button><button class="btn primary" data-act="csv-next">Continue to preview</button></div>`};
@@ -1846,7 +1852,7 @@ const SCREENS={
    ============================================================ */
 function emptyState(kind,dev){
   if(kind==='loading'){
-    return `<div class="stack" style="gap:10px">${[0,1,2,3].map(()=>`<div class="card" style="display:flex;gap:var(--s-3);align-items:center"><div class="skel" style="width:42px;height:54px;border-radius:8px"></div><div class="grow"><div class="skel" style="height:11px;width:60%"></div><div class="skel" style="height:9px;width:40%;margin-top:var(--s-2)"></div></div><div class="skel" style="width:22px;height:22px;border-radius:50%"></div></div>`).join('')}</div>`;
+    return `<div class="stack" style="gap:var(--s-2)">${[0,1,2,3].map(()=>`<div class="card" style="display:flex;gap:var(--s-3);align-items:center"><div class="skel" style="width:42px;height:54px;border-radius:var(--r-sm)"></div><div class="grow"><div class="skel" style="height:11px;width:60%"></div><div class="skel" style="height:9px;width:40%;margin-top:var(--s-2)"></div></div><div class="skel" style="width:22px;height:22px;border-radius:50%"></div></div>`).join('')}</div>`;
   }
   if(kind==='error'){
     return `<div class="empty"><div class="e-ic neg">${icon('alert',28)}</div><h3>Couldn’t load your library</h3><p>Check your connection and try again. Your purchases are safe on the server.</p><button class="btn primary sm" data-act="retry">Retry</button></div>`;
@@ -1866,7 +1872,7 @@ function libraryRows(dev){
     const current=libEntry(app.libSelected)?app.libSelected:(library[0]?.id||'');
     return `<div class="list">${list.map(e=>{
       const d=docById(e.id), sel=current===e.id;
-      return `<button class="item" style="${sel?'background:var(--primary-soft)':''}" data-act="select-library" data-id="${e.id}">${C.cover(d,42,54,true,true)}<div class="grow"><div class="t1">${d.t}</div><div class="t2">${d.cat} · ${e.version} · ${e.size}</div></div>${badge(e)}</button>`;
+      return `<button class="item" style="${sel?'background:var(--surface-2);box-shadow:inset 2px 0 0 var(--accent)':''}" data-act="select-library" data-id="${e.id}">${C.cover(d,42,54,true,true)}<div class="grow"><div class="t1">${d.t}</div><div class="t2">${d.cat} · ${e.version} · ${e.size}</div></div>${badge(e)}</button>`;
     }).join('')}</div>`;
   }
   return `<div class="list">${list.map(e=>{
@@ -1890,12 +1896,12 @@ function screenLibrary(dev){
     }
     const sel=libEntry(app.libSelected)||library[0];
     const sd=docById(sel.id);
-    const detail=`<div class="stack" style="gap:12px">
-      <div class="card"><div class="row" style="gap:12px;align-items:flex-start">${C.cover(sd,96,120,true,true)}<div class="grow"><div class="label">${sd.cat}</div><div class="t-15 strong" style="margin-top:var(--s-1);line-height:1.2">${sd.t}</div><div class="row" style="gap:var(--s-1);margin-top:var(--s-2)">${sel.status==='update'?C.chip('Version '+sel.newVersion.replace(/^v/,''),'warn'):C.chip(sel.version,'pos',true)}${C.chip(sel.size,'neutral')}</div><div class="t-11 faint" style="margin-top:var(--s-2)">${sel.status==='update'?'Version '+sel.newVersion.replace(/^v/,'')+' ready to install':sel.status==='downloading'?'Downloading '+Math.round(sel.progress)+'%':'Downloaded to this iPad'}</div></div></div>
+    const detail=`<div class="stack" style="gap:var(--s-3)">
+      <div class="card"><div class="row" style="gap:var(--s-3);align-items:flex-start">${C.cover(sd,96,120,true,true)}<div class="grow"><div class="label">${sd.cat}</div><div class="t-15 strong" style="margin-top:var(--s-1);line-height:1.2">${sd.t}</div><div class="row" style="gap:var(--s-1);margin-top:var(--s-2)">${sel.status==='update'?C.chip('Version '+sel.newVersion.replace(/^v/,''),'warn'):C.chip(sel.version,'pos',true)}${C.chip(sel.size,'neutral')}</div><div class="t-11 faint" style="margin-top:var(--s-2)">${sel.status==='update'?'Version '+sel.newVersion.replace(/^v/,'')+' ready to install':sel.status==='downloading'?'Downloading '+Math.round(sel.progress)+'%':'Downloaded to this iPad'}</div></div></div>
         ${sel.status==='downloading'?`<div style="margin-top:var(--s-2)">${C.bar(sel.progress)}</div>`:''}
         <div class="row" style="gap:var(--s-2);margin-top:var(--s-3)">${sel.status==='update'?`<button class="btn primary sm" data-act="update-entry" data-id="${sel.id}">Update</button>`:`<button class="btn primary sm" data-act="open-viewer" data-id="${sel.id}">${icon('eye',14)}Open</button>`}<button class="btn sm outline" data-act="download-entry" data-id="${sel.id}">${icon('download',14)}${sel.status==='downloading'?'Cancel':'Download'}</button></div>
       </div>
-      <div class="card"><div class="card-h"><h4>Version history</h4>${C.chip('2 this year','neutral')}</div><table class="tbl"><thead><tr><th scope="col">Version</th><th scope="col">Published</th></tr></thead><tbody><tr><td><b>${sel.version}</b></td><td class="muted">${sd.upd}</td></tr><tr><td>${prevVersion(sel.version)}</td><td class="muted">3 months earlier</td></tr></tbody></table></div>
+      <div class="card"><div class="card-h"><h4>Version history</h4>${C.chip('2 this year','neutral')}</div><table class="tbl"><thead><tr><th scope="col">Version</th><th scope="col">Published</th></tr></thead><tbody><tr><td><b>${sel.version}</b></td><td class="muted">${sd.upd}</td></tr><tr><td>${prevVersion(sel.version)}</td><td class="muted">${monthsAgo(sd.upd,3)}</td></tr></tbody></table></div>
       <div class="banner">${icon('lock',15)}<span class="grow">Links expire after 72 hours. Downloads are watermarked.</span></div>
     </div>`;
     return {header:head,body:`<div class="lib-grid" style="flex:1"><div class="stack" style="gap:var(--s-2)">${tabs}${libraryRows(dev)}</div>${detail}</div>`};

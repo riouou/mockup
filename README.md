@@ -26,6 +26,10 @@ Sample data is AUD hospitality data for Marlow & Fern.
 
 `amiwho-mockups.html` is the earlier still-image mockup board, kept for reference.
 
+## Design direction
+
+Editorial ledger for hospitality operators: Source Serif 4 for mastheads and document titles, Source Sans 3 for interface and tabular figures; deep olive, warm paper and burnt clay; 2–4px radii and hairline rules. The signature is the 28px clay rule above every masthead and the book spine on every document cover.
+
 ## Hosting
 
 The site is static. `vercel.json` rewrites `/` to `amiwho-app.html`, so importing this repository into Vercel and leaving the framework preset as “Other” is enough; no build step.

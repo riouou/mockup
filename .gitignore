@@ -1,6 +1,7 @@
 .opencode/
 .vercel/
 node_modules/
+branding/
 _qa*/
 _test*.png
 _check-*.png

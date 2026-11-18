@@ -28,7 +28,7 @@ Sample data is AUD hospitality data for Marlow & Fern.
 
 ## Design direction
 
-Editorial ledger for hospitality operators: Source Serif 4 for mastheads and document titles, Source Sans 3 for interface and tabular figures; deep olive, warm paper and burnt clay; 2–4px radii and hairline rules. The signature is the 28px clay rule above every masthead and the book spine on every document cover.
+Editorial ledger for hospitality operators: the supplied Dark Paradise serif for mastheads and document titles, Source Sans 3 for interface and tabular figures; deep olive, warm paper and burnt clay; 2–4px radii and hairline rules. The signature is the supplied AMIwho wordmark, the AW oval mark, the 28px clay rule above every masthead and the book spine on every document cover.
 
 ## Hosting
 

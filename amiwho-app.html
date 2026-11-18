@@ -187,15 +187,15 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
 .sidebar{position:relative;flex:none;width:264px;display:flex;flex-direction:column;background:var(--bg);border:0;border-right:1px solid rgba(165,124,63,.28);border-radius:0;padding:var(--s-3) var(--s-2) var(--s-2);overflow:hidden}
 .pad:not(.landscape) .sidebar{width:232px}
 .pad .sidebar.collapsed{width:76px}
-.sidebar{transition:width var(--dur) ease, padding var(--dur) ease}
+.sidebar{transition:width var(--dur-3) var(--ease-ios),padding var(--dur-3) var(--ease-ios)}
 .sidebar.collapsed{width:76px;padding-left:6px;padding-right:6px}
 .side-toggle{margin-left:auto;width:44px;height:44px;border-radius:var(--r-sm);display:grid;place-items:center;color:var(--ink-3);flex:none}
 .side-toggle:hover{background:var(--surface-3);color:var(--ink)}
 .sidebar.collapsed .side-brand{flex-direction:column;gap:var(--s-1);padding:2px 0 var(--s-2)}
 .sidebar.collapsed .side-toggle{margin-left:0}
 .sidebar.collapsed .brand-name,.sidebar.collapsed .ws-label,.sidebar.collapsed .ws-name,.sidebar.collapsed .side-user .grow,.sidebar.collapsed .side-user>svg{display:none}
-.side-label{white-space:nowrap;transition:opacity var(--dur-2) var(--ease-out)}
-.sidebar.collapsed .side-label{display:inline-block;width:0;opacity:0;overflow:hidden;pointer-events:none}
+.side-label{white-space:nowrap;max-width:140px;overflow:hidden;transition:opacity var(--dur-2) var(--ease-out),max-width var(--dur-3) var(--ease-ios)}
+.sidebar.collapsed .side-label{max-width:0;opacity:0;pointer-events:none}
 .sidebar.collapsed .side-sec{height:1px;padding:0;margin:var(--s-2) 6px;background:var(--border);color:transparent;overflow:hidden;font-size:0}
 .sidebar.collapsed .side-item{justify-content:center;padding:0;position:relative;gap:0}
 .sidebar.collapsed .side-item .count{position:absolute;top:2px;right:4px;margin:0}
@@ -209,10 +209,18 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
 .logo-lockup{display:flex;flex-direction:column;gap:var(--s-1);line-height:0;color:inherit}
 .logo-lockup .logo-word svg{width:250px}
 .logo-desc{font-family:var(--font-sans);font-size:9px;line-height:1;letter-spacing:.22em;text-transform:uppercase;color:currentColor;opacity:.82;padding-left:1px}
-.brand-mark{display:none;line-height:0}
-.brand-mark svg{display:block;width:40px;height:auto;fill:currentColor}
-.sidebar.collapsed .logo-word{display:none}
-.sidebar.collapsed .brand-mark{display:block}
+.brand-mark{line-height:0;opacity:0}
+.brand-mark svg{display:block;width:50px;height:auto;fill:currentColor}
+.brand-swap{position:relative;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;width:108px;height:34px;overflow:hidden;transition:width var(--dur-3) var(--ease-ios),height var(--dur-3) var(--ease-ios)}
+.brand-swap .logo-word,.brand-swap .brand-mark{grid-area:1/1;transition:opacity var(--dur-2) var(--ease-out),transform var(--dur-2) var(--ease-ios)}
+.brand-swap .brand-mark{opacity:0;transform:scale(.88);display:block}
+.sidebar.collapsed .brand-swap{width:50px;height:50px}
+.sidebar.collapsed .brand-swap .logo-word{opacity:0;transform:scale(.94)}
+.sidebar.collapsed .brand-swap .brand-mark{opacity:1;transform:scale(1)}
+.side-toggle{transition:background-color var(--dur-1),transform var(--dur-1)}
+.side-toggle:active{transform:scale(.94)}
+.side-toggle svg{transition:transform var(--dur-2) var(--ease-ios)}
+.sidebar.collapsed .side-toggle svg{transform:scaleX(-1)}
 .pad.landscape .logo-lockup .logo-word svg{width:320px}
 .side-sec{font-size:var(--text-2xs);font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);padding:var(--s-3) var(--s-2) var(--s-1)}
 .side-item{display:flex;align-items:center;gap:var(--s-2);height:44px;width:100%;padding:0 var(--s-2);border-radius:var(--r-control);font-size:var(--text-sm);font-weight:500;color:var(--ink-2);text-align:left}
@@ -933,7 +941,7 @@ function sidebar(appName,active){
   const admin=role==='admin'?appName==='doc'?[['admin','Dashboard','sliders'],['documents','Documents','file'],['users','Users','users'],['dataentry','Data entry','edit'],['import','Import CSV','upload']]:[['dataentry','Data entry','edit'],['import','Import CSV','upload']]:role==='staff'&&appName==='doc'?[['documents','Documents','file']]:[];
   const workspaces=role==='admin'?[['doc','Document Control'],['client','Client Dashboard']]:[[appName,appName==='doc'?'Document Control':'Client Dashboard']];
   return `<nav class="sidebar ${app.sidebarCollapsed?'collapsed':''}" aria-label="Sidebar"><span class="side-indicator" aria-hidden="true"></span>
-    <div class="side-brand"><span class="logo-word" role="img" aria-label="AmiWho">${LOGO_WORD}</span><span class="brand-mark" aria-hidden="true">${LOGO_OVAL}</span><button class="side-toggle" data-act="sidebar-toggle" aria-label="${app.sidebarCollapsed?'Expand sidebar':'Collapse sidebar'}" aria-expanded="${!app.sidebarCollapsed}" title="${app.sidebarCollapsed?'Expand sidebar':'Collapse sidebar'}">${icon('sidebar',18)}</button></div>
+    <div class="side-brand"><span class="brand-swap"><span class="logo-word" role="img" aria-label="AmiWho">${LOGO_WORD}</span><span class="brand-mark" aria-hidden="true">${LOGO_OVAL}</span></span><button class="side-toggle" data-act="sidebar-toggle" aria-label="${app.sidebarCollapsed?'Expand sidebar':'Collapse sidebar'}" aria-expanded="${!app.sidebarCollapsed}" title="${app.sidebarCollapsed?'Expand sidebar':'Collapse sidebar'}">${icon('sidebar',18)}</button></div>
     <div class="side-sec">Workspace</div>
     ${items.map(([s,l,ic])=>`<button class="side-item ${active===s?'active':''}" ${active===s?'aria-current="page"':''} title="${l}" aria-label="${l}" data-act="side" data-screen="${s}" data-app="${appName}">${icon(ic,17)}<span class="side-label">${l}</span>${s==='updates'&&unreadCount()?`<span class="count">${unreadCount()}</span>`:''}</button>`).join('')}
     ${admin.length?`<div class="side-sec">Admin</div>${admin.map(([s,l,ic])=>`<button class="side-item ${active===s?'active':''}" ${active===s?'aria-current="page"':''} title="${l}" aria-label="${l}" data-act="side" data-screen="${s}" data-app="${appName}">${icon(ic,17)}<span class="side-label">${l}</span></button>`).join('')}`:''}
@@ -2260,7 +2268,15 @@ document.addEventListener('click',e=>{
   try{
     switch(act){
       case 'tab': go(d,el.dataset.tab,{},{root:true,motion:'fade'});break;
-      case 'sidebar-toggle': app.sidebarCollapsed=!app.sidebarCollapsed;renderDevice(d);break;
+      case 'sidebar-toggle': {
+        app.sidebarCollapsed=!app.sidebarCollapsed;
+        const bar=APPS[d]?.querySelector('.sidebar');
+        if(!bar){renderDevice(d);break}
+        bar.classList.toggle('collapsed',app.sidebarCollapsed);
+        const btn=bar.querySelector('.side-toggle');
+        if(btn){btn.setAttribute('aria-expanded',String(!app.sidebarCollapsed));btn.setAttribute('aria-label',app.sidebarCollapsed?'Expand sidebar':'Collapse sidebar');btn.title=app.sidebarCollapsed?'Expand sidebar':'Collapse sidebar'}
+        break;
+      }
       case 'side': go(d,el.dataset.screen,{},{root:true,motion:'fade'});break;
       case 'back': back(d);break;
       case 'open-doc': go(d,'doc',{id:el.dataset.id});break;

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>AmiWho Â· Document Control and Client Dashboard</title>
+<title>AmiWho · Document Control and Client Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -514,10 +514,10 @@ button.switch{padding:0;border:0}
     </div>
     <label class="ctl"><span>Demo account</span>
       <select id="roleSel">
-        <option value="customer">Customer Â· Alex</option>
-        <option value="client">Client Â· Priya</option>
-        <option value="admin">Admin Â· Sam</option>
-        <option value="staff">Staff Â· Mira</option>
+        <option value="customer">Customer · Alex</option>
+        <option value="client">Client · Priya</option>
+        <option value="admin">Admin · Sam</option>
+        <option value="staff">Staff · Mira</option>
       </select>
     </label>
     <label class="ctl" title="Applies to Overview and Library"><span>Data state</span>
@@ -537,11 +537,11 @@ button.switch{padding:0;border:0}
 
 <main class="stage" id="stage">
   <div class="slot" data-slot="phone">
-    <div class="slot-head"><span class="lbl">iPhone 16 Pro <b>393 Ã— 852</b></span><span class="lbl" id="phoneHint"></span></div>
+    <div class="slot-head"><span class="lbl">iPhone 16 Pro <b>393 × 852</b></span><span class="lbl" id="phoneHint"></span></div>
     <div class="device phone" data-device="phone"><div class="app" id="app-phone"></div></div>
   </div>
   <div class="slot" data-slot="pad">
-    <div class="slot-head"><span class="lbl">iPad Pro 11â€³ <b id="padSize">820 Ã— 1180</b></span><button class="rot" data-act="rotate" id="rotateBtn2">Rotate</button></div>
+    <div class="slot-head"><span class="lbl">iPad Pro 11″ <b id="padSize">820 × 1180</b></span><button class="rot" data-act="rotate" id="rotateBtn2">Rotate</button></div>
     <div class="device pad" data-device="pad"><div class="app" id="app-pad"></div></div>
   </div>
 </main>
@@ -627,9 +627,9 @@ const DOCS=[
   {id:'labour',t:'Labour Cost Playbook',cat:'Finance',v:'v2.4',price:49,tone:'teal',pages:38,upd:'12 Nov 2026',desc:'A practical playbook for controlling labour without cutting service: productivity ratios, roster templates and a 20-minute weekly review.'},
   {id:'opening',t:'Opening & Closing Checklist',cat:'Operations',v:'v4.1',price:29,tone:'slate',pages:12,upd:'8 Nov 2026',desc:'Front-of-house opening and closing routines, with sign-off points for duty managers and a clean handover between shifts.'},
   {id:'food',t:'Food Safety SOP (QLD)',cat:'Compliance',v:'v3.0',price:39,tone:'olive',pages:54,upd:'2 Nov 2026',desc:'A current food safety standard operating procedure for Queensland venues, including temperature logs and corrective actions.'},
-  {id:'rostering',t:'Rostering Templates',cat:'People',v:'v1.8',price:19,tone:'sand',pages:16,upd:'28 Oct 2026',desc:'Editable roster patterns for 20â€“80 staff, built around award rules and a predictable weekly labour rhythm.'},
+  {id:'rostering',t:'Rostering Templates',cat:'People',v:'v1.8',price:19,tone:'sand',pages:16,upd:'28 Oct 2026',desc:'Editable roster patterns for 20–80 staff, built around award rules and a predictable weekly labour rhythm.'},
   {id:'menu',t:'Menu Costing Workbook',cat:'Finance',v:'v2.0',price:59,tone:'clay',pages:24,upd:'21 Oct 2026',desc:'Cost every dish and special with a workbook that rolls food cost, labour and wastage into one margin view.'},
-  {id:'guest',t:'Guest Recovery Scripts',cat:'Service',v:'v1.3',price:25,tone:'teal',pages:18,upd:'14 Oct 2026',desc:'Calm, specific scripts for the moments that decide whether a guest returns â€” from a late main to a booking mix-up.'}
+  {id:'guest',t:'Guest Recovery Scripts',cat:'Service',v:'v1.3',price:25,tone:'teal',pages:18,upd:'14 Oct 2026',desc:'Calm, specific scripts for the moments that decide whether a guest returns — from a late main to a booking mix-up.'}
 ];
 const BUNDLES=[
   {id:'launch',t:'New Venue Launch Kit',v:'8 documents',price:189,tone:'teal',save:'Save A$76',items:['labour','opening','food','rostering','menu','guest']},
@@ -639,10 +639,10 @@ const BUNDLES=[
 BUNDLES.forEach(b=>{b.v=b.items.length+' documents';const list=b.items.reduce((t,id)=>t+DOCS.find(d=>d.id===id).price,0);b.save=list>b.price?'Save '+money(list-b.price):''});
 const PLANS={monthly:29,annual:290};
 const INSIDE={
-  labour:['Labour % benchmarks by venue type','Roster templates for 20â€“80 staff','Weekly cost-per-hour worksheet'],
+  labour:['Labour % benchmarks by venue type','Roster templates for 20–80 staff','Weekly cost-per-hour worksheet'],
   opening:['Opening routine by station','Closing and cash-up checklist','Duty manager sign-off'],
   food:['Temperature log and corrective actions','Delivery and storage checks','Cleaning schedule'],
-  rostering:['Roster patterns for 20â€“80 staff','Award rules and breaks','Publish and review cadence'],
+  rostering:['Roster patterns for 20–80 staff','Award rules and breaks','Publish and review cadence'],
   menu:['Dish costing worksheet','Waste and yield factors','Margin by menu section'],
   guest:['Service recovery scripts','Escalation guide','Follow-up templates']
 };
@@ -664,18 +664,18 @@ const FIN_REV=[132.4,136.8,141.2,138.6,145.1,151.3,158.2,164.7,171.4,184.3];
 const FIN_PRIOR=[124.8,128.1,131.6,130.2,136.4,140.8,146.9,152.3,158.1,175.9];
 const RANGE={
   '30d':{
-    label:'1â€“31 Oct 2026',short:'30 days',
+    label:'1–31 Oct 2026',short:'30 days',
     labels:['W1','W2','W3','W4'],rev:[44.1,45.6,46.8,47.8],prior:[41.9,43.2,44.6,46.1],
     summary:{rev:'A$184,320',prior:'A$175,870',change:'+4.8%',profit:'A$33,944',margin:'18.4%'},
     rows:[
-      {a:'W1 Â· 6 Oct',b:'A$44,120',c:'A$13,410',d:'A$12,420',e:'18.2%',f:'+0.6'},
-      {a:'W2 Â· 13 Oct',b:'A$45,640',c:'A$14,060',d:'A$12,690',e:'18.3%',f:'+0.7'},
-      {a:'W3 Â· 20 Oct',b:'A$46,810',c:'A$14,520',d:'A$13,210',e:'18.6%',f:'+0.9'},
-      {a:'W4 Â· 27 Oct',b:'A$47,750',c:'A$14,930',d:'A$13,640',e:'18.7%',f:'+1.0'}
+      {a:'W1 · 6 Oct',b:'A$44,120',c:'A$13,410',d:'A$12,420',e:'18.2%',f:'+0.6'},
+      {a:'W2 · 13 Oct',b:'A$45,640',c:'A$14,060',d:'A$12,690',e:'18.3%',f:'+0.7'},
+      {a:'W3 · 20 Oct',b:'A$46,810',c:'A$14,520',d:'A$13,210',e:'18.6%',f:'+0.9'},
+      {a:'W4 · 27 Oct',b:'A$47,750',c:'A$14,930',d:'A$13,640',e:'18.7%',f:'+1.0'}
     ]
   },
   quarter:{
-    label:'Aug â€“ Oct 2026',short:'Quarter',
+    label:'Aug – Oct 2026',short:'Quarter',
     labels:['Aug','Sep','Oct'],rev:[164.7,171.4,184.3],prior:[152.3,158.1,175.9],
     summary:{rev:'A$520,400',prior:'A$486,300',change:'+7.0%',profit:'A$95,610',margin:'18.4%'},
     rows:[
@@ -685,7 +685,7 @@ const RANGE={
     ]
   },
   fy:{
-    label:'FY26 Â· Jan â€“ Oct',short:'FY26',
+    label:'FY26 · Jan – Oct',short:'FY26',
     labels:MONTHS,rev:FIN_REV,prior:FIN_PRIOR,
     summary:{rev:'A$1,524,000',prior:'A$1,425,100',change:'+6.9%',profit:'A$280,400',margin:'18.4%'},
     rows:[
@@ -726,11 +726,11 @@ const USERS=[
   {id:'u6',n:'Jess Okafor',e:'jess@emberandoak.com.au',role:'Client',client:'Ember & Oak',last:'1w ago',initials:'JO',tone:'a2'}
 ];
 const CLIENTS=[
-  {id:'marlow',n:'Marlow & Fern',sub:'Fortitude Valley Â· Oct published',initials:'MF',tone:'a2',status:'pos'},
-  {id:'corner',n:'The Corner Table',sub:'South Brisbane Â· Sep pending',initials:'CT',tone:'a4',status:'warn'},
-  {id:'ember',n:'Ember & Oak',sub:'Paddington Â· Oct published',initials:'EO',tone:'',status:'pos'},
-  {id:'river',n:'Riverbend Kitchen',sub:'Bulimba Â· Sep pending',initials:'RK',tone:'a3',status:'warn'},
-  {id:'north',n:'Northside Bakehouse',sub:'Nundah Â· Oct published',initials:'NB',tone:'',status:'pos'}
+  {id:'marlow',n:'Marlow & Fern',sub:'Fortitude Valley · Oct published',initials:'MF',tone:'a2',status:'pos'},
+  {id:'corner',n:'The Corner Table',sub:'South Brisbane · Sep pending',initials:'CT',tone:'a4',status:'warn'},
+  {id:'ember',n:'Ember & Oak',sub:'Paddington · Oct published',initials:'EO',tone:'',status:'pos'},
+  {id:'river',n:'Riverbend Kitchen',sub:'Bulimba · Sep pending',initials:'RK',tone:'a3',status:'warn'},
+  {id:'north',n:'Northside Bakehouse',sub:'Nundah · Oct published',initials:'NB',tone:'',status:'pos'}
 ];
 
 /* ============================================================
@@ -833,11 +833,11 @@ const app={
   entryClient:'marlow', entries:{marlow:{rev:'184320',lab:'56924',food:'51932',other:'41520',notes:''}}, entryPublished:false,
   csvStep:1, csvFile:null, csvMap:{date:'Date',gross:'Gross sales',wages:'Wages',food:'Food purchases'}, csvDone:false,
   updates:[
-    {id:'n1',type:'download',title:'New version available',body:'Labour Cost Playbook v2.4 Â· 2h ago',unread:true,go:'doc',docId:'labour'},
-    {id:'n2',type:'alert',title:'Update ready to install',body:'Menu Costing Workbook v2.1 Â· 5h ago',unread:true,go:'library'},
-    {id:'n3',type:'file',title:'Receipt for order #A-2041',body:'A$49.00 Â· 17 Nov 2026',unread:false,go:'account'},
-    {id:'n4',type:'refresh',title:'Pro plan active',body:'A$290.00 Â· annual plan',unread:false,go:'account'},
-    {id:'n5',type:'book',title:'New document added',body:'Menu Costing Workbook Â· 21 Oct 2026',unread:false,go:'doc',docId:'menu'}
+    {id:'n1',type:'download',title:'New version available',body:'Labour Cost Playbook v2.4 · 2h ago',unread:true,go:'doc',docId:'labour'},
+    {id:'n2',type:'alert',title:'Update ready to install',body:'Menu Costing Workbook v2.1 · 5h ago',unread:true,go:'library'},
+    {id:'n3',type:'file',title:'Receipt for order #A-2041',body:'A$49.00 · 17 Nov 2026',unread:false,go:'account'},
+    {id:'n4',type:'refresh',title:'Pro plan active',body:'A$290.00 · annual plan',unread:false,go:'account'},
+    {id:'n5',type:'book',title:'New document added',body:'Menu Costing Workbook · 21 Oct 2026',unread:false,go:'doc',docId:'menu'}
   ],
   viewer:{id:'labour',page:1,expiry:null},
   tasks:TASKS.map(t=>({...t,done:t.status==='Done'})),
@@ -898,7 +898,7 @@ function sidebar(appName,active){
     <div class="side-foot">
       <div class="ws-label">Switch app</div>
       ${workspaces.map(([a,l])=>`<button class="ws-row ${appName===a?'on':''}" title="${l}" aria-label="${l}" data-act="workspace" data-app="${a}"><span class="dot"></span><span class="ws-name">${l}</span></button>`).join('')}
-      <button class="side-user" data-act="open-account" title="${USER_NAME[role]}" aria-label="Account: ${USER_NAME[role]}"><div class="avatar ${role==='client'?'a2':''}">${USER_INIT[role]}</div><div class="grow"><div class="nm">${USER_NAME[role]}</div><div class="rl">${role==='client'?'Marlow & Fern':role==='admin'?'AmiWho Â· Admin':role==='staff'?'AmiWho Â· Staff':'Customer'}</div></div>${icon('chevR',14)}</button>
+      <button class="side-user" data-act="open-account" title="${USER_NAME[role]}" aria-label="Account: ${USER_NAME[role]}"><div class="avatar ${role==='client'?'a2':''}">${USER_INIT[role]}</div><div class="grow"><div class="nm">${USER_NAME[role]}</div><div class="rl">${role==='client'?'Marlow & Fern':role==='admin'?'AmiWho · Admin':role==='staff'?'AmiWho · Staff':'Customer'}</div></div>${icon('chevR',14)}</button>
     </div>
   </nav>`;
 }
@@ -924,23 +924,23 @@ function sheetHTML(dev){
   const s=ui[dev].sheet;
   if(!s)return '';
   const close=`<div class="dim" data-act="sheet-close" aria-hidden="true"></div>`;
-  if(s.type==='processing')return `<div class="dim" aria-hidden="true"></div><div class="sheet" role="dialog" aria-modal="true"><div class="sheet-ic">${icon('refresh',26)}</div><h3>Processing payment</h3><p>Contacting your bankâ€¦</p><div class="t-11 faint" style="margin-top:var(--s-2)">Secure Â· 256-bit TLS</div></div>`;
+  if(s.type==='processing')return `<div class="dim" aria-hidden="true"></div><div class="sheet" role="dialog" aria-modal="true"><div class="sheet-ic">${icon('refresh',26)}</div><h3>Processing payment</h3><p>Contacting your bank…</p><div class="t-11 faint" style="margin-top:var(--s-2)">Secure · 256-bit TLS</div></div>`;
   if(s.type==='faceid'){
-    return `${close}<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div class="sheet-ic">${icon('faceid',28)}</div><h3>Sign in with Face ID</h3><p>AmiWho will confirm itâ€™s you. Your password stays on this device.</p><button class="btn primary full lg" data-act="faceid-ok">Continue</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
+    return `${close}<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div class="sheet-ic">${icon('faceid',28)}</div><h3>Sign in with Face ID</h3><p>AmiWho will confirm it’s you. Your password stays on this device.</p><button class="btn primary full lg" data-act="faceid-ok">Continue</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
   }
   if(s.type==='applepay'){
     const c=app.cart||{title:'Labour Cost Playbook',price:49};
-    return `${close}<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div class="row" style="justify-content:center;gap:var(--s-2)">${appleIcon(20)}<b style="font-size:var(--text-base)">Apple Pay</b></div><div class="card" style="margin-top:var(--s-3);text-align:left"><div class="between t-12"><span class="muted">${esc(c.title)}</span><span>${money(c.price)}</span></div><div class="between t-12" style="margin-top:var(--s-1)"><span class="muted">GST included</span><span>${money((c.price/11).toFixed(2))}</span></div><div class="divider" style="margin:8px 0"></div><div class="between"><b>${roleOrg()} Â· Visa 4242</b><span class="b7">${money(c.price)}</span></div></div><button class="btn primary full lg" data-act="pay-confirm">${icon('faceid',17)}Pay with Face ID</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
+    return `${close}<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div class="row" style="justify-content:center;gap:var(--s-2)">${appleIcon(20)}<b style="font-size:var(--text-base)">Apple Pay</b></div><div class="card" style="margin-top:var(--s-3);text-align:left"><div class="between t-12"><span class="muted">${esc(c.title)}</span><span>${money(c.price)}</span></div><div class="between t-12" style="margin-top:var(--s-1)"><span class="muted">GST included</span><span>${money((c.price/11).toFixed(2))}</span></div><div class="divider" style="margin:8px 0"></div><div class="between"><b>${roleOrg()} · Visa 4242</b><span class="b7">${money(c.price)}</span></div></div><button class="btn primary full lg" data-act="pay-confirm">${icon('faceid',17)}Pay with Face ID</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
   }
   if(s.type==='bundle'){
-    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:var(--text-md);font-weight:600">Add to a bundle</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>Buy the bundle once. Every document stays current.</p><div class="list">${BUNDLES.map(b=>`<button class="item" data-act="choose-bundle" data-id="${b.id}">${C.cover({...b,cat:'Bundle'},44,56,true,true)}<div class="grow"><div class="t1">${esc(b.t)}</div><div class="t2">${b.v} Â· ${b.save}</div></div><span class="t-13 strong">${money(b.price)}</span>${icon('chevR',16)}</button>`).join('')}</div></div>`;
+    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:var(--text-md);font-weight:600">Add to a bundle</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>Buy the bundle once. Every document stays current.</p><div class="list">${BUNDLES.map(b=>`<button class="item" data-act="choose-bundle" data-id="${b.id}">${C.cover({...b,cat:'Bundle'},44,56,true,true)}<div class="grow"><div class="t1">${esc(b.t)}</div><div class="t2">${b.v} · ${b.save}</div></div><span class="t-13 strong">${money(b.price)}</span>${icon('chevR',16)}</button>`).join('')}</div></div>`;
   }
   if(s.type==='upload'){
     const d=docById(s.docId);
-    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:var(--text-md);font-weight:600">Upload new version</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>${esc(d.t)} Â· current ${d.v}</p><div class="stack" style="gap:var(--s-2);margin-top:var(--s-3)">
+    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:var(--text-md);font-weight:600">Upload new version</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>${esc(d.t)} · current ${d.v}</p><div class="stack" style="gap:var(--s-2);margin-top:var(--s-3)">
       <div class="field"><label>Version</label><div class="input"><input id="verInput" value="v${(parseFloat(d.v.slice(1))+0.1).toFixed(1)}" aria-label="Version"></div></div>
       <div class="field"><label>Price (AUD)</label><div class="input"><input id="priceInput" inputmode="decimal" value="${d.price}" aria-label="Price in Australian dollars"></div></div>
-      <div class="dropzone" style="padding:var(--s-3)">${icon('uploadCloud',20)}<div class="t-11" style="margin-top:var(--s-1)">${d.id}-${d.v.replace('.','-')}.pdf Â· 18.4 MB</div></div>
+      <div class="dropzone" style="padding:var(--s-3)">${icon('uploadCloud',20)}<div class="t-11" style="margin-top:var(--s-1)">${d.id}-${d.v.replace('.','-')}.pdf · 18.4 MB</div></div>
       <div class="field"><label>What changed</label><div class="input"><input id="noteInput" placeholder="QLD penalty rates updated" aria-label="What changed"></div></div>
     </div><button class="btn primary full lg" data-act="upload-publish" data-id="${d.id}" style="margin-top:var(--s-3)">Publish version</button><button class="btn ghost full" data-act="sheet-close" style="margin-top:var(--s-2)">Cancel</button></div>`;
   }
@@ -950,7 +950,7 @@ function sheetHTML(dev){
   }
   if(s.type==='role'){
     const u=app.users.find(x=>x.id===s.userId);
-    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:var(--text-md);font-weight:600">Change role</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>${esc(u.n)} Â· ${esc(u.client)}</p><div class="list">${['Admin','Staff','Client','Customer'].map(r=>`<button class="item" data-act="set-role" data-id="${u.id}" data-role="${r}"><div class="grow"><div class="t1">${r}</div><div class="t2">${r==='Admin'?'Full access to both apps and all clients':r==='Staff'?'Manages documents, no client financials':r==='Client'?'Private dashboard for one venue':'Buys documents only'}</div></div>${u.role===r?icon('checkCircle',20):''}</button>`).join('')}</div></div>`;
+    return `${close}<div class="sheet wide" role="dialog" aria-modal="true"><div class="grab"></div><div class="between"><h3 style="font-size:var(--text-md);font-weight:600">Change role</h3><button class="icon-btn" data-act="sheet-close" aria-label="Close">${icon('x',18)}</button></div><p>${esc(u.n)} · ${esc(u.client)}</p><div class="list">${['Admin','Staff','Client','Customer'].map(r=>`<button class="item" data-act="set-role" data-id="${u.id}" data-role="${r}"><div class="grow"><div class="t1">${r}</div><div class="t2">${r==='Admin'?'Full access to both apps and all clients':r==='Staff'?'Manages documents, no client financials':r==='Client'?'Private dashboard for one venue':'Buys documents only'}</div></div>${u.role===r?icon('checkCircle',20):''}</button>`).join('')}</div></div>`;
   }
   if(s.type==='invite'){
     const roles=['Client','Customer','Staff','Admin'];
@@ -969,7 +969,7 @@ function authProfile(){
   if(app.role==='client')return {chip:'Client workspace',name:'Priya',lead:'October performance is ready to review.',email:'priya@marlowandfern.com.au'};
   if(app.role==='admin')return {chip:'AmiWho team',name:'Sam',lead:'Sign in to manage documents, clients and performance.',email:'sam@amiwho.com.au'};
   if(app.role==='staff')return {chip:'AmiWho team',name:'Mira',lead:'Sign in to manage documents.',email:'mira@amiwho.com.au'};
-  return {chip:'Customer',name:'Alex',lead:'Documents, playbooks and financial tools for your venue â€” always current.',email:'manager@marlowandfern.com.au'};
+  return {chip:'Customer',name:'Alex',lead:'Documents, playbooks and financial tools for your venue — always current.',email:'manager@marlowandfern.com.au'};
 }
 function authBody(dev,{pad=false}={}){
   const p=authProfile();
@@ -986,7 +986,7 @@ function authBody(dev,{pad=false}={}){
   if(pad){
     return `<div class="seg2" style="align-self:flex-start;margin-bottom:6px"><button data-act="auth-mode" data-mode="signin" class="${mode==='signin'?'on':''}">Sign in</button><button data-act="auth-mode" data-mode="create" class="${mode==='create'?'on':''}">Create account</button></div>
       <h3>${mode==='create'?'Create your account':greeting()+', '+p.name}</h3>
-      <p class="sub">${app.role==='client'?esc(CLIENT.name)+' Â· '+esc(CLIENT.sub):'Use the email your consultant invited.'}</p>
+      <p class="sub">${app.role==='client'?esc(CLIENT.name)+' · '+esc(CLIENT.sub):'Use the email your consultant invited.'}</p>
       ${app.role==='client'?`<div class="banner" style="margin-bottom:4px"><div class="row"><div class="avatar a2">MF</div><div class="grow"><div class="t-12 strong">Marlow &amp; Fern</div><div class="t-11 faint">Private client workspace</div></div>${icon('lock',15)}</div></div>`:''}
       ${fields}${apple}${footer}`;
   }
@@ -1004,7 +1004,7 @@ function authScreen(dev){
   const sheet=ui[dev].sheet?sheetHTML(dev):'';
   if(dev==='pad'){
     return `${statusBar()}<div class="auth-split">
-      <div class="auth-brand"><div class="ab-logo"><span class="logo-lockup" role="img" aria-label="AmiWho â€” Hospitality Consultant"><span class="logo-word" aria-hidden="true">${LOGO_WORD}</span><span class="logo-desc" aria-hidden="true">Hospitality Consultant</span></span></div><h2>Structure you can build on.</h2><p>Documents, performance and the operating rhythm of a hospitality business â€” held together in one place.</p><div class="ab-foot"><span>Private by default</span><span>Â·</span><span>Built for iPad</span></div></div>
+      <div class="auth-brand"><div class="ab-logo"><span class="logo-lockup" role="img" aria-label="AmiWho — Hospitality Consultant"><span class="logo-word" aria-hidden="true">${LOGO_WORD}</span><span class="logo-desc" aria-hidden="true">Hospitality Consultant</span></span></div><h2>Structure you can build on.</h2><p>Documents, performance and the operating rhythm of a hospitality business — held together in one place.</p><div class="ab-foot"><span>Private by default</span><span>·</span><span>Built for iPad</span></div></div>
       <div class="auth-form">${authBody('pad',{pad:true})}</div>
     </div>${sheet}`;
   }
@@ -1020,7 +1020,7 @@ function workspaceScreen(dev){
   </button>`).join('');
   if(dev==='pad'){
     return `${statusBar()}<div class="auth-split">
-      <div class="auth-brand"><div class="ab-logo"><span class="logo-lockup" role="img" aria-label="AmiWho - Hospitality Consultant"><span class="logo-word" aria-hidden="true">${LOGO_WORD}</span><span class="logo-desc" aria-hidden="true">Hospitality Consultant</span></span></div><h2>One login.<br>Two apps.</h2><p>Signed in as ${USER_NAME[app.role]}. Your role gives you both workspaces â€” client data stays private to each venue.</p><div class="ab-foot"><span>Admin console</span><span>Â·</span><span>${new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})}</span></div></div>
+      <div class="auth-brand"><div class="ab-logo"><span class="logo-lockup" role="img" aria-label="AmiWho - Hospitality Consultant"><span class="logo-word" aria-hidden="true">${LOGO_WORD}</span><span class="logo-desc" aria-hidden="true">Hospitality Consultant</span></span></div><h2>One login.<br>Two apps.</h2><p>Signed in as ${USER_NAME[app.role]}. Your role gives you both workspaces — client data stays private to each venue.</p><div class="ab-foot"><span>Admin console</span><span>·</span><span>${new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})}</span></div></div>
       <div class="auth-form"><h3>Choose a workspace</h3><p class="sub">Switch at any time from the sidebar.</p><div class="stack" style="gap:var(--s-3)">${cards}</div><button class="btn ghost" data-act="signout" style="margin-top:var(--s-2);align-self:flex-start">Sign out</button></div>
     </div>`;
   }
@@ -1168,14 +1168,14 @@ const C={
   legend:(items)=>`<div class="legend">${items.map(([l,c])=>`<span><i style="background:${c}"></i>${l}</span>`).join('')}</div>`,
   privacy:()=>`<span class="privacy">${icon('lock',13)}Only you can see this data</span>`
 };
-const docRow=(d,extra='')=>`<button class="item" data-act="open-doc" data-id="${d.id}">${C.cover(d,40,52,true,true)}<div class="grow"><div class="t1">${d.t}</div><div class="t2">${d.cat} Â· ${d.v}</div></div>${extra}<span class="chev">${icon('chevR',16)}</span></button>`;
+const docRow=(d,extra='')=>`<button class="item" data-act="open-doc" data-id="${d.id}">${C.cover(d,40,52,true,true)}<div class="grow"><div class="t1">${d.t}</div><div class="t2">${d.cat} · ${d.v}</div></div>${extra}<span class="chev">${icon('chevR',16)}</span></button>`;
 const statusChip=s=>s==='On track'?C.chip(s,'pos',true):s==='Watch'?C.chip(s,'warn'):s==='Done'?C.chip(s,'pos'):s==='Blocked'?C.chip(s,'neg'):s==='In progress'?C.chip(s,'primary'):C.chip(s,'neutral');
 function userBtn(){return `<button class="avatar ${app.role==='client'?'a2':''}" data-act="open-account" aria-label="Account">${USER_INIT[app.role]}</button>`}
 function billingPrice(){return app.billing==='annual'?PLANS.annual:PLANS.monthly}
-function billingPer(){return app.billing==='annual'?'A$24.17/mo Â· billed yearly':'A$29/mo Â· billed monthly'}
+function billingPer(){return app.billing==='annual'?'A$24.17/mo · billed yearly':'A$29/mo · billed monthly'}
 
 /* ============================================================
-   DOC APP Â· HOME
+   DOC APP · HOME
    ============================================================ */
 function screenHome(dev){
   const pad=dev==='pad';
@@ -1184,9 +1184,9 @@ function screenHome(dev){
     <div class="row" style="gap:var(--s-3);padding:var(--s-3)">
       ${C.cover(DOCS[0],pad?150:94,pad?190:116)}
       <div class="grow">
-        <div class="label">Featured Â· ${DOCS[0].cat}</div>
+        <div class="label">Featured · ${DOCS[0].cat}</div>
         <div class="${pad?'t-22 b7':'t-15 strong'}" style="margin-top:var(--s-1);line-height:1.2;letter-spacing:-.02em">${DOCS[0].t}</div>
-        <div class="t-11 faint" style="margin-top:var(--s-1)">${DOCS[0].v} Â· Updated ${DOCS[0].upd}</div>
+        <div class="t-11 faint" style="margin-top:var(--s-1)">${DOCS[0].v} · Updated ${DOCS[0].upd}</div>
         <div class="row" style="margin-top:var(--s-2)">${C.chip(money(DOCS[0].price),'primary')}${app.subscribed?C.chip('In Pro','pos'):'<span class="t-11 muted">One-time purchase</span>'}</div>
       </div>
       ${pad?``:''}
@@ -1195,7 +1195,7 @@ function screenHome(dev){
   const bundleCards=`<div class="between" style="margin-top:var(--s-1)"><span class="sec-title">Bundles</span><button class="more t-11 strong" style="color:var(--primary)" data-act="plans-bundles">View all</button></div>
     <div class="${pad?'stack':'row'}" style="gap:var(--s-2)">
       ${BUNDLES.slice(0,pad?3:2).map(b=>pad?`<button class="card" data-act="open-bundle" data-id="${b.id}" style="display:flex;gap:var(--s-3);padding:var(--s-3);align-items:center;text-align:left">
-        ${C.cover(b,44,56,true,true)}<div class="grow"><div class="t-13 strong">${b.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${b.v} Â· <span style="color:var(--pos);font-weight:600">${b.save}</span></div></div><div class="right"><div class="t-13 strong">${money(b.price)}</div><div class="t-11 strong" style="color:var(--primary)">View</div></div>
+        ${C.cover(b,44,56,true,true)}<div class="grow"><div class="t-13 strong">${b.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${b.v} · <span style="color:var(--pos);font-weight:600">${b.save}</span></div></div><div class="right"><div class="t-13 strong">${money(b.price)}</div><div class="t-11 strong" style="color:var(--primary)">View</div></div>
       </button>`:`<button class="card" data-act="open-bundle" data-id="${b.id}" style="flex:1;padding:var(--s-3);text-align:left">
         <div class="row" style="gap:var(--s-2);align-items:flex-start">${C.cover(b,36,46,true)}
           <div class="grow"><div class="t-12 strong" style="line-height:1.25">${b.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${b.v}</div><div class="t-11" style="margin-top:var(--s-1);color:var(--pos);font-weight:600">${b.save}</div></div></div>
@@ -1213,7 +1213,7 @@ function screenHome(dev){
     ${icon('sliders',17)}<span class="grow">${app.role==='admin'?'Open the admin console':'Manage documents'}</span>${icon('chevR',15)}
   </button>`:'';
   const recently=`<div class="card"><div class="card-h"><h4>Recently added</h4><button class="more" data-act="tab" data-tab="catalog">Catalog</button></div>
-    <div class="stack tight">${DOCS.slice(3,6).map(d=>`<button class="row" data-act="open-doc" data-id="${d.id}" style="text-align:left;width:100%">${C.cover(d,30,38,true,true)}<div class="grow"><div class="t-11 strong">${d.t}</div><div class="t-11 faint">${d.v} Â· ${money(d.price)}</div></div>${icon('chevR',14)}</button>`).join('')}</div>
+    <div class="stack tight">${DOCS.slice(3,6).map(d=>`<button class="row" data-act="open-doc" data-id="${d.id}" style="text-align:left;width:100%">${C.cover(d,30,38,true,true)}<div class="grow"><div class="t-11 strong">${d.t}</div><div class="t-11 faint">${d.v} · ${money(d.price)}</div></div>${icon('chevR',14)}</button>`).join('')}</div>
   </div>`;
   if(pad){
     return {
@@ -1226,14 +1226,14 @@ function screenHome(dev){
     };
   }
   return {
-    header:lgHead(`${greeting()}, ${first}`,app.role==='admin'?'AmiWho team Â· Admin':app.role==='staff'?'AmiWho team Â· Staff':`${CLIENT.name} Â· ${CLIENT.sub}`,userBtn()),
+    header:lgHead(`${greeting()}, ${first}`,app.role==='admin'?'AmiWho team · Admin':app.role==='staff'?'AmiWho team · Staff':`${CLIENT.name} · ${CLIENT.sub}`,userBtn()),
     body:`${hero}${bundleCards}${cats}${updated}<div class="between" style="margin-top:var(--s-1)"><span class="sec-title">Recently added</span><button class="t-11 strong tap" style="color:var(--primary)" data-act="tab" data-tab="catalog">Catalog</button></div><div class="list">${DOCS.slice(3,5).map(d=>docRow(d)).join('')}</div>${adminBanner}`,
     tab:'home'
   };
 }
 
 /* ============================================================
-   DOC APP Â· CATALOG
+   DOC APP · CATALOG
    ============================================================ */
 function visibleDocs(){
   let list=DOCS.filter(d=>(app.cat==='All'||d.cat===app.cat)&&(d.t+' '+d.cat+' '+d.v).toLowerCase().includes(app.search.toLowerCase()));
@@ -1245,7 +1245,7 @@ function catalogItems(dev){
   const list=visibleDocs();
   if(!list.length)return `<div class="empty" style="min-height:240px"><div class="e-ic">${icon('search',26)}</div><h3>No documents found</h3><p>Try another category or clear the search.</p><button class="btn secondary sm" data-act="clear-search">Clear search</button></div>`;
   if(dev==='pad'){
-    return `<div class="catalog-grid">${list.map(d=>`<button class="card" data-act="open-doc" data-id="${d.id}" style="display:flex;gap:var(--s-3);padding:var(--s-3);text-align:left">${C.cover(d,72,92,true,true)}<div class="grow" style="min-width:0"><div class="label">${d.cat}</div><div class="t-13 strong" style="margin-top:var(--s-1);line-height:1.25">${d.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${d.v} Â· ${d.pages} pages</div><div class="between" style="margin-top:var(--s-2)"><span class="t-14 strong">${money(d.price)}</span>${ownsDoc(d.id)?C.chip('Owned','pos'):C.chip('Updated','neutral')}</div></div></button>`).join('')}</div>`;
+    return `<div class="catalog-grid">${list.map(d=>`<button class="card" data-act="open-doc" data-id="${d.id}" style="display:flex;gap:var(--s-3);padding:var(--s-3);text-align:left">${C.cover(d,72,92,true,true)}<div class="grow" style="min-width:0"><div class="label">${d.cat}</div><div class="t-13 strong" style="margin-top:var(--s-1);line-height:1.25">${d.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${d.v} · ${d.pages} pages</div><div class="between" style="margin-top:var(--s-2)"><span class="t-14 strong">${money(d.price)}</span>${ownsDoc(d.id)?C.chip('Owned','pos'):C.chip('Updated','neutral')}</div></div></button>`).join('')}</div>`;
   }
   return `<div class="list">${list.map(d=>docRow(d,`<div class="right"><div class="t-13 strong">${money(d.price)}</div><div class="t-11 faint">${d.pages} pp</div></div>`)).join('')}</div>`;
 }
@@ -1278,27 +1278,27 @@ function screenCatalog(dev){
 }
 
 /* ============================================================
-   DOC APP Â· DOCUMENT DETAIL
+   DOC APP · DOCUMENT DETAIL
    ============================================================ */
 function screenDoc(dev){
   const pad=dev==='pad', d=docById(nav[dev].params.id||'labour');
   const owned=ownsDoc(d.id)||app.subscribed;
-  const buy=`${app.subscribed?`<button class="btn primary lg full" data-act="open-library">${icon('book',17)}Open in library</button>`:owned?`<button class="btn primary lg full" data-act="open-viewer" data-id="${d.id}">${icon('eye',17)}Open document</button><button class="btn secondary full" data-act="open-library">In your library</button>`:`<button class="btn primary lg full" data-act="buy-doc" data-id="${d.id}">Buy once Â· ${money(d.price)}</button><div class="row" style="gap:var(--s-2)"><button class="btn secondary" style="flex:1" data-act="add-bundle" data-id="${d.id}">Add to bundle</button><button class="btn ghost" data-act="plans">Subscribe</button></div>`}`;
+  const buy=`${app.subscribed?`<button class="btn primary lg full" data-act="open-library">${icon('book',17)}Open in library</button>`:owned?`<button class="btn primary lg full" data-act="open-viewer" data-id="${d.id}">${icon('eye',17)}Open document</button><button class="btn secondary full" data-act="open-library">In your library</button>`:`<button class="btn primary lg full" data-act="buy-doc" data-id="${d.id}">Buy once · ${money(d.price)}</button><div class="row" style="gap:var(--s-2)"><button class="btn secondary" style="flex:1" data-act="add-bundle" data-id="${d.id}">Add to bundle</button><button class="btn ghost" data-act="plans">Subscribe</button></div>`}`;
   const inside=(INSIDE[d.id]||['Current procedure','Checklist and sign-off points','Version history']).map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-xs)">${icon('check',14,2.4)}<span>${t}</span></div>`).join('');
   const history=[[d.v,d.upd,d.note||'Current release'],[prevVersion(d.v),monthsAgo(d.upd,3),'Previous release']];
   if(pad){
     return {
-      header:padHead(d.t,`${d.cat} Â· ${d.v} Â· Updated ${d.upd}`,``,true),
+      header:padHead(d.t,`${d.cat} · ${d.v} · Updated ${d.upd}`,``,true),
       body:`<div class="frames-grid" style="flex:1;align-items:start">
         <div class="stack" style="gap:var(--s-3)">
           <div class="card"><div class="row" style="gap:var(--s-5);align-items:flex-start">${C.cover(d,200,260)}<div class="grow">
-            <div class="row" style="margin-top:0">${C.chip(d.v+' Â· current','pos',true)}${C.chip(d.pages+' pages','neutral')}</div>
+            <div class="row" style="margin-top:0">${C.chip(d.v+' · current','pos',true)}${C.chip(d.pages+' pages','neutral')}</div>
             <div class="t-26 b7" style="margin-top:var(--s-3);letter-spacing:-.03em">${money(d.price)}</div>
             <div class="t-11 faint">or included with AmiWho Pro</div>
             <div class="stack" style="gap:var(--s-2);margin-top:var(--s-3)">${app.subscribed?`<button class="btn primary lg full" data-act="open-library">${icon('book',17)}Open in library</button>`:owned?`<button class="btn primary lg full" data-act="open-viewer" data-id="${d.id}">${icon('eye',17)}Open document</button>`:`<button class="btn primary lg full" data-act="buy-doc" data-id="${d.id}">Buy once</button><button class="btn secondary full" data-act="add-bundle" data-id="${d.id}">Add to bundle</button><button class="btn outline full" data-act="plans">Get all documents with Pro</button>`}</div>
             </div></div>
           </div>
-          <div class="card"><div class="card-h"><h4>Bundles with this document</h4></div><div class="stack tight">${BUNDLES.slice(0,2).map(b=>`<button class="row" data-act="open-bundle" data-id="${b.id}" style="text-align:left;width:100%">${C.cover(b,34,44,true,true)}<div class="grow"><div class="t-12 strong">${b.t}</div><div class="t-11 faint">${b.v} Â· ${money(b.price)}</div></div>${icon('chevR',14)}</button>`).join('')}</div></div>
+          <div class="card"><div class="card-h"><h4>Bundles with this document</h4></div><div class="stack tight">${BUNDLES.slice(0,2).map(b=>`<button class="row" data-act="open-bundle" data-id="${b.id}" style="text-align:left;width:100%">${C.cover(b,34,44,true,true)}<div class="grow"><div class="t-12 strong">${b.t}</div><div class="t-11 faint">${b.v} · ${money(b.price)}</div></div>${icon('chevR',14)}</button>`).join('')}</div></div>
         </div>
         <div class="stack" style="gap:var(--s-3)">
           <div class="card"><div class="label">About this document</div><p class="t-13 muted" style="line-height:1.55;margin-top:var(--s-2)">${d.desc}</p><div class="stack tight" style="margin-top:var(--s-2)">${inside}</div></div>
@@ -1316,7 +1316,7 @@ function screenDoc(dev){
     header:navBar('Document',{back:true,actions:`<button class="icon-btn" data-act="share" aria-label="Share">${icon('share',19)}</button>`}),
     body:`<div class="row" style="gap:var(--s-4)">${C.cover(d,104,132)}<div class="grow"><div class="label">${d.cat}</div><div class="t-17 b7" style="margin-top:var(--s-1);line-height:1.2;letter-spacing:-.02em">${d.t}</div><div class="row wrap" style="gap:var(--s-2);margin-top:var(--s-2)">${C.chip(d.v,'outline')}${C.chip(d.pages+' pages','neutral')}</div><div class="t-11 faint" style="margin-top:var(--s-2)">Updated ${d.upd}</div><div class="t-22 b7" style="margin-top:var(--s-1)">${money(d.price)}</div></div></div>
       <p class="t-13 muted" style="line-height:1.5">${d.desc}</p>
-      <div class="divider"></div><div class="label">Whatâ€™s inside</div><div class="stack tight">${inside}</div>
+      <div class="divider"></div><div class="label">What’s inside</div><div class="stack tight">${inside}</div>
       <div class="banner">${icon('refresh',16)}<span class="grow">Includes 12 months of updates.</span></div>
       <div class="stack" style="gap:var(--s-2)">${buy}</div>
 `,
@@ -1325,24 +1325,24 @@ function screenDoc(dev){
 }
 
 /* ============================================================
-   DOC APP Â· PLANS & BUNDLES
+   DOC APP · PLANS & BUNDLES
    ============================================================ */
 function screenPlans(dev){
   const pad=dev==='pad', tab=nav[dev].params.tab||'plans';
   const annual=app.billing==='annual', price=annual?PLANS.annual:PLANS.monthly;
-  const toggle=`<div class="seg2" style="max-width:320px"><button class="${annual?'on':''}" data-act="billing" data-value="annual">Annual Â· save 17%</button><button class="${!annual?'on':''}" data-act="billing" data-value="monthly">Monthly</button></div>`;
+  const toggle=`<div class="seg2" style="max-width:320px"><button class="${annual?'on':''}" data-act="billing" data-value="annual">Annual · save 17%</button><button class="${!annual?'on':''}" data-act="billing" data-value="monthly">Monthly</button></div>`;
   const plans=`<div class="card" style="border:1px solid ${app.subscribed?'var(--pos)':'var(--primary)'}">
     <div class="between"><div><div class="label">AmiWho Pro</div><div class="t-22 b7" style="margin-top:var(--s-1)">${money(billingPrice())}<span class="t-12 muted">${app.billing==='annual'?'/yr':'/mo'}</span></div></div>${app.subscribed?C.chip('Active','pos',true):C.chip(annual?'Save A$58/yr':'No lock-in','pos')}</div>
-    <div class="t-11 faint">${billingPer()} Â· cancel anytime</div>
+    <div class="t-11 faint">${billingPer()} · cancel anytime</div>
     <div class="divider"></div>
     <div class="stack tight">${[`All ${DOCS.length} documents, including future titles`,'Every new version, automatically','Up to 5 seats for your venue','Secure download links on any device'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-sm)">${icon('check',14,2.4)}<span>${t}</span></div>`).join('')}</div>
-    ${app.subscribed?`<button class="btn secondary lg full" data-act="open-library" style="margin-top:var(--s-2)">Open library</button>`:`<button class="btn primary lg full" data-act="subscribe" style="margin-top:var(--s-2)">Subscribe Â· ${money(price)}/${annual?'year':'month'}</button>`}
+    ${app.subscribed?`<button class="btn secondary lg full" data-act="open-library" style="margin-top:var(--s-2)">Open library</button>`:`<button class="btn primary lg full" data-act="subscribe" style="margin-top:var(--s-2)">Subscribe · ${money(price)}/${annual?'year':'month'}</button>`}
     <div class="t-11 faint center" style="margin-top:var(--s-2)">${app.subscribed?'Renews '+renewDate():'Billed '+(annual?'yearly':'monthly')+'. Cancel in Settings.'}</div>
   </div>`;
   const bundles=(cls='stack')=>`<div class="${cls}" style="gap:var(--s-2)">${BUNDLES.map(b=>`<div class="card" style="display:flex;gap:var(--s-3);padding:var(--s-3)">
     ${C.cover(b,pad?74:52,pad?94:66,true,true)}
     <div class="grow">
-      <div class="t-13 strong">${b.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${b.v} Â· one-time</div>
+      <div class="t-13 strong">${b.t}</div><div class="t-11 faint" style="margin-top:var(--s-1)">${b.v} · one-time</div>
       <div class="row" style="gap:var(--s-1);margin-top:var(--s-2)">${b.save?C.chip(b.save,'pos'):''}</div>
       <div class="between" style="margin-top:var(--s-2)"><span class="t-15 b7">${money(b.price)}</span><button class="btn sm outline" data-act="buy-bundle" data-id="${b.id}">${app.subscribed?'Buy for someone':'Add bundle'}</button></div>
     </div>
@@ -1362,16 +1362,16 @@ function screenPlans(dev){
 }
 
 /* ============================================================
-   DOC APP Â· CHECKOUT
+   DOC APP · CHECKOUT
    ============================================================ */
 function screenCheckout(dev){
   const pad=dev==='pad', c=app.cart;
   if(!c)return {header:navBar('Checkout',{back:true}),body:`<div class="empty"><div class="e-ic">${icon('card',26)}</div><h3>Nothing to check out</h3><p>Choose a document or bundle first.</p><button class="btn primary sm" data-act="tab" data-tab="catalog">Browse catalog</button></div>`,tab:'catalog'};
   const gst=Math.round(c.price/11*100)/100, sub=Math.round((c.price-gst)*100)/100;
   const summary=`<div class="card"><div class="row">${c.kind==='bundle'?C.cover(BUNDLES.find(b=>b.id===c.id)||BUNDLES[0],56,72,true,true):C.cover(docById(c.id),56,72,true,true)}<div class="grow"><div class="t-13 strong">${esc(c.title)}</div><div class="t-11 faint">${esc(c.meta||'One-time purchase')}</div></div><div class="t-13 strong">${money2(c.price)}</div></div><div class="divider"></div><div class="between t-12"><span class="muted">Subtotal</span><span class="tnum">${money(sub)}</span></div><div class="between t-12" style="margin-top:var(--s-1)"><span class="muted">GST 10%</span><span class="tnum">${money(gst)}</span></div><div class="between" style="margin-top:var(--s-2)"><span class="t-13 strong">Total AUD</span><span class="t-15 b7 tnum">${money2(c.price)}</span></div></div>`;
-  const pay=`<div class="label">Pay with</div><button class="btn apple lg full" data-act="applepay">${appleIcon(18)}Pay</button><div class="list"><button class="item" data-act="select-card"><span style="color:var(--ink-3);display:grid;place-items:center;width:24px;height:22px">${icon('card',18)}</span><div class="grow"><div class="t1">Visa Â·Â·Â·Â· 4242</div><div class="t2">Expires 08/28</div></div><span style="color:var(--primary)">${icon('checkCircle',20)}</span></button><button class="item" data-act="add-card">${icon('plus',18)}<div class="grow"><div class="t1" style="color:var(--primary)">Add a card</div></div></button></div><div class="field"><label>Receipt email</label><div class="input"><input id="receipt-${dev}" value="${roleEmail()}" aria-label="Receipt email" autocomplete="email"></div></div><div class="row" style="gap:var(--s-2)">${icon('lock',14)}<span class="t-11 faint">Secured by Apple Pay. Card details never touch AmiWho.</span></div><button class="btn primary lg full" data-act="pay-card">Pay by card Â· ${money2(c.price)}</button>`;
+  const pay=`<div class="label">Pay with</div><button class="btn apple lg full" data-act="applepay">${appleIcon(18)}Pay</button><div class="list"><button class="item" data-act="select-card"><span style="color:var(--ink-3);display:grid;place-items:center;width:24px;height:22px">${icon('card',18)}</span><div class="grow"><div class="t1">Visa ···· 4242</div><div class="t2">Expires 08/28</div></div><span style="color:var(--primary)">${icon('checkCircle',20)}</span></button><button class="item" data-act="add-card">${icon('plus',18)}<div class="grow"><div class="t1" style="color:var(--primary)">Add a card</div></div></button></div><div class="field"><label>Receipt email</label><div class="input"><input id="receipt-${dev}" value="${roleEmail()}" aria-label="Receipt email" autocomplete="email"></div></div><div class="row" style="gap:var(--s-2)">${icon('lock',14)}<span class="t-11 faint">Secured by Apple Pay. Card details never touch AmiWho.</span></div><button class="btn primary lg full" data-act="pay-card">Pay by card · ${money2(c.price)}</button>`;
   if(pad){
-    return {header:padHead('Checkout','One item Â· secure server-side fulfilment',`${C.chip('Secure','neutral')}`),body:`<div class="frames-grid" style="flex:1;align-items:start">
+    return {header:padHead('Checkout','One item · secure server-side fulfilment',`${C.chip('Secure','neutral')}`),body:`<div class="frames-grid" style="flex:1;align-items:start">
       <div class="stack" style="gap:var(--s-3)">${summary}<div class="card"><div class="card-h"><h4>What you get</h4></div><div class="stack tight">${['Instant download and library copy','Free v.x updates','Secure links on iPhone, iPad and Mac','30-day refund on first purchase'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-sm)">${icon('check',14,2.4)}<span>${t}</span></div>`).join('')}</div></div></div>
       <div class="card"><div class="card-h"><h4>Payment</h4><span class="chip primary">Apple Pay</span></div>${pay}</div>
     </div>`};
@@ -1380,13 +1380,13 @@ function screenCheckout(dev){
 }
 
 /* ============================================================
-   DOC APP Â· SUCCESS
+   DOC APP · SUCCESS
    ============================================================ */
 function screenSuccess(dev){
   const pad=dev==='pad', p=app.lastPurchase;
   if(!p)return {header:navBar('Checkout'),body:`<div class="empty"><h3>No recent purchase</h3><button class="btn primary sm" data-act="tab" data-tab="catalog">Browse catalog</button></div>`,tab:'library'};
   const isPlan=p.kind==='plan';
-  const title=isPlan?'Youâ€™re on Pro':'Purchase complete';
+  const title=isPlan?'You’re on Pro':'Purchase complete';
   const sub=isPlan?`All ${DOCS.length} documents are now in your library, with every future version included.`:`${p.title} is in your library, with 12 months of updates included.`;
   const body=`<div class="empty" style="min-height:${pad?'420px':'440px'};padding-top:24px">
     <div class="success-ic">${icon('check',34,2.4)}</div>
@@ -1396,7 +1396,7 @@ function screenSuccess(dev){
       <button class="btn secondary lg" style="flex:1" data-act="${isPlan?'open-account':'open-library'}">${isPlan?'Account':'Open library'}</button>
     </div>
     <div class="card" style="width:100%;max-width:${pad?'420px':'310px'};text-align:left;margin-top:var(--s-4)">
-      <div class="between t-11"><span class="faint">Order</span><span class="strong">#${p.order||'A-2043'} Â· ${new Date().toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'})}</span></div>
+      <div class="between t-11"><span class="faint">Order</span><span class="strong">#${p.order||'A-2043'} · ${new Date().toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'})}</span></div>
       <div class="between t-11" style="margin-top:var(--s-1)"><span class="faint">Total</span><span class="strong">${money2(p.price)}</span></div>
       <div class="between t-11" style="margin-top:var(--s-1)"><span class="faint">Receipt</span><span class="strong">${p.email||roleEmail()}</span></div>
     </div>
@@ -1409,7 +1409,7 @@ function screenSuccess(dev){
 }
 
 /* ============================================================
-   DOC APP Â· VIEWER
+   DOC APP · VIEWER
    ============================================================ */
 const PAGES=[
   {h:'1. Why labour drifts',body:['Labour drifts for ordinary reasons: a shift added at the last minute, a quiet Tuesday staffed for a busy one, a penalty-rate Sunday nobody modelled. None of it is dramatic. Together it is the difference between a 30% and a 34% labour line.','The fix is not a wage freeze. It is a weekly rhythm that catches drift while it is still small, with the roster, the covers and the cost per hour in the same conversation.']},
@@ -1426,8 +1426,8 @@ function viewerPage(p, table){
   const rows=table?`<div class="doc-sub">Weekly ratios</div>
     <table>
       <tr><th scope="col">Ratio</th><th scope="col" style="text-align:right">Target</th><th scope="col" style="text-align:right">Watch</th></tr>
-      <tr><td>Labour % of revenue</td><td style="text-align:right">28â€“32%</td><td style="text-align:right">&gt;34%</td></tr>
-      <tr><td>Revenue per labour hour</td><td style="text-align:right">A$58â€“66</td><td style="text-align:right">&lt;A$54</td></tr>
+      <tr><td>Labour % of revenue</td><td style="text-align:right">28–32%</td><td style="text-align:right">&gt;34%</td></tr>
+      <tr><td>Revenue per labour hour</td><td style="text-align:right">A$58–66</td><td style="text-align:right">&lt;A$54</td></tr>
       <tr><td>Overtime share</td><td style="text-align:right">&lt;6%</td><td style="text-align:right">&gt;9%</td></tr>
     </table>`:'';
   return `${p.body.map(t=>`<p>${t}</p>`).join('')}${rows}`;
@@ -1435,20 +1435,20 @@ function viewerPage(p, table){
 function screenViewer(dev){
   const pad=dev==='pad', d=docById(app.viewer.id||'labour');
   const pages=d.id==='labour'?PAGES:[
-    {h:d.t,body:[`${d.desc} Published ${d.upd} Â· ${d.pages} pages. This copy is licensed to ${CLIENT.name}.`,'Review the document with the duty manager before the next service period, and record any changes in the version history.']},
+    {h:d.t,body:[`${d.desc} Published ${d.upd} · ${d.pages} pages. This copy is licensed to ${CLIENT.name}.`,'Review the document with the duty manager before the next service period, and record any changes in the version history.']},
     {h:'Using this document',body:['Start with the purpose and scope, then follow the checklist. AmiWho maintains this document and republishes it when the rules change.','Download a copy for offline access. Secure links expire after 72 hours and renew while you are signed in.']}
   ];
   const idx=Math.min(pages.length-1,Math.max(0,app.viewer.page-1));
   const page=pages[idx], total=pages.length;
   const e=libEntry(d.id), progress=e?Math.round(e.progress):0;
   const paper=lg=>`<div class="doc-page ${lg?'lg':''}">
-    <div class="doc-kicker"><span>AmiWho Â· ${d.t}</span><span>${d.v} Â· Preview</span></div>
+    <div class="doc-kicker"><span>AmiWho · ${d.t}</span><span>${d.v} · Preview</span></div>
     <h2>${page.h}</h2>
     ${viewerPage(page, d.id==='labour' && app.viewer.page===2)}
     <div class="doc-foot">Page ${app.viewer.page} of ${total}</div>
   </div>`;
   if(pad){
-    return {header:padHead(d.t,`${d.v} Â· Secure view`,`<button class="btn outline sm" data-act="renew-link">${icon('refresh',14)}Renew</button><button class="btn primary sm" data-act="download-entry" data-id="${d.id}">${icon('download',14)}Download</button>`),body:
+    return {header:padHead(d.t,`${d.v} · Secure view`,`<button class="btn outline sm" data-act="renew-link">${icon('refresh',14)}Renew</button><button class="btn primary sm" data-act="download-entry" data-id="${d.id}">${icon('download',14)}Download</button>`),body:
       `<div class="between">
         <div class="row" style="gap:var(--s-2)">${icon('clock',15)}<span class="t-12 strong">Expires in <span class="expiry">${viewerTime()}</span></span><span class="t-11 faint">Watermarked</span></div>
         <div class="row" style="gap:var(--s-2)"><span class="t-11 faint">${progress>=100?'Downloaded':'Downloading'}</span><div style="width:96px">${C.bar(progress)}</div><span class="t-11 strong">${progress}%</span></div>
@@ -1458,7 +1458,7 @@ function screenViewer(dev){
         ${paper(true)}
       </div>
       <div class="between">
-        <div class="row wrap" style="gap:var(--s-2)">${pages.map((p,i)=>`<button class="t-11 tap" style="color:${app.viewer.page===i+1?'var(--primary)':'var(--ink-2)'};font-weight:${app.viewer.page===i+1?600:400}" data-act="viewer-page" data-page="${i+1}">${p.h}</button>`).join('<span class="faint">Â·</span>')}</div>
+        <div class="row wrap" style="gap:var(--s-2)">${pages.map((p,i)=>`<button class="t-11 tap" style="color:${app.viewer.page===i+1?'var(--primary)':'var(--ink-2)'};font-weight:${app.viewer.page===i+1?600:400}" data-act="viewer-page" data-page="${i+1}">${p.h}</button>`).join('<span class="faint">·</span>')}</div>
         
       </div>`};
   }
@@ -1466,11 +1466,11 @@ function screenViewer(dev){
     `<div class="banner warn">${icon('clock',16)}<span class="grow">Secure link expires in <span class="expiry">${viewerTime()}</span></span><button class="t-11 strong" data-act="renew-link">Renew</button></div>
     ${paper(false)}
     <div class="between"><button class="btn sm outline" data-act="viewer-page" data-page="${Math.max(1,app.viewer.page-1)}">${icon('chevL',14)}Prev</button><button class="btn sm outline" data-act="viewer-page" data-page="${Math.min(pages.length,app.viewer.page+1)}">Next${icon('chevR',14)}</button></div>
-    ${e?`<div class="between"><span class="t-11 faint">${progress>=100?'Downloaded Â· '+e.size:'Downloading Â· '+progress+'%'}</span><span class="t-11 strong">${progress}%</span></div><div>${C.bar(progress)}</div>`:`<div class="between"><span class="t-11 faint">Preview copy Â· sample pages</span><button class="t-11 strong tap" style="color:var(--primary)" data-act="plans">Get the full document</button></div>`}`,
+    ${e?`<div class="between"><span class="t-11 faint">${progress>=100?'Downloaded · '+e.size:'Downloading · '+progress+'%'}</span><span class="t-11 strong">${progress}%</span></div><div>${C.bar(progress)}</div>`:`<div class="between"><span class="t-11 faint">Preview copy · sample pages</span><button class="t-11 strong tap" style="color:var(--primary)" data-act="plans">Get the full document</button></div>`}`,
     noTab:true};
 }
 /* ============================================================
-   DOC APP Â· UPDATES
+   DOC APP · UPDATES
    ============================================================ */
 const noteIcon=n=>`<span class="note-ic ${n.type==='alert'?'warn':n.type==='download'?'pos':''}" aria-hidden="true">${icon(n.type==='refresh'?'refresh':n.type==='book'?'file':n.type==='file'?'file':n.type==='alert'?'alert':'download',18)}</span>`;
 function screenUpdates(dev){
@@ -1483,19 +1483,19 @@ function screenUpdates(dev){
   </button>`).join('');
   const seg=`<div class="seg2" style="max-width:260px"><button class="${filter==='All'?'on':''}" data-act="updates-filter" data-value="All">All</button><button class="${filter==='Unread'?'on':''}" data-act="updates-filter" data-value="Unread">Unread ${unreadCount()}</button></div>`;
   if(pad){
-    return {header:padHead('Updates',`${unreadCount()} unread Â· every alert is linked to its source`,`<button class="btn ghost sm" data-act="mark-all">Mark all read</button>`),body:`${seg}<div class="list">${rows||`<div class="empty" style="min-height:200px"><div class="e-ic">${icon('checkCircle',26)}</div><h3>All caught up</h3><p>No unread alerts.</p></div>`}</div>`};
+    return {header:padHead('Updates',`${unreadCount()} unread · every alert is linked to its source`,`<button class="btn ghost sm" data-act="mark-all">Mark all read</button>`),body:`${seg}<div class="list">${rows||`<div class="empty" style="min-height:200px"><div class="e-ic">${icon('checkCircle',26)}</div><h3>All caught up</h3><p>No unread alerts.</p></div>`}</div>`};
   }
   return {header:lgHead('Updates',`${unreadCount()} unread`,`<button class="t-11 strong tap" style="color:var(--primary)" data-act="mark-all">Mark all read</button>`),body:`${seg}<div class="list">${rows||`<div class="empty" style="min-height:200px"><div class="e-ic">${icon('checkCircle',26)}</div><h3>All caught up</h3><p>No unread alerts.</p></div>`}</div>`,tab:'updates'};
 }
 
 /* ============================================================
-   DOC APP Â· ACCOUNT
+   DOC APP · ACCOUNT
    ============================================================ */
 function screenAccount(dev){
   const pad=dev==='pad', role=app.role;
   const current=role==='client'?'client':currentApp(nav[dev].screen);
   const apps=role==='admin'?[['doc','Document Control','Buy documents and manage the store'],['client','Client Dashboard','Private performance for clients']]:role==='client'?[['client','Client Dashboard','Your private workspace'],['doc','Document Control','Not included in your role']]:role==='staff'?[['doc','Document Control','Store plus documents admin'],['client','Client Dashboard','Not included in your role']]:[['doc','Document Control','Your store and library'],['client','Client Dashboard','Not included in your role']];
-  const plan=app.subscribed?`<div class="card" style="border:1px solid color-mix(in srgb,var(--primary) 35%,var(--border))"><div class="between"><div class="label">AmiWho Pro Â· ${app.billing==='annual'?'Annual':'Monthly'}</div>${C.chip('Active','pos',true)}</div><div class="t-15 strong" style="margin-top:var(--s-1)">${app.billing==='annual'?'A$290/yr':'A$29/mo'}</div><div class="t-11 faint">Renews ${renewDate()} Â· cancel anytime</div><div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn outline sm" data-act="plans">Manage plan</button><button class="btn ghost sm" data-act="open-library">Library</button></div></div>`
+  const plan=app.subscribed?`<div class="card" style="border:1px solid color-mix(in srgb,var(--primary) 35%,var(--border))"><div class="between"><div class="label">AmiWho Pro · ${app.billing==='annual'?'Annual':'Monthly'}</div>${C.chip('Active','pos',true)}</div><div class="t-15 strong" style="margin-top:var(--s-1)">${app.billing==='annual'?'A$290/yr':'A$29/mo'}</div><div class="t-11 faint">Renews ${renewDate()} · cancel anytime</div><div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn outline sm" data-act="plans">Manage plan</button><button class="btn ghost sm" data-act="open-library">Library</button></div></div>`
   :`<div class="card"><div class="between"><div><div class="label">Subscription</div><div class="t-13 strong" style="margin-top:var(--s-1)">No active plan</div><div class="t-11 faint">Documents are bought once.</div></div><button class="btn primary sm" data-act="plans">See plans</button></div></div>`;
   const toggles=Object.entries(app.accountToggles).map(([k,v])=>`<div class="toggle-row"><div><div class="t-12">${k==='versions'?'New versions':k==='receipts'?'Receipts and invoices':k==='renewals'?'Renewal reminders':'Product news'}</div><div class="t-11 faint">${k==='versions'?'Update alerts for purchased documents':'Email only'}</div></div>${C.toggle(v,'acct-'+k)}</div>`).join('');
   const adminLinks=(role==='admin'||role==='staff')?`<div class="card"><div class="card-h"><h4>Admin</h4></div><div class="stack tight">
@@ -1507,45 +1507,45 @@ function screenAccount(dev){
   const workspace=`<div class="card"><div class="card-h"><h4>Apps</h4></div><div class="stack tight">${apps.map(([a,t,s])=>`<button class="row" data-act="workspace" data-app="${a}" style="width:100%;text-align:left;padding:8px 0;border-bottom:1px solid var(--border)"><span class="app-ic" aria-hidden="true">${icon(a==='doc'?'file':'chart',18)}</span><div class="grow"><div class="t-12 strong">${t}</div><div class="t-11 faint">${s}</div></div>${a===current?C.chip('Current','pos'):app.role==='admin'?icon('chevR',14):C.chip('Locked','neutral')}</button>`).join('')}</div></div>`;
   const settings=`<div class="card"><div class="card-h"><h4>Notifications</h4></div>${toggles}</div><div class="card"><div class="card-h"><h4>Privacy &amp; security</h4></div><div class="stack" style="gap:var(--s-2)">${['Download links expire after 72 hours','Documents watermarked to your workspace','Face ID required on launch'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('lock',14)}<span>${t}</span></div>`).join('')}</div></div><div class="card"><div class="card-h"><h4>Account</h4></div><div class="stack tight"><div class="between t-12"><span>Receipts</span><span class="strong">${roleEmail()}</span></div><div class="between t-12"><span>Support</span><a class="strong" href="mailto:support@amiwho.com.au" style="color:var(--primary)">Contact</a></div><button class="between t-12" style="color:var(--neg);min-height:44px" data-act="signout"><span>Sign out</span>${icon('arrowRight',14)}</button></div></div>`;
   if(pad){
-    return {header:padHead('Account',`${USER_NAME[role]} Â· ${role==='client'||role==='customer'?CLIENT.name:'AmiWho'}`,``),body:`<div class="acct-grid"><div class="stack" style="gap:var(--s-3)">${profile}${workspace}${adminLinks}</div><div class="stack" style="gap:var(--s-3)">${plan}<div class="card"><div class="card-h"><h4>Payment</h4></div><div class="row">${icon('card',20)}<div class="grow"><div class="t-12 strong">Visa Â·Â·Â·Â· 4242</div><div class="t-11 faint">Expires 08/28 Â· default</div></div></div></div>${settings}</div></div>`};
+    return {header:padHead('Account',`${USER_NAME[role]} · ${role==='client'||role==='customer'?CLIENT.name:'AmiWho'}`,``),body:`<div class="acct-grid"><div class="stack" style="gap:var(--s-3)">${profile}${workspace}${adminLinks}</div><div class="stack" style="gap:var(--s-3)">${plan}<div class="card"><div class="card-h"><h4>Payment</h4></div><div class="row">${icon('card',20)}<div class="grow"><div class="t-12 strong">Visa ···· 4242</div><div class="t-11 faint">Expires 08/28 · default</div></div></div></div>${settings}</div></div>`};
   }
-  return {header:lgHead('Account',role==='client'||role==='customer'?CLIENT.name:'AmiWho',`<button class="avatar ${role==='client'?'a2':''}" data-act="open-account" aria-label="Account">${USER_INIT[role]}</button>`),body:`${profile}${workspace}${plan}${adminLinks}<div class="card"><div class="card-h"><h4>Payment</h4></div><div class="row">${icon('card',20)}<div class="grow"><div class="t-12 strong">Visa Â·Â·Â·Â· 4242</div><div class="t-11 faint">Expires 08/28 Â· default</div></div></div></div><div class="card"><div class="card-h"><h4>Account</h4></div><div class="stack tight"><div class="between t-12"><span>Receipts</span><span class="strong">${roleEmail()}</span></div><div class="between t-12"><span>Support</span><a class="strong" href="mailto:support@amiwho.com.au" style="color:var(--primary)">Contact</a></div></div></div><div class="card"><div class="card-h"><h4>Notifications</h4></div>${toggles}</div><div class="card"><div class="card-h"><h4>Privacy &amp; security</h4></div><div class="stack" style="gap:var(--s-2)">${['Download links expire after 72 hours','Documents watermarked to your workspace','Face ID required on launch'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('lock',14)}<span>${t}</span></div>`).join('')}</div></div><div class="list"><button class="item" data-act="signout" style="color:var(--neg)">${icon('logout',17)}<div class="grow"><div class="t1" style="color:var(--neg)">Sign out</div></div></button></div>`,tab:'account'};
+  return {header:lgHead('Account',role==='client'||role==='customer'?CLIENT.name:'AmiWho',`<button class="avatar ${role==='client'?'a2':''}" data-act="open-account" aria-label="Account">${USER_INIT[role]}</button>`),body:`${profile}${workspace}${plan}${adminLinks}<div class="card"><div class="card-h"><h4>Payment</h4></div><div class="row">${icon('card',20)}<div class="grow"><div class="t-12 strong">Visa ···· 4242</div><div class="t-11 faint">Expires 08/28 · default</div></div></div></div><div class="card"><div class="card-h"><h4>Account</h4></div><div class="stack tight"><div class="between t-12"><span>Receipts</span><span class="strong">${roleEmail()}</span></div><div class="between t-12"><span>Support</span><a class="strong" href="mailto:support@amiwho.com.au" style="color:var(--primary)">Contact</a></div></div></div><div class="card"><div class="card-h"><h4>Notifications</h4></div>${toggles}</div><div class="card"><div class="card-h"><h4>Privacy &amp; security</h4></div><div class="stack" style="gap:var(--s-2)">${['Download links expire after 72 hours','Documents watermarked to your workspace','Face ID required on launch'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('lock',14)}<span>${t}</span></div>`).join('')}</div></div><div class="list"><button class="item" data-act="signout" style="color:var(--neg)">${icon('logout',17)}<div class="grow"><div class="t1" style="color:var(--neg)">Sign out</div></div></button></div>`,tab:'account'};
 }
 
 /* ============================================================
-   DOC APP Â· ADMIN
+   DOC APP · ADMIN
    ============================================================ */
 function screenAdmin(dev){
   const pad=dev==='pad';
-  const kpis=`<div class="kpis ${pad?'four':''}">${C.kpi('Sales','A$14,307','+8.2%','up','vs prior 30d')}${C.kpi('Downloads','1,284','+112','up','vs prior 30d')}${C.kpi('Active seats','342','+18','up','vs prior 30d')}${C.kpi('Refunds','A$240','âˆ’A$80','up','vs prior 30d')}</div>`;
-  const rev=barChart({labels:['Jun','Jul','Aug','Sep','Oct','Nov'],groups:[{name:'Sales',color:'var(--primary)',values:[8.4,9.1,9.8,10.4,11.2,14.3]}],w:pad?420:326,h:pad?186:130,padL:44,fmt:v=>'A$'+v.toFixed(0)+'k',tip:{i:5,v:14.3,text:'Nov Â· A$14.3k'}});
+  const kpis=`<div class="kpis ${pad?'four':''}">${C.kpi('Sales','A$14,307','+8.2%','up','vs prior 30d')}${C.kpi('Downloads','1,284','+112','up','vs prior 30d')}${C.kpi('Active seats','342','+18','up','vs prior 30d')}${C.kpi('Refunds','A$240','−A$80','up','vs prior 30d')}</div>`;
+  const rev=barChart({labels:['Jun','Jul','Aug','Sep','Oct','Nov'],groups:[{name:'Sales',color:'var(--primary)',values:[8.4,9.1,9.8,10.4,11.2,14.3]}],w:pad?420:326,h:pad?186:130,padL:44,fmt:v=>'A$'+v.toFixed(0)+'k',tip:{i:5,v:14.3,text:'Nov · A$14.3k'}});
   const downloads=lineChart({labels:['W1','W2','W3','W4','W5','W6'],series:[{name:'Downloads',color:'var(--primary)',values:[268,301,288,332,356,384]}],w:pad?250:326,h:pad?186:120,yMin:200,fmt:v=>Math.round(v)});
   const topTable=`<table class="tbl"><thead><tr><th scope="col">Document</th><th scope="col">Version</th><th scope="col" class="num">Sales</th><th scope="col" class="num">Revenue</th><th scope="col" class="num">Refunds</th></tr></thead><tbody>
     ${[[DOCS[0],126,'A$6,174'],[DOCS[4],84,'A$4,956'],[DOCS[2],61,'A$2,379'],[DOCS[3],42,'A$798']].map(([d,s,r])=>`<tr><td><div class="row" style="gap:var(--s-2)">${C.cover(d,20,26,true,true)}<span style="font-weight:600">${d.t}</span></div></td><td class="muted">${d.v}</td><td class="num">${s}</td><td class="num"><b>${r}</b></td><td class="num muted">${s<50?'2':'1'}</td></tr>`).join('')}
   </tbody></table>`;
-  const activity=[[ 'Queued Menu Costing v2.1','Sam T. Â· 12m'],['Published Labour Cost v2.4','Sam T. Â· 2h'],['New client: The Corner Table','Priya N. Â· 5h'],['Refund issued #A-2038','Alex R. Â· 1d']];
+  const activity=[[ 'Queued Menu Costing v2.1','Sam T. · 12m'],['Published Labour Cost v2.4','Sam T. · 2h'],['New client: The Corner Table','Priya N. · 5h'],['Refund issued #A-2038','Alex R. · 1d']];
   const recentOrders=app.lastPurchase?[['#'+app.lastPurchase.order,app.lastPurchase.title,money2(app.lastPurchase.price),'Just now'],['#A-2040','New Venue Launch Kit','A$189','18m']]:[['#A-2041','Labour Cost Playbook','A$49','2m'],['#A-2040','New Venue Launch Kit','A$189','18m']];
   if(pad){
-    return {header:padHead('Admin overview','1â€“17 Nov 2026 Â· 42 clients',`<button class="btn outline sm" data-act="export">${icon('download',14)}Export CSV</button><button class="btn primary sm" data-act="side" data-screen="documents">${icon('plus',15)}Upload version</button>`),body:`${kpis}
+    return {header:padHead('Admin overview','1–17 Nov 2026 · 42 clients',`<button class="btn outline sm" data-act="export">${icon('download',14)}Export CSV</button><button class="btn primary sm" data-act="side" data-screen="documents">${icon('plus',15)}Upload version</button>`),body:`${kpis}
       <div class="dash-grid" style="flex:1">
-        <div class="card" style="grid-column:span 2"><div class="card-h"><h4>Revenue</h4><span class="sub">AUD Â· last 6 months</span></div>${rev}${C.legend([['Sales','var(--primary)']])}</div>
+        <div class="card" style="grid-column:span 2"><div class="card-h"><h4>Revenue</h4><span class="sub">AUD · last 6 months</span></div>${rev}${C.legend([['Sales','var(--primary)']])}</div>
         <div class="card"><div class="card-h"><h4>Downloads</h4><span class="sub">weekly</span></div>${downloads}${C.legend([['Downloads','var(--primary)']])}</div>
         <div class="card" style="grid-column:span 2"><div class="card-h"><h4>Top documents</h4><span class="sub">by revenue, 30 days</span><button class="more" data-act="side" data-screen="documents">Catalog</button></div>${topTable}</div>
         <div class="card"><div class="card-h"><h4>Activity</h4></div><div class="stack" style="gap:var(--s-2)">${activity.map(([t,s])=>`<div class="row" style="gap:var(--s-2)"><span style="width:6px;height:6px;border-radius:50%;background:var(--primary);flex:none"></span><div><div class="t-11" style="font-weight:500">${t}</div><div class="t-11 faint">${s}</div></div></div>`).join('')}</div></div>
       </div>`};
   }
-  return {header:navBar('Admin overview',{back:true,actions:`<button class="t-11 strong tap" style="color:var(--primary)" data-act="export">Export</button>`}),body:`${kpis}<div class="card"><div class="card-h"><h4>Revenue</h4><span class="sub">AUD Â· monthly</span></div>${rev}</div><div class="card"><div class="card-h"><h4>Downloads</h4><span class="sub">weekly</span></div>${lineChart({labels:['W1','W2','W3','W4','W5','W6'],series:[{name:'Downloads',color:'var(--primary)',values:[268,301,288,332,356,384]}],w:326,h:100,yMin:200,fmt:v=>Math.round(v)})}</div><div class="card"><div class="card-h"><h4>Top documents</h4><span class="sub">by revenue</span></div><div class="stack tight">${[[DOCS[0],'A$6,174'],[DOCS[4],'A$4,956'],[DOCS[2],'A$2,379']].map(([d,r])=>`<div class="between"><div class="row" style="gap:var(--s-2)">${C.cover(d,22,28,true,true)}<span class="t-12 strong">${d.t}</span></div><span class="t-12 strong">${r}</span></div>`).join('')}</div></div><div class="card"><div class="card-h"><h4>Activity</h4></div><div class="stack" style="gap:var(--s-2)">${activity.map(([t,s])=>`<div class="row" style="gap:var(--s-2)"><span style="width:6px;height:6px;border-radius:50%;background:var(--primary);flex:none"></span><div><div class="t-11" style="font-weight:500">${t}</div><div class="t-11 faint">${s}</div></div></div>`).join('')}</div></div><div class="card"><div class="card-h"><h4>Recent orders</h4></div><div class="stack tight">${recentOrders.map(([o,t,p,a])=>`<div class="between" style="font-size:var(--text-2xs)"><div><span class="t-11 faint">${o}</span><div class="strong">${t}</div></div><div class="right"><div class="strong">${p}</div><div class="t-11 faint">${a}</div></div></div>`).join('')}</div></div>`,tab:'account'};
+  return {header:navBar('Admin overview',{back:true,actions:`<button class="t-11 strong tap" style="color:var(--primary)" data-act="export">Export</button>`}),body:`${kpis}<div class="card"><div class="card-h"><h4>Revenue</h4><span class="sub">AUD · monthly</span></div>${rev}</div><div class="card"><div class="card-h"><h4>Downloads</h4><span class="sub">weekly</span></div>${lineChart({labels:['W1','W2','W3','W4','W5','W6'],series:[{name:'Downloads',color:'var(--primary)',values:[268,301,288,332,356,384]}],w:326,h:100,yMin:200,fmt:v=>Math.round(v)})}</div><div class="card"><div class="card-h"><h4>Top documents</h4><span class="sub">by revenue</span></div><div class="stack tight">${[[DOCS[0],'A$6,174'],[DOCS[4],'A$4,956'],[DOCS[2],'A$2,379']].map(([d,r])=>`<div class="between"><div class="row" style="gap:var(--s-2)">${C.cover(d,22,28,true,true)}<span class="t-12 strong">${d.t}</span></div><span class="t-12 strong">${r}</span></div>`).join('')}</div></div><div class="card"><div class="card-h"><h4>Activity</h4></div><div class="stack" style="gap:var(--s-2)">${activity.map(([t,s])=>`<div class="row" style="gap:var(--s-2)"><span style="width:6px;height:6px;border-radius:50%;background:var(--primary);flex:none"></span><div><div class="t-11" style="font-weight:500">${t}</div><div class="t-11 faint">${s}</div></div></div>`).join('')}</div></div><div class="card"><div class="card-h"><h4>Recent orders</h4></div><div class="stack tight">${recentOrders.map(([o,t,p,a])=>`<div class="between" style="font-size:var(--text-2xs)"><div><span class="t-11 faint">${o}</span><div class="strong">${t}</div></div><div class="right"><div class="strong">${p}</div><div class="t-11 faint">${a}</div></div></div>`).join('')}</div></div>`,tab:'account'};
 }
 function screenDocuments(dev){
   const pad=dev==='pad';
   const rows=DOCS.map(d=>`<div class="card" style="display:flex;gap:var(--s-2);padding:var(--s-3);align-items:center">
-    ${C.cover(d,40,52,true,true)}<div class="grow" style="min-width:0"><div class="t-12 strong">${d.t}</div><div class="t-11 faint">${d.cat} Â· ${d.v} Â· ${money(d.price)}</div><div class="row" style="gap:var(--s-1);margin-top:var(--s-1)">${C.chip('Live','pos')}${d.id==='menu'?C.chip('Update queued','warn'):''}</div></div>
+    ${C.cover(d,40,52,true,true)}<div class="grow" style="min-width:0"><div class="t-12 strong">${d.t}</div><div class="t-11 faint">${d.cat} · ${d.v} · ${money(d.price)}</div><div class="row" style="gap:var(--s-1);margin-top:var(--s-1)">${C.chip('Live','pos')}${d.id==='menu'?C.chip('Update queued','warn'):''}</div></div>
     <div class="row" style="gap:var(--s-1)"><button class="btn sm outline" data-act="upload-open" data-id="${d.id}">${icon('upload',13)}Version</button><button class="btn sm outline" data-act="price-open" data-id="${d.id}">Price</button></div>
   </div>`).join('');
   if(pad){
-    return {header:padHead('Documents',`${DOCS.length} documents Â· ${BUNDLES.length} bundles`,''),body:
+    return {header:padHead('Documents',`${DOCS.length} documents · ${BUNDLES.length} bundles`,''),body:
       `<div class="frames-grid" style="flex:1;align-items:start">
-        <div class="card"><div class="card-h"><h4>Publish a new version</h4><span class="sub">PDF Â· max 50 MB</span></div>
+        <div class="card"><div class="card-h"><h4>Publish a new version</h4><span class="sub">PDF · max 50 MB</span></div>
           <div class="dropzone" role="button" tabindex="0" data-act="upload-open" data-id="labour"><div class="dz-ic">${icon('uploadCloud',20)}</div><div class="t-12 strong" style="color:var(--ink)">Drop a file or choose from Files</div><div class="t-11 faint" style="margin-top:var(--s-1)">The current version stays live until you publish.</div></div>
           <div class="stack tight" style="margin-top:var(--s-2)"><div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',14,2.4)}<span>Version number and price are set at publish</span></div><div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',14,2.4)}<span>Bundles update automatically</span></div><div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',14,2.4)}<span>Subscribers are notified</span></div></div>
         </div>
@@ -1562,23 +1562,23 @@ function screenUsers(dev){
   const rows=list.map(u=>`<button class="item" data-act="user-open" data-id="${u.id}"><div class="avatar ${u.tone}">${u.initials}</div><div class="grow"><div class="t1">${u.n}</div><div class="t2" title="${u.e}" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${u.e}</div></div>${C.chip(u.role,u.role==='Admin'?'primary':'neutral')}${icon('chevR',14)}</button>`).join('');
   const chips=`<div class="row" style="gap:var(--s-2);flex:none;flex-wrap:wrap">${['All','Admin','Staff','Client','Customer'].map(r=>`<button class="fchip ${f===r?'on':''}" data-act="user-filter" data-value="${r}">${r}</button>`).join('')}</div>`;
   if(pad){
-    return {header:padHead('Users and roles',`${app.users.length} people Â· ${app.users.filter(u=>u.role==='Admin').length} admin${app.users.filter(u=>u.role==='Admin').length===1?'':'s'}`,`<button class="btn primary sm" data-act="invite">${icon('plus',15)}Invite</button>`),body:`${chips}<div class="card" style="padding:0"><div class="list" style="border:0;border-radius:var(--r-card)">${rows}</div></div><div class="banner">${icon('shield',16)}<span class="grow">Roles decide which app opens after sign-in. Client data is visible only to that client and AmiWho admins.</span></div>`};
+    return {header:padHead('Users and roles',`${app.users.length} people · ${app.users.filter(u=>u.role==='Admin').length} admin${app.users.filter(u=>u.role==='Admin').length===1?'':'s'}`,`<button class="btn primary sm" data-act="invite">${icon('plus',15)}Invite</button>`),body:`${chips}<div class="card" style="padding:0"><div class="list" style="border:0;border-radius:var(--r-card)">${rows}</div></div><div class="banner">${icon('shield',16)}<span class="grow">Roles decide which app opens after sign-in. Client data is visible only to that client and AmiWho admins.</span></div>`};
   }
   return {header:navBar('Users and roles',{back:true,actions:`<button class="icon-btn" data-act="invite" aria-label="Invite a user">${icon('plus',20)}</button>`}),body:`${chips}<div class="list">${rows}</div><div class="banner">${icon('shield',16)}<span class="grow">Roles decide which app opens after sign-in.</span></div>`,tab:'account'};
 }
 
 /* ============================================================
-   CLIENT APP Â· DATA
+   CLIENT APP · DATA
    ============================================================ */
 const CLIENT_DATA={
-  Oct:{label:'October 2026',rev:'A$184,320',revD:'+4.8%',margin:'18.4%',marginD:'+1.2 pt',cash:'A$92,750',cashD:'+A$8,420',labour:'31.2%',labourD:'âˆ’2.1 pt',food:'28.6%'},
-  Sep:{label:'September 2026',rev:'A$171,380',revD:'+3.4%',margin:'18.3%',marginD:'+0.2 pt',cash:'A$87,240',cashD:'+A$5,900',labour:'31.8%',labourD:'âˆ’0.6 pt',food:'28.9%'}
+  Oct:{label:'October 2026',rev:'A$184,320',revD:'+4.8%',margin:'18.4%',marginD:'+1.2 pt',cash:'A$92,750',cashD:'+A$8,420',labour:'31.2%',labourD:'−2.1 pt',food:'28.6%'},
+  Sep:{label:'September 2026',rev:'A$171,380',revD:'+3.4%',margin:'18.3%',marginD:'+0.2 pt',cash:'A$87,240',cashD:'+A$5,900',labour:'31.8%',labourD:'−0.6 pt',food:'28.9%'}
 };
 const KPI_ROWS=[
   {l:'Revenue vs target',v:'A$184.3k',target:'Target A$180k',status:'On track',spark:[41,43,44,47,49,51],to:'financial'},
   {l:'Profit margin',v:'18.4%',target:'Target 16.0%',status:'On track',spark:[17.2,17.4,17.9,18.1,18.3,18.4],to:'financial'},
-  {l:'Labour %',v:'31.2%',target:'Target â‰¤32%',status:'On track',spark:[33.3,32.8,32.4,31.9,31.5,31.2],to:'financial'},
-  {l:'Food cost',v:'28.6%',target:'Target â‰¤28.2%',status:'Watch',spark:[29.4,29.1,29.8,29.2,28.9,28.6],to:'financial'},
+  {l:'Labour %',v:'31.2%',target:'Target ≤32%',status:'On track',spark:[33.3,32.8,32.4,31.9,31.5,31.2],to:'financial'},
+  {l:'Food cost',v:'28.6%',target:'Target ≤28.2%',status:'Watch',spark:[29.4,29.1,29.8,29.2,28.9,28.6],to:'financial'},
   {l:'Cash buffer',v:'1.8 mo',target:'Target 2.0 mo',status:'Watch',spark:[1.4,1.5,1.6,1.7,1.7,1.8],to:'cashflow'},
   {l:'Guest spend',v:'A$42.10',target:'Target A$40.00',status:'On track',spark:[39.2,39.8,40.1,41.0,41.6,42.1],to:'overview'}
 ];
@@ -1586,38 +1586,38 @@ const projectTasks=id=>app.tasks.filter(t=>t.project===id);
 const projectDone=id=>projectTasks(id).filter(t=>t.done).length;
 
 /* ============================================================
-   CLIENT APP Â· OVERVIEW
+   CLIENT APP · OVERVIEW
    ============================================================ */
 function dashboardState(dev){
   if(app.dataState==='loading'){
     return `<div class="kpis">${[0,1,2,3].map(()=>`<div class="card"><div class="skel" style="height:10px;width:60%"></div><div class="skel" style="height:22px;width:75%;margin-top:var(--s-2)"></div><div class="skel" style="height:9px;width:45%;margin-top:var(--s-2)"></div></div>`).join('')}</div><div class="card" style="padding:var(--s-4)"><div class="skel" style="height:12px;width:35%"></div><div class="skel" style="height:150px;margin-top:var(--s-3);border-radius:var(--r-control)"></div></div>`;
   }
   if(app.dataState==='empty'){
-    return `<div class="empty" style="min-height:420px"><div class="e-ic">${icon('chart',28)}</div><h3>No data for October</h3><p>Your consultant hasnâ€™t published this period yet. September is still available.</p><div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn primary sm" data-act="view-month" data-month="Sep">View September</button><button class="btn ghost sm" data-act="tab" data-tab="settings">Contact</button></div></div>`;
+    return `<div class="empty" style="min-height:420px"><div class="e-ic">${icon('chart',28)}</div><h3>No data for October</h3><p>Your consultant hasn’t published this period yet. September is still available.</p><div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn primary sm" data-act="view-month" data-month="Sep">View September</button><button class="btn ghost sm" data-act="tab" data-tab="settings">Contact</button></div></div>`;
   }
   if(app.dataState==='error'){
-    return `<div class="empty" style="min-height:420px"><div class="e-ic neg">${icon('alert',28)}</div><h3>We couldnâ€™t load your dashboard</h3><p>This is usually temporary. Your data is safe â€” try again in a moment.</p><div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn primary sm" data-act="retry">Retry</button><button class="btn ghost sm" data-act="tab" data-tab="settings">Contact your consultant</button></div></div>`;
+    return `<div class="empty" style="min-height:420px"><div class="e-ic neg">${icon('alert',28)}</div><h3>We couldn’t load your dashboard</h3><p>This is usually temporary. Your data is safe — try again in a moment.</p><div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn primary sm" data-act="retry">Retry</button><button class="btn ghost sm" data-act="tab" data-tab="settings">Contact your consultant</button></div></div>`;
   }
   return null;
 }
 function screenOverview(dev){
   const pad=dev==='pad', month=app.clientMonth||'Oct', m=CLIENT_DATA[month];
   const state=dashboardState(dev);
-  const head=pad?padHead('Overview',`${CLIENT.name} Â· ${m.label}`,`<button class="btn outline sm" data-act="view-month" data-month="${month==='Oct'?'Sep':'Oct'}">${month==='Oct'?'View September':'View October'}</button><button class="btn ghost sm" data-act="financial">${icon('chart',14)}Details</button><button class="icon-btn" data-act="dataentry" aria-label="Data entry" ${app.role!=='admin'?'hidden':''}>${icon('plus',20)}</button>`)
-    :lgHead('Overview',`${CLIENT.name} Â· ${m.label}`,`<button class="avatar a2" data-act="open-account" aria-label="Account">MF</button>`);
+  const head=pad?padHead('Overview',`${CLIENT.name} · ${m.label}`,`<button class="btn outline sm" data-act="view-month" data-month="${month==='Oct'?'Sep':'Oct'}">${month==='Oct'?'View September':'View October'}</button><button class="btn ghost sm" data-act="financial">${icon('chart',14)}Details</button><button class="icon-btn" data-act="dataentry" aria-label="Data entry" ${app.role!=='admin'?'hidden':''}>${icon('plus',20)}</button>`)
+    :lgHead('Overview',`${CLIENT.name} · ${m.label}`,`<button class="avatar a2" data-act="open-account" aria-label="Account">MF</button>`);
   if(state)return {header:head,body:`${pad?'':`<div class="between"><span class="privacy">${icon('lock',13)}Only you can see this data</span><span class="t-11 faint">${m.label}</span></div>`}${state}`,tab:'overview'};
   const kpis=C.kpi('Revenue (AUD)',m.rev,m.revD,'up','vs prior')+C.kpi('Profit margin',m.margin,m.marginD,'up','vs prior')+C.kpi('Cash position',m.cash,m.cashD,'up','vs Sep')+C.kpi('Labour',m.labour,m.labourD,'up','vs target');
-  const fin=lineChart({labels:MONTHS,series:[{name:'2026',color:'var(--primary)',values:FIN_REV},{name:'2025',color:'var(--chart-2)',values:FIN_PRIOR,dash:'4 3'}],w:pad?430:326,h:pad?180:122,padL:44,fmt:v=>'A$'+Math.round(v)+'k',tip:{i:9,text:'Oct Â· A$184.3k'}});
-  const cash=barChart({labels:CASH.labels,groups:[{name:'In',color:'var(--primary)',values:CASH.in},{name:'Out',color:'var(--chart-3)',values:CASH.out}],line:{name:'Net',color:'var(--ink)',values:CASH.net,dash:'3 3'},w:pad?300:326,h:pad?180:118,padL:44,fmt:v=>'A$'+v.toFixed(0)+'k',tip:{i:3,v:CASH.in[3],text:'Oct in Â· A$52.6k'}});
+  const fin=lineChart({labels:MONTHS,series:[{name:'2026',color:'var(--primary)',values:FIN_REV},{name:'2025',color:'var(--chart-2)',values:FIN_PRIOR,dash:'4 3'}],w:pad?430:326,h:pad?180:122,padL:44,fmt:v=>'A$'+Math.round(v)+'k',tip:{i:9,text:'Oct · A$184.3k'}});
+  const cash=barChart({labels:CASH.labels,groups:[{name:'In',color:'var(--primary)',values:CASH.in},{name:'Out',color:'var(--chart-3)',values:CASH.out}],line:{name:'Net',color:'var(--ink)',values:CASH.net,dash:'3 3'},w:pad?300:326,h:pad?180:118,padL:44,fmt:v=>'A$'+v.toFixed(0)+'k',tip:{i:3,v:CASH.in[3],text:'Oct in · A$52.6k'}});
   const projectsTable=`<table class="tbl tight"><thead><tr><th scope="col">Project</th><th scope="col">Progress</th><th scope="col">Owner</th><th scope="col">Due</th><th scope="col">Status</th></tr></thead><tbody>${PROJECTS.slice(0,3).map(p=>`<tr><td><b>${p.t}</b></td><td><div style="width:84px">${C.bar(p.pct)}</div><span class="t-11 faint">${p.pct}%</span></td><td><div class="row" style="gap:var(--s-2)"><div class="avatar sm ${p.tone}">${p.initials}</div><span>${p.owner.split(' ')[0]}</span></div></td><td class="muted">${p.due}</td><td>${statusChip(p.status)}</td></tr>`).join('')}</tbody></table>`;
   const foodPct=parseFloat(CLIENT_DATA.Oct.food)||28.6, foodOver=foodPct-28.2;
-  const attention=`<div class="card"><div class="card-h"><h4>Needs attention</h4><span class="chip warn">2</span></div><div class="stack" style="gap:var(--s-2)"><div class="row">${icon('alert',16)}<div class="grow"><div class="t-11 strong">${foodOver>0?'Food cost is '+foodOver.toFixed(1)+' pt above target':'Food cost is within target'}</div><div class="t-11 faint">${foodPct.toFixed(1)}% vs â‰¤28.2%</div></div></div><div class="row">${icon('clock',16)}<div class="grow"><div class="t-11 strong">Cash buffer is below target</div><div class="t-11 faint">1.8 mo vs 2.0 mo</div></div></div></div></div>`;
+  const attention=`<div class="card"><div class="card-h"><h4>Needs attention</h4><span class="chip warn">2</span></div><div class="stack" style="gap:var(--s-2)"><div class="row">${icon('alert',16)}<div class="grow"><div class="t-11 strong">${foodOver>0?'Food cost is '+foodOver.toFixed(1)+' pt above target':'Food cost is within target'}</div><div class="t-11 faint">${foodPct.toFixed(1)}% vs ≤28.2%</div></div></div><div class="row">${icon('clock',16)}<div class="grow"><div class="t-11 strong">Cash buffer is below target</div><div class="t-11 faint">1.8 mo vs 2.0 mo</div></div></div></div></div>`;
   if(pad){
     return {header:head,body:`
       <div class="between"><span class="privacy">${icon('lock',13)}Only you can see this data</span><span class="t-11 faint">Updated 6:12am</span></div>
       <div class="kpis four">${kpis}</div>
       <div class="dash-grid" style="flex:1">
-        <div class="card span2"><div class="card-h"><h4>Financial performance</h4><span class="sub">Jan â€“ Oct 2026</span><button class="more" data-act="financial">Details</button></div>${fin}${C.legend([['2026','var(--primary)'],['2025','var(--chart-2)']])}</div>
+        <div class="card span2"><div class="card-h"><h4>Financial performance</h4><span class="sub">Jan – Oct 2026</span><button class="more" data-act="financial">Details</button></div>${fin}${C.legend([['2026','var(--primary)'],['2025','var(--chart-2)']])}</div>
         <div class="card"><div class="card-h"><h4>Cash flow</h4><span class="sub">AUD</span><button class="more" data-act="cashflow">Details</button></div>${cash}${C.legend([['In','var(--primary)'],['Out','var(--chart-3)'],['Net','var(--ink)']])}</div>
         <div class="card span2"><div class="card-h"><h4>Projects</h4><span class="sub">${PROJECTS.length} active</span><button class="more" data-act="projects">All projects</button></div>${projectsTable}</div>
         <div>${attention}</div>
@@ -1626,22 +1626,22 @@ function screenOverview(dev){
   return {header:head,body:`
     <div class="between"><span class="privacy">${icon('lock',13)}Only you can see this data</span><button class="t-11 strong tap" style="color:var(--primary);display:inline-flex;align-items:center;gap:var(--s-1)" data-act="view-month" data-month="${month==='Oct'?'Sep':'Oct'}">${month==='Oct'?'View September':'View October'} ${icon('chevD',12)}</button></div>
     <div class="kpis">${kpis}</div>
-    <div class="card"><div class="card-h"><h4>Financial performance</h4><span class="sub">Jan â€“ Oct</span><button class="more" data-act="financial">Details</button></div>${fin}${C.legend([['2026','var(--primary)'],['2025','var(--chart-2)']])}</div>
+    <div class="card"><div class="card-h"><h4>Financial performance</h4><span class="sub">Jan – Oct</span><button class="more" data-act="financial">Details</button></div>${fin}${C.legend([['2026','var(--primary)'],['2025','var(--chart-2)']])}</div>
     <div class="card"><div class="card-h"><h4>Cash flow</h4><span class="sub">AUD</span><button class="more" data-act="cashflow">Details</button></div>${cash}${C.legend([['In','var(--primary)'],['Out','var(--chart-3)'],['Net','var(--ink)']])}</div>
     <div class="banner warn">${icon('alert',16)}<span class="grow">${foodOver>0?'Food cost is '+foodOver.toFixed(1)+' pt above target.':'Food cost is within target.'}</span><button class="t-11 strong tap" data-act="kpis">Review</button></div>`,tab:'overview'};
 }
 
 /* ============================================================
-   CLIENT APP Â· FINANCIAL
+   CLIENT APP · FINANCIAL
    ============================================================ */
 function screenFinancial(dev){
   const pad=dev==='pad', r=RANGE[app.range];
-  const chart=lineChart({labels:r.labels,series:[{name:'Revenue',color:'var(--primary)',values:r.rev},...(app.compare?[{name:'Prior',color:'var(--chart-2)',values:r.prior,dash:'4 3'}]:[])],w:pad?500:326,h:pad?220:156,padL:44,fmt:v=>'A$'+Math.round(v)+'k',tip:{i:r.labels.length-1,text:r.labels[r.labels.length-1]+' Â· A$'+r.rev[r.rev.length-1]+'k'}});
+  const chart=lineChart({labels:r.labels,series:[{name:'Revenue',color:'var(--primary)',values:r.rev},...(app.compare?[{name:'Prior',color:'var(--chart-2)',values:r.prior,dash:'4 3'}]:[])],w:pad?500:326,h:pad?220:156,padL:44,fmt:v=>'A$'+Math.round(v)+'k',tip:{i:r.labels.length-1,text:r.labels[r.labels.length-1]+' · A$'+r.rev[r.rev.length-1]+'k'}});
   const rangeSeg=`<div class="seg2 pill">${['30d','quarter','fy'].map(k=>`<button class="${app.range===k?'on':''}" data-act="range" data-value="${k}">${RANGE[k].short}</button>`).join('')}</div>`;
   const summary=pad?`<div class="kpis three">${C.kpi('Revenue',r.summary.rev,r.summary.change,'up','vs prior')}${C.kpi('Prior period',r.summary.prior,'','','')}${C.kpi('Profit',r.summary.profit,r.summary.margin+' margin','','')}</div>`:`<div class="card">${[['Revenue',r.summary.rev,r.summary.change,'up'],['Prior period',r.summary.prior,'',''],['Profit',r.summary.profit,r.summary.margin+' margin','']].map(([l,v,d,tone],i)=>`<div class="between" style="min-height:44px${i?';border-top:1px solid var(--border)':''}"><span class="t-12 muted">${l}</span><div class="row" style="gap:var(--s-2)"><span class="t-15 strong tnum">${v}</span>${d?`<span class="t-11 strong ${tone}">${d}</span>`:''}</div></div>`).join('')}</div>`;
   const table=`<div class="card"><div class="card-h"><h4>${r.label}</h4><span class="sub">AUD</span><button class="more" data-act="export">Export</button></div><table class="tbl"><thead><tr><th scope="col">Period</th><th scope="col" class="num">Revenue</th><th scope="col" class="num">Labour</th><th scope="col" class="num">Food</th><th scope="col" class="num">Margin</th><th scope="col" class="num">vs prior</th></tr></thead><tbody>${r.rows.map(x=>`<tr><td><b>${x.a}</b></td><td class="num">${x.b}</td><td class="num muted">${x.c}</td><td class="num muted">${x.d}</td><td class="num"><b>${x.e}</b></td><td class="num"><span class="chip pos">${x.f} pt</span></td></tr>`).join('')}</tbody></table></div>`;
-  const phoneTable=`<div class="card"><div class="card-h"><h4>${r.label}</h4><span class="sub">AUD</span><button class="more" data-act="export">Export</button></div><table class="tbl"><thead><tr><th scope="col">Period</th><th scope="col" class="num">Revenue</th><th scope="col" class="num">Labour</th><th scope="col" class="num">Margin</th></tr></thead><tbody>${r.rows.map(x=>`<tr><td><b>${x.a.split(' Â· ')[0]}</b></td><td class="num">${x.b}</td><td class="num muted">${x.c}</td><td class="num"><b>${x.e}</b></td></tr>`).join('')}</tbody></table></div>`;
-  const head=pad?padHead('Financial performance',`${r.label} Â· ${app.compare?'Compared with prior period':'Prior period hidden'}`,`${rangeSeg}`)
+  const phoneTable=`<div class="card"><div class="card-h"><h4>${r.label}</h4><span class="sub">AUD</span><button class="more" data-act="export">Export</button></div><table class="tbl"><thead><tr><th scope="col">Period</th><th scope="col" class="num">Revenue</th><th scope="col" class="num">Labour</th><th scope="col" class="num">Margin</th></tr></thead><tbody>${r.rows.map(x=>`<tr><td><b>${x.a.split(' · ')[0]}</b></td><td class="num">${x.b}</td><td class="num muted">${x.c}</td><td class="num"><b>${x.e}</b></td></tr>`).join('')}</tbody></table></div>`;
+  const head=pad?padHead('Financial performance',`${r.label} · ${app.compare?'Compared with prior period':'Prior period hidden'}`,`${rangeSeg}`)
     :navBar('Financial performance',{back:true,actions:`<button class="icon-btn" data-act="share" aria-label="Share">${icon('share',18)}</button>`});
   if(pad){
     return {header:head,body:`<div class="between"><span class="privacy">${icon('lock',13)}Only you can see this data</span><button class="btn ghost sm" data-act="compare">Compare: ${app.compare?'on':'off'}</button></div>
@@ -1651,7 +1651,7 @@ function screenFinancial(dev){
 }
 
 /* ============================================================
-   CLIENT APP Â· CASH FLOW
+   CLIENT APP · CASH FLOW
    ============================================================ */
 function screenCashflow(dev){
   const pad=dev==='pad', quarter=app.cashPeriod==='quarter';
@@ -1661,13 +1661,13 @@ function screenCashflow(dev){
   const fmK=n=>'A$'+n.toFixed(1)+'k';
   const fmS=n=>'A$'+Math.round(n*1000).toLocaleString('en-AU');
   const inflow=sumK(din), outflow=sumK(dout), net=sumK(dnet);
-  const chart=barChart({labels,groups:[{name:'In',color:'var(--primary)',values:din},{name:'Out',color:'var(--chart-3)',values:dout}],line:{name:'Net',color:'var(--ink)',values:dnet,dash:'3 3'},w:pad?520:326,h:pad?220:160,padL:44,fmt:v=>'A$'+v.toFixed(0)+'k',tip:{i:labels.length-1,v:din[din.length-1],text:labels[labels.length-1]+' in Â· A$'+din[din.length-1]+'k'}});
+  const chart=barChart({labels,groups:[{name:'In',color:'var(--primary)',values:din},{name:'Out',color:'var(--chart-3)',values:dout}],line:{name:'Net',color:'var(--ink)',values:dnet,dash:'3 3'},w:pad?520:326,h:pad?220:160,padL:44,fmt:v=>'A$'+v.toFixed(0)+'k',tip:{i:labels.length-1,v:din[din.length-1],text:labels[labels.length-1]+' in · A$'+din[din.length-1]+'k'}});
   const stats=pad?`<div class="kpis three">${C.kpi('Inflows',fmK(inflow))}${C.kpi('Outflows',fmK(outflow))}${C.kpi('Net cash',fmK(net))}</div>`:`<div class="card">${[['Inflows',fmK(inflow)],['Outflows',fmK(outflow)],['Net cash',fmK(net)]].map(([l,v],i)=>`<div class="between" style="min-height:44px${i?';border-top:1px solid var(--border)':''}"><span class="t-12 muted">${l}</span><span class="t-15 strong tnum">${v}</span></div>`).join('')}</div>`;
   const cashIn=[['Sales settled',inflow*.79],['Deposits &amp; prepayments',inflow*.21]];
   const cashOut=[['Wages',outflow*.553],['Food &amp; beverage',outflow*.293],['Rent &amp; utilities',outflow*.127],['Other',outflow*.027]];
   const breakdown=`<div class="card"><div class="card-h"><h4>Cash in</h4><span class="sub">AUD</span></div><div class="stack" style="gap:var(--s-2)">${cashIn.map(([l,v])=>`<div><div class="between t-11"><span>${l}</span><span class="strong">${fmS(v)}</span></div><div style="margin-top:var(--s-1)">${C.bar(v/inflow*100)}</div></div>`).join('')}</div></div>
     <div class="card"><div class="card-h"><h4>Cash out</h4><span class="sub">AUD</span></div><div class="stack" style="gap:var(--s-2)">${cashOut.map(([l,v])=>`<div><div class="between t-11"><span>${l}</span><span class="strong">${fmS(v)}</span></div><div style="margin-top:var(--s-1)">${C.bar(v/outflow*100,'warn')}</div></div>`).join('')}</div></div>`;
-  const head=pad?padHead('Cash flow',quarter?'1 August â€“ 31 October 2026':'1 July â€“ 31 October 2026','<div class="seg2 pill"><button class="'+(quarter?'':'on')+'" data-act="cash-period" data-value="month">4 months</button><button class="'+(quarter?'on':'')+'" data-act="cash-period" data-value="quarter">Quarter</button></div>')
+  const head=pad?padHead('Cash flow',quarter?'1 August – 31 October 2026':'1 July – 31 October 2026','<div class="seg2 pill"><button class="'+(quarter?'':'on')+'" data-act="cash-period" data-value="month">4 months</button><button class="'+(quarter?'on':'')+'" data-act="cash-period" data-value="quarter">Quarter</button></div>')
     :navBar('Cash flow',{back:true,actions:`<button class="icon-btn" data-act="share" aria-label="Share">${icon('share',18)}</button>`});
   if(pad){
     return {header:head,body:`<div class="between"><span class="privacy">${icon('lock',13)}Only you can see this data</span><span class="t-11 faint">Updated 6:12am</span></div>${stats}<div class="card"><div class="card-h"><h4>Inflows and outflows</h4><span class="sub">AUD</span>${C.legend([['In','var(--primary)'],['Out','var(--chart-3)'],['Net','var(--ink)']])}</div>${chart}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3)">${breakdown}</div><div class="banner">${icon('book',16)}<span class="grow">Forecast: November net cash +A$12.4k, assuming covers hold.</span></div>`};
@@ -1676,13 +1676,13 @@ function screenCashflow(dev){
 }
 
 /* ============================================================
-   CLIENT APP Â· KPIS
+   CLIENT APP · KPIS
    ============================================================ */
 function screenKpis(dev){
   const pad=dev==='pad';
   const rows=KPI_ROWS.map(k=>`<button class="item" data-act="kpi-open" data-to="${k.to}"><div class="grow"><div class="t1">${k.l}</div><div class="t2">${k.target}</div></div><div class="right"><div class="t-13 strong">${k.v}</div><div style="margin-top:var(--s-1)">${statusChip(k.status)}</div></div>${spark(k.spark,k.status==='Watch'?'var(--warn)':'var(--pos)',54,20)}${icon('chevR',14)}</button>`).join('');
-  const head=pad?padHead('KPIs','6 tracked Â· 2 need attention','<span class="privacy">'+icon('lock',13)+'Only you can see this data</span><button class="btn outline sm" data-act="financial">Financial details</button>')
-    :lgHead('KPIs','6 tracked Â· 2 need attention');
+  const head=pad?padHead('KPIs','6 tracked · 2 need attention','<span class="privacy">'+icon('lock',13)+'Only you can see this data</span><button class="btn outline sm" data-act="financial">Financial details</button>')
+    :lgHead('KPIs','6 tracked · 2 need attention');
   if(pad){
     return {header:head,body:`<div class="row wrap" style="gap:var(--s-2)">${C.chip(KPI_ROWS.filter(k=>k.status==='On track').length+' on track','pos',true)}${C.chip(KPI_ROWS.filter(k=>k.status==='Watch').length+' watch','warn')}${C.chip(KPI_ROWS.filter(k=>k.status!=='On track'&&k.status!=='Watch').length+' off track','neutral')}</div><div class="card" style="padding:0"><table class="tbl"><thead><tr><th scope="col">KPI</th><th scope="col" class="num">Now</th><th scope="col">Target</th><th scope="col">Status</th><th scope="col">Trend</th><th scope="col" class="num">Action</th></tr></thead><tbody>${KPI_ROWS.map(k=>`<tr><td><b>${k.l}</b></td><td class="num"><b>${k.v}</b></td><td class="muted">${k.target.replace('Target ','')}</td><td>${statusChip(k.status)}</td><td>${spark(k.spark,k.status==='Watch'?'var(--warn)':'var(--pos)',70,22)}</td><td class="num"><button class="btn sm ghost" data-act="kpi-open" data-to="${k.to}">Open</button></td></tr>`).join('')}</tbody></table></div><div class="banner warn">${icon('alert',16)}<span class="grow">Food cost is the closest to its line. A menu re-cost would recover 0.4 pt.</span></div>`};
   }
@@ -1690,14 +1690,14 @@ function screenKpis(dev){
 }
 
 /* ============================================================
-   CLIENT APP Â· PROJECTS
+   CLIENT APP · PROJECTS
    ============================================================ */
 function screenProjects(dev){
   const pad=dev==='pad';
   const list=PROJECTS.filter(p=>app.projectFilter==='All'||p.status===app.projectFilter);
   const chips=`<div class="row" style="gap:var(--s-2)">${['All','On track','Watch'].map(f=>`<button class="fchip ${app.projectFilter===f?'on':''}" data-act="project-filter" data-value="${f}">${f}</button>`).join('')}</div>`;
   const cards=list.map(p=>`<button class="card" style="text-align:left;display:block" data-act="open-project" data-id="${p.id}"><div class="between"><div class="t-13 strong">${p.t}</div>${statusChip(p.status)}</div><div class="between t-11 faint" style="margin-top:var(--s-1)"><span>${p.pct}% complete</span><span>Due ${p.due}</span></div><div style="margin-top:var(--s-2)">${C.bar(p.pct,p.status==='Watch'?'warn':'')}</div><div class="between" style="margin-top:var(--s-2)"><div class="row"><div class="avatar sm ${p.tone}">${p.initials}</div><span class="t-11">${p.owner}</span></div><span class="row" style="gap:var(--s-1);color:var(--primary);font-size:var(--text-2xs);font-weight:600">Open ${icon('chevR',12)}</span></div></button>`).join('');
-  const head=pad?padHead('Projects',`${PROJECTS.length} active Â· 1 due this week`,`<button class="btn primary sm" data-act="new-project">${icon('plus',15)}New project</button>`):lgHead('Projects',`${PROJECTS.length} active Â· 1 due this week`,`<button class="icon-btn" data-act="new-project" aria-label="New project">${icon('plus',20)}</button>`);
+  const head=pad?padHead('Projects',`${PROJECTS.length} active · 1 due this week`,`<button class="btn primary sm" data-act="new-project">${icon('plus',15)}New project</button>`):lgHead('Projects',`${PROJECTS.length} active · 1 due this week`,`<button class="icon-btn" data-act="new-project" aria-label="New project">${icon('plus',20)}</button>`);
   if(pad){
     return {header:head,body:`${chips}${list.length?`<div class="card" style="padding:0"><table class="tbl tight"><thead><tr><th scope="col">Project</th><th scope="col">Progress</th><th scope="col">Owner</th><th scope="col">Due</th><th scope="col">Status</th></tr></thead><tbody>${list.map(p=>`<tr><td><button class="strong tap" style="text-align:left" data-act="open-project" data-id="${p.id}">${p.t}</button></td><td><div style="width:84px">${C.bar(p.pct,p.status==='Watch'?'warn':'')}</div><span class="t-11 faint">${p.pct}%</span></td><td><div class="row" style="gap:var(--s-2)"><div class="avatar sm ${p.tone}">${p.initials}</div>${p.owner.split(' ')[0]}</div></td><td class="muted">${p.due}</td><td>${statusChip(p.status)}</td></tr>`).join('')}</tbody></table></div>`:`<div class="empty" style="min-height:280px"><div class="e-ic">${icon('folder',26)}</div><h3>No projects here</h3><p>Try another filter.</p><button class="btn secondary sm" data-act="project-filter" data-value="All">Show all</button></div>`}<div class="banner">${icon('calendar',16)}<span class="grow">Spring Events Series is due 22 Nov.</span></div>`};
   }
@@ -1705,7 +1705,7 @@ function screenProjects(dev){
 }
 
 /* ============================================================
-   CLIENT APP Â· PROJECT DETAIL
+   CLIENT APP · PROJECT DETAIL
    ============================================================ */
 function screenProject(dev){
   const pad=dev==='pad', p=PROJECTS.find(x=>x.id===(nav[dev].params.id||app.selectedProject))||PROJECTS[0];
@@ -1713,7 +1713,7 @@ function screenProject(dev){
   const done=tasks.filter(t=>t.done).length;
   const taskList=tasks.length?tasks.map(t=>`<div class="row" style="gap:var(--s-2);padding:var(--s-3) 0;border-bottom:1px solid var(--border)">
     <button class="icon-btn" style="color:${t.done?'var(--pos)':'var(--ink-3)'}" data-act="toggle-task" data-id="${t.id}" aria-label="${t.done?'Mark task incomplete':'Mark task complete'}">${icon(t.done?'checkCircle':'circle',20)}</button>
-    <div class="grow"><div class="t-12 ${t.done?'faint':''}" style="font-weight:500;text-decoration:${t.done?'line-through':'none'}">${esc(t.t)}</div><div class="t-11 faint">${t.assignee} Â· ${t.status}</div></div><div class="avatar sm ${t.tone}">${t.initials}</div><span class="t-11 faint">${t.due}</span>
+    <div class="grow"><div class="t-12 ${t.done?'faint':''}" style="font-weight:500;text-decoration:${t.done?'line-through':'none'}">${esc(t.t)}</div><div class="t-11 faint">${t.assignee} · ${t.status}</div></div><div class="avatar sm ${t.tone}">${t.initials}</div><span class="t-11 faint">${t.due}</span>
   </div>`).join(''):`<div class="empty" style="min-height:160px"><p>No tasks yet.</p></div>`;
   const addTask=`<div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><div class="search grow">${icon('plus',15)}<input id="newtask-${dev}" placeholder="Add a task" data-input="newtask"></div><button class="btn primary sm" data-act="add-task" data-project="${p.id}">Add</button></div>`;
   const meta=`<div class="card"><div class="between"><div class="label">Overall progress</div><span class="t-12 strong">${p.pct}%</span></div><div style="margin-top:var(--s-2)">${C.bar(p.pct)}</div><div class="divider" style="margin:12px 0"></div><div class="stack tight">
@@ -1722,7 +1722,7 @@ function screenProject(dev){
     <div class="between t-12"><span class="faint">Tasks</span><span class="strong">${tasks.length-done} open</span></div>
     <div class="between t-12"><span class="faint">Status</span>${statusChip(p.status)}</div>
   </div></div>`;
-  const head=pad?padHead(p.t,`${p.status} Â· Due ${p.due} Â· Owner ${p.owner}`,``):navBar(p.t,{back:true,actions:`<button class="icon-btn" data-act="share" aria-label="Share">${icon('share',18)}</button>`});
+  const head=pad?padHead(p.t,`${p.status} · Due ${p.due} · Owner ${p.owner}`,``):navBar(p.t,{back:true,actions:`<button class="icon-btn" data-act="share" aria-label="Share">${icon('share',18)}</button>`});
   if(pad){
     return {header:head,body:`<div class="frames-grid" style="flex:1;align-items:start"><div class="card"><div class="card-h"><h4>Tasks</h4><span class="sub">${done} of ${tasks.length} done</span></div>${taskList}${addTask}</div><div class="stack" style="gap:var(--s-3)">${meta}<div class="card"><div class="label">Notes</div><p class="t-12 muted" style="margin-top:var(--s-2);line-height:1.55">Rollout runs with the spring events series. Sign off on food cost before the supplier cut-off on 21 Nov.</p></div><div class="card"><div class="label">Files</div><div class="row" style="margin-top:var(--s-2)">${icon('file',16)}<span class="t-12">Winter menu v3.pdf</span>${C.chip('2.4 MB','neutral')}</div></div></div></div>`};
   }
@@ -1730,16 +1730,16 @@ function screenProject(dev){
 }
 
 /* ============================================================
-   CLIENT APP Â· TASKS
+   CLIENT APP · TASKS
    ============================================================ */
 function screenTasks(dev){
   const pad=dev==='pad', f=app.taskFilter;
   const filters=['All','To do','In progress','Blocked','Done'];
   const list=app.tasks.filter(t=>f==='All'||t.status===f);
-  const row=t=>`<div class="item" style="align-items:flex-start"><button class="icon-btn" style="color:${t.done?'var(--pos)':'var(--ink-3)'}" data-act="toggle-task" data-id="${t.id}" aria-label="${t.done?'Mark task incomplete':'Mark task complete'}">${icon(t.done?'checkCircle':'circle',20)}</button><div class="grow"><div class="t1" style="text-decoration:${t.done?'line-through':'none'};color:${t.done?'var(--ink-3)':'var(--ink)'}">${esc(t.t)}</div><div class="t2">${PROJECTS.find(p=>p.id===t.project)?.t||''} Â· ${t.assignee}</div><div class="row" style="gap:var(--s-2);margin-top:var(--s-1)">${statusChip(t.status)}<span class="t-11 faint">${t.due}</span><div class="avatar sm ${t.tone}">${t.initials}</div></div></div></div>`;
+  const row=t=>`<div class="item" style="align-items:flex-start"><button class="icon-btn" style="color:${t.done?'var(--pos)':'var(--ink-3)'}" data-act="toggle-task" data-id="${t.id}" aria-label="${t.done?'Mark task incomplete':'Mark task complete'}">${icon(t.done?'checkCircle':'circle',20)}</button><div class="grow"><div class="t1" style="text-decoration:${t.done?'line-through':'none'};color:${t.done?'var(--ink-3)':'var(--ink)'}">${esc(t.t)}</div><div class="t2">${PROJECTS.find(p=>p.id===t.project)?.t||''} · ${t.assignee}</div><div class="row" style="gap:var(--s-2);margin-top:var(--s-1)">${statusChip(t.status)}<span class="t-11 faint">${t.due}</span><div class="avatar sm ${t.tone}">${t.initials}</div></div></div></div>`;
   const chips=`<div class="row" style="gap:var(--s-2);flex:none;flex-wrap:wrap">${filters.map(x=>`<button class="fchip ${f===x?'on':''}" data-act="task-filter" data-value="${x}">${x}</button>`).join('')}</div>`;
   const openCount=app.tasks.filter(t=>!t.done).length, blockedCount=app.tasks.filter(t=>t.status==='Blocked').length;
-  const head=pad?padHead('Tasks',`${openCount} open Â· ${blockedCount} blocked`,`<button class="btn outline sm" data-act="projects">Projects</button>`):lgHead('Tasks',`${openCount} open Â· ${blockedCount} blocked`);
+  const head=pad?padHead('Tasks',`${openCount} open · ${blockedCount} blocked`,`<button class="btn outline sm" data-act="projects">Projects</button>`):lgHead('Tasks',`${openCount} open · ${blockedCount} blocked`);
   if(pad){
     const body=list.length?`<div class="list">${list.map(row).join('')}</div>`:`<div class="empty" style="min-height:320px"><div class="e-ic">${icon('checkCircle',26)}</div><h3>No tasks in this filter</h3><p>Nothing is ${f.toLowerCase()} right now.</p><button class="btn secondary sm" data-act="task-filter" data-value="All">Show all tasks</button></div>`;
     return {header:head,body:`${chips}${body}`};
@@ -1748,7 +1748,7 @@ function screenTasks(dev){
 }
 
 /* ============================================================
-   CLIENT APP Â· SETTINGS
+   CLIENT APP · SETTINGS
    ============================================================ */
 function screenSettings(dev){
   const pad=dev==='pad';
@@ -1756,7 +1756,7 @@ function screenSettings(dev){
   const workspace=`<div class="card"><div class="card-h"><h4>Workspace</h4>${C.chip(app.role==='client'?'Client':app.role==='customer'?'Customer':app.role==='staff'?'Viewing':'Viewing',app.role==='admin'||app.role==='staff'?'neutral':'primary')}</div><div class="row"><div class="avatar a2">MF</div><div class="grow"><div class="t-13 strong">${CLIENT.name}</div><div class="t-11 faint">${CLIENT.sub}</div></div></div>${app.role==='admin'?`<button class="btn outline sm full" style="margin-top:var(--s-2)" data-act="workspace" data-app="doc">${icon('book',14)}Switch to Document Control</button>`:''}</div>`;
   const admin=(app.role==='admin')?`<div class="card"><div class="card-h"><h4>Admin tools</h4></div><div class="stack tight"><button class="row" style="width:100%;text-align:left" data-act="dataentry">${icon('edit',16)}<span class="grow t-12">Manual data entry</span>${icon('chevR',14)}</button><button class="row" style="width:100%;text-align:left" data-act="import">${icon('upload',16)}<span class="grow t-12">CSV import</span>${icon('chevR',14)}</button></div></div>`:'';
   const privacy=`<div class="banner"><div class="row" style="width:100%">${icon('lock',18)}<div class="grow"><div class="t-12 strong">Only you can see this data</div><div class="t-11" style="margin-top:var(--s-1);color:var(--ink-2)">Your consultant can publish data to your workspace but cannot see your private notes. Documents are watermarked to ${CLIENT.name}.</div></div></div></div>`;
-  const head=pad?padHead('Settings',`${CLIENT.name} Â· privacy and notifications`,``):lgHead('Settings',CLIENT.name);
+  const head=pad?padHead('Settings',`${CLIENT.name} · privacy and notifications`,``):lgHead('Settings',CLIENT.name);
   if(pad){
     return {header:head,body:`<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3);align-items:start"><div class="stack" style="gap:var(--s-3)">${workspace}${privacy}</div><div class="stack" style="gap:var(--s-3)"><div class="card"><div class="card-h"><h4>Notifications</h4></div>${toggles}</div>${admin}<div class="list"><button class="item" data-act="signout" style="color:var(--neg)">${icon('logout',17)}<div class="grow"><div class="t1" style="color:var(--neg)">Sign out</div></div></button></div></div></div>`};
   }
@@ -1764,7 +1764,7 @@ function screenSettings(dev){
 }
 
 /* ============================================================
-   CLIENT ADMIN Â· DATA ENTRY
+   CLIENT ADMIN · DATA ENTRY
    ============================================================ */
 const entryFor=id=>app.entries[id]||(app.entries[id]={rev:'',lab:'',food:'',other:'',notes:''});
 function entryValues(dev){
@@ -1800,7 +1800,7 @@ function entryForm(dev){
   const v={rev:Number(d.rev)||0,lab:Number(d.lab)||0,food:Number(d.food)||0,other:Number(d.other)||0};
   const calc=entryCalc(v);
   const field=(k,label,val)=>`<div class="field"><label>${label}</label><div class="input"><span class="t-11 faint" style="margin-right:2px">A$</span><input data-entry="${k}" data-input="entry" inputmode="decimal" value="${Number(val).toLocaleString('en-AU')}" aria-label="${label}"></div></div>`;
-  return `<div class="card"><div class="card-h"><h4>Performance inputs</h4><span class="sub">AUD Â· ${c.sub.includes('Sep')?'September 2026':'October 2026'}</span></div>
+  return `<div class="card"><div class="card-h"><h4>Performance inputs</h4><span class="sub">AUD · ${c.sub.includes('Sep')?'September 2026':'October 2026'}</span></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2)">
       ${field('rev','Revenue',v.rev)}${field('lab','Labour cost',v.lab)}${field('food','Food cost',v.food)}${field('other','Other costs',v.other)}
     </div>
@@ -1808,41 +1808,41 @@ function entryForm(dev){
     <div class="inset"><div class="between"><div><div class="label">Profit</div><div class="t-17 b7 calc-profit">${money(calc.profit)}</div></div><div class="right"><div class="label">Margin</div><div class="t-17 b7 calc-margin">${calc.margin.toFixed(1)}%</div></div></div></div>
     ${app.entryPublished?`<div class="banner" style="margin-top:var(--s-2)">${icon('checkCircle',15)}<span class="grow">Published to ${CLIENTS.find(c=>c.id===app.entryClient)?.n||CLIENT.name}</span></div>`:''}
     <div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn secondary" style="flex:1" data-act="save-draft">Save draft</button><button class="btn primary" style="flex:1" data-act="publish">Publish</button></div>
-    <p class="t-11 faint" style="margin-top:var(--s-2)">Last published ${app.lastPublished||'4 Nov 2026'} by Sam T. Publishing replaces the clientâ€™s live figures for this period.</p>
+    <p class="t-11 faint" style="margin-top:var(--s-2)">Last published ${app.lastPublished||'4 Nov 2026'} by Sam T. Publishing replaces the client’s live figures for this period.</p>
   </div>`;
 }
 function screenDataEntry(dev){
   const pad=dev==='pad', c=CLIENTS.find(x=>x.id===app.entryClient)||CLIENTS[0];
   const clients=CLIENTS.map(x=>`<button class="item ${x.id===app.entryClient?'':''}" style="${x.id===app.entryClient?'background:var(--surface-2);box-shadow:inset 2px 0 0 var(--accent)':''}" data-act="client-select" data-id="${x.id}"><div class="avatar ${x.tone}">${x.initials}</div><div class="grow"><div class="t1">${x.n}</div><div class="t2">${x.sub}</div></div>${x.id===app.entryClient?C.chip('Editing','primary'):icon('chevR',14)}</button>`).join('');
-  const head=pad?padHead('Manual data entry',`${c.n} Â· ${c.sub}`,''):navBar('Data entry',{back:true});
+  const head=pad?padHead('Manual data entry',`${c.n} · ${c.sub}`,''):navBar('Data entry',{back:true});
   if(pad){
-    return {header:head,body:`<div style="display:grid;grid-template-columns:250px 1fr;gap:var(--s-3);align-items:start"><div class="card" style="padding:0;overflow:hidden"><div style="padding:var(--s-3) 12px"><div class="label">Client Â· 5 of 42</div></div><div class="list" style="border:0;border-radius:0">${clients}</div></div><div class="stack" style="gap:var(--s-3)">${entryForm(dev)}<div class="banner">${icon('shield',16)}<span class="grow">Only AmiWho admins and ${c.n} can see these figures.</span></div></div></div>`};
+    return {header:head,body:`<div style="display:grid;grid-template-columns:250px 1fr;gap:var(--s-3);align-items:start"><div class="card" style="padding:0;overflow:hidden"><div style="padding:var(--s-3) 12px"><div class="label">Client · 5 of 42</div></div><div class="list" style="border:0;border-radius:0">${clients}</div></div><div class="stack" style="gap:var(--s-3)">${entryForm(dev)}<div class="banner">${icon('shield',16)}<span class="grow">Only AmiWho admins and ${c.n} can see these figures.</span></div></div></div>`};
   }
   return {header:head,body:`<div class="field"><label>Client (5 of 42)</label><select class="mini" data-select="entry-client" aria-label="Client" style="width:100%">${CLIENTS.map(x=>`<option value="${x.id}" ${x.id===app.entryClient?'selected':''}>${x.n}</option>`).join('')}</select></div>
     ${entryForm(dev)}`,tab:'settings'};
 }
 
 /* ============================================================
-   CLIENT ADMIN Â· CSV IMPORT
+   CLIENT ADMIN · CSV IMPORT
    ============================================================ */
 function csvStepper(step){
   const labels=['Upload','Map','Preview','Confirm'];
-  return `<div class="steps">${labels.map((l,i)=>{const n=i+1;return `${i?`<span class="step-line"></span>`:''}<span class="step ${step>n?'done':step===n?'on':''}"><b>${step>n?'âœ“':n}</b>${l}</span>`}).join('')}</div>`;
+  return `<div class="steps">${labels.map((l,i)=>{const n=i+1;return `${i?`<span class="step-line"></span>`:''}<span class="step ${step>n?'done':step===n?'on':''}"><b>${step>n?'✓':n}</b>${l}</span>`}).join('')}</div>`;
 }
 const CSV_ROWS=[['01 Oct 2026','6,240.00','1,890.00','1,760.00'],['02 Oct 2026','5,480.00','1,720.00','1,610.00'],['03 Oct 2026','7,120.00','2,060.00','1,940.00'],['04 Oct 2026','6,880.00','1,980.00','1,870.00']];
 function csvMapping(){
   const opts={date:['Date','Period'],gross:['Gross sales','Net sales'],wages:['Wages','Labour'],food:['Food purchases','COGS']};
-  return `<div class="card"><div class="card-h"><h4>Column mapping</h4><span class="sub">4 of 4 mapped</span></div><div class="stack" style="gap:var(--s-2)">${[['date','Date'],['gross','Gross sales'],['wages','Wages'],['food','Food purchases']].map(([k,l])=>`<div class="field"><label>${l}</label><select class="mini" data-select="csv-map" data-key="${k}" aria-label="Map ${l}" style="width:100%">${opts[k].map(o=>`<option ${app.csvMap[k]===o?'selected':''}>${o}</option>`).join('')}</select></div>`).join('')}</div><div class="banner" style="margin-top:var(--s-2)">${icon('checkCircle',15)}<span class="grow">31 rows detected Â· 1 header row skipped</span></div></div>`;
+  return `<div class="card"><div class="card-h"><h4>Column mapping</h4><span class="sub">4 of 4 mapped</span></div><div class="stack" style="gap:var(--s-2)">${[['date','Date'],['gross','Gross sales'],['wages','Wages'],['food','Food purchases']].map(([k,l])=>`<div class="field"><label>${l}</label><select class="mini" data-select="csv-map" data-key="${k}" aria-label="Map ${l}" style="width:100%">${opts[k].map(o=>`<option ${app.csvMap[k]===o?'selected':''}>${o}</option>`).join('')}</select></div>`).join('')}</div><div class="banner" style="margin-top:var(--s-2)">${icon('checkCircle',15)}<span class="grow">31 rows detected · 1 header row skipped</span></div></div>`;
 }
 function csvPreview(){
   return `<div class="card"><div class="card-h"><h4>Preview</h4><span class="sub">first 4 of 31</span>${C.chip('31 valid','pos')}</div><table class="tbl compact"><thead><tr><th scope="col">Date</th><th scope="col" class="num">Revenue</th><th scope="col" class="num">Labour</th><th scope="col" class="num">Food</th></tr></thead><tbody>${CSV_ROWS.map(r=>`<tr>${r.map((c,i)=>`<td class="${i?'num':''}">${i?`A$${c}`:c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 function screenImport(dev){
   const pad=dev==='pad', step=app.csvStep;
-  const head=pad?padHead('CSV import',`October sales Â· ${CLIENTS.find(c=>c.id===app.entryClient)?.n||CLIENT.name}`,''):navBar('Import CSV',{back:true});
+  const head=pad?padHead('CSV import',`October sales · ${CLIENTS.find(c=>c.id===app.entryClient)?.n||CLIENT.name}`,''):navBar('Import CSV',{back:true});
   let content='';
   if(step===1)content=`${csvStepper(1)}<div class="dropzone" role="button" tabindex="0" data-act="csv-file" style="padding:var(--s-5) var(--s-4)"><div class="dz-ic">${icon('uploadCloud',22)}</div><div class="t-14 strong" style="color:var(--ink)">Choose a CSV file</div><div class="t-11 faint" style="margin-top:var(--s-1)">Date, gross sales, wages and food purchases. Max 5 MB.</div><button class="btn primary sm" style="margin-top:var(--s-2)" data-act="csv-file">Choose file</button></div><div class="card"><div class="card-h"><h4>Expected format</h4></div><div class="stack tight">${['One row per day','AUD, no currency symbols','Header row included'].map(t=>`<div class="row" style="gap:var(--s-2);font-size:var(--text-2xs)">${icon('check',13,2.4)}<span>${t}</span></div>`).join('')}</div></div>`;
-  else if(step===2)content=`${csvStepper(2)}<div class="card" style="display:flex;gap:var(--s-2);align-items:center;padding:var(--s-3)">${icon('file',20)}<div class="grow"><div class="t-12 strong">october-sales.csv</div><div class="t-11 faint">31 rows Â· 18 KB</div></div>${C.chip('Ready','pos')}</div>${csvMapping()}<button class="btn primary full lg" data-act="csv-next">Continue to preview</button>`;
+  else if(step===2)content=`${csvStepper(2)}<div class="card" style="display:flex;gap:var(--s-2);align-items:center;padding:var(--s-3)">${icon('file',20)}<div class="grow"><div class="t-12 strong">october-sales.csv</div><div class="t-11 faint">31 rows · 18 KB</div></div>${C.chip('Ready','pos')}</div>${csvMapping()}<button class="btn primary full lg" data-act="csv-next">Continue to preview</button>`;
   else if(step===3)content=`${csvStepper(3)}${csvPreview()}<div class="banner">${icon('checkCircle',15)}<span class="grow">Checked: 31 rows, no missing dates, no duplicate days.</span></div><div class="row" style="gap:var(--s-2)"><button class="btn secondary" style="flex:1" data-act="csv-back">Back</button><button class="btn primary" style="flex:1" data-act="csv-confirm">Import 31 rows</button></div>`;
   else content=`<div class="empty" style="min-height:380px"><div class="e-ic" style="color:var(--pos)">${icon('check',30,2.4)}</div><h3>Import complete</h3><p>31 rows imported to ${CLIENT.name} for October.</p><div class="row" style="gap:var(--s-2);margin-top:var(--s-2)"><button class="btn primary sm" data-act="csv-reset">Import another</button><button class="btn ghost sm" data-act="overview">Back to overview</button></div></div>`;
   if(pad){
@@ -1861,14 +1861,14 @@ const SCREENS={
 };
 
 /* ============================================================
-   DOC APP Â· LIBRARY
+   DOC APP · LIBRARY
    ============================================================ */
 function emptyState(kind,dev){
   if(kind==='loading'){
     return `<div class="stack" style="gap:var(--s-2)">${[0,1,2,3].map(()=>`<div class="card" style="display:flex;gap:var(--s-3);align-items:center"><div class="skel" style="width:42px;height:54px;border-radius:var(--r-sm)"></div><div class="grow"><div class="skel" style="height:11px;width:60%"></div><div class="skel" style="height:9px;width:40%;margin-top:var(--s-2)"></div></div><div class="skel" style="width:22px;height:22px;border-radius:50%"></div></div>`).join('')}</div>`;
   }
   if(kind==='error'){
-    return `<div class="empty"><div class="e-ic neg">${icon('alert',28)}</div><h3>Couldnâ€™t load your library</h3><p>Check your connection and try again. Your purchases are safe on the server.</p><button class="btn primary sm" data-act="retry">Retry</button></div>`;
+    return `<div class="empty"><div class="e-ic neg">${icon('alert',28)}</div><h3>Couldn’t load your library</h3><p>Check your connection and try again. Your purchases are safe on the server.</p><button class="btn primary sm" data-act="retry">Retry</button></div>`;
   }
   return `<div class="empty"><div class="e-ic">${icon('file',28)}</div><h3>Your library is empty</h3><p>Documents you buy or subscribe to appear here, with every new version.</p><button class="btn primary sm" data-act="tab" data-tab="catalog">Browse catalog</button></div>`;
 }
@@ -1878,19 +1878,19 @@ function libraryRows(dev){
   if(app.dataState==='loading')return emptyState('loading',dev);
   if(app.dataState==='error')return emptyState('error',dev);
   if(app.dataState==='empty')return emptyState('empty',dev);
-  if(!list.length)return `<div class="empty" style="min-height:220px"><div class="e-ic">${icon('checkCircle',26)}</div><h3>Everything is current</h3><p>No new versions waiting. Weâ€™ll alert you when something changes.</p></div>`;
+  if(!list.length)return `<div class="empty" style="min-height:220px"><div class="e-ic">${icon('checkCircle',26)}</div><h3>Everything is current</h3><p>No new versions waiting. We’ll alert you when something changes.</p></div>`;
   const badge=e=>e.status==='update'?C.chip(e.newVersion+' ready','warn'):e.status==='downloading'?C.chip('Downloading '+Math.round(e.progress)+'%','primary'):e.status==='notdownloaded'?C.chip('Not downloaded','neutral'):C.chip(e.version,'pos',true);
   const action=e=>e.status==='update'?`<button class="btn primary sm" data-act="update-entry" data-id="${e.id}">Update</button>`:e.status==='notdownloaded'?`<button class="btn primary sm" data-act="download-entry" data-id="${e.id}">Download</button>`:`<button class="btn sm outline" data-act="open-viewer" data-id="${e.id}">Open</button>`;
   if(dev==='pad'){
     const current=libEntry(app.libSelected)?app.libSelected:(library[0]?.id||'');
     return `<div class="list">${list.map(e=>{
       const d=docById(e.id), sel=current===e.id;
-      return `<button class="item" style="${sel?'background:var(--surface-2);box-shadow:inset 2px 0 0 var(--accent)':''}" data-act="select-library" data-id="${e.id}">${C.cover(d,42,54,true,true)}<div class="grow"><div class="t1">${d.t}</div><div class="t2">${d.cat} Â· ${e.version} Â· ${e.size}</div></div>${badge(e)}</button>`;
+      return `<button class="item" style="${sel?'background:var(--surface-2);box-shadow:inset 2px 0 0 var(--accent)':''}" data-act="select-library" data-id="${e.id}">${C.cover(d,42,54,true,true)}<div class="grow"><div class="t1">${d.t}</div><div class="t2">${d.cat} · ${e.version} · ${e.size}</div></div>${badge(e)}</button>`;
     }).join('')}</div>`;
   }
   return `<div class="list">${list.map(e=>{
     const d=docById(e.id);
-    const t2=e.status==='update'?`<span style="color:var(--warn);font-weight:600">Version ${e.newVersion.replace(/^v/,'')} available</span>`:e.status==='downloading'?`Downloading ${Math.round(e.progress)}% Â· ${e.size}`:e.status==='notdownloaded'?`${e.version} Â· Not downloaded`:`${e.version} Â· Downloaded Â· ${e.size}`;
+    const t2=e.status==='update'?`<span style="color:var(--warn);font-weight:600">Version ${e.newVersion.replace(/^v/,'')} available</span>`:e.status==='downloading'?`Downloading ${Math.round(e.progress)}% · ${e.size}`:e.status==='notdownloaded'?`${e.version} · Not downloaded`:`${e.version} · Downloaded · ${e.size}`;
     const rowAct=e.status==='update'?'update-entry':e.status==='notdownloaded'?'download-entry':'open-viewer';
     return `<button class="item" data-act="${rowAct}" data-id="${e.id}">${C.cover(d,40,52,true,true)}<div class="grow"><div class="t1">${d.t}</div><div class="t2">${t2}</div>${e.status==='downloading'?`<div style="margin-top:var(--s-1)">${C.bar(e.progress)}</div>`:''}</div>${e.status==='update'?`<span class="chip warn">Update</span>`:e.status==='downloading'?`<span class="chip primary">${Math.round(e.progress)}%</span>`:e.status==='notdownloaded'?`<span class="chip neutral">Download</span>`:`<span class="chev">${icon('chevR',15)}</span>`}</button>`;
   }).join('')}</div>`;
@@ -1898,7 +1898,7 @@ function libraryRows(dev){
 function screenLibrary(dev){
   const pad=dev==='pad';
   const live=app.dataState==='live';
-  const counts=app.dataState==='empty'?'No documents yet':app.dataState==='error'?'Not available':app.dataState==='loading'?'Loadingâ€¦':`${library.length} owned Â· ${library.filter(e=>e.status==='update').length} update ready`;
+  const counts=app.dataState==='empty'?'No documents yet':app.dataState==='error'?'Not available':app.dataState==='loading'?'Loading…':`${library.length} owned · ${library.filter(e=>e.status==='update').length} update ready`;
   const tabs=live?`<div class="seg2" style="align-self:flex-start"><button class="${app.libraryFilter==='All'?'on':''}" data-act="library-filter" data-value="All">All ${library.length}</button><button class="${app.libraryFilter==='Updates'?'on':''}" data-act="library-filter" data-value="Updates">Updates ${library.filter(e=>e.status==='update').length}</button></div>`:'';
   const downloads=live?`<div class="card"><div class="card-h"><h4>Downloads</h4><span class="sub">Wi-Fi only</span></div><div class="between t-12"><span class="muted">Downloaded</span><span class="strong">${library.filter(e=>e.status==='downloaded').length} ${library.filter(e=>e.status==='downloaded').length===1?'document':'documents'}</span></div><div class="between t-12" style="margin-top:var(--s-2)"><span class="muted">Updates queued</span><span class="strong">${library.filter(e=>e.status==='update').length}</span></div><div class="between t-12" style="margin-top:var(--s-2)"><span class="muted">Storage</span><span class="strong">2.4 GB of 5.6 GB</span></div><div style="margin-top:var(--s-2)">${C.bar(43)}</div></div>`:'';
   const padding='';
@@ -1927,18 +1927,18 @@ function screenLibrary(dev){
    ============================================================ */
 function addLibrary(id){
   if(libEntry(id))return;
-  library.push({id,version:docById(id).v,status:'downloading',progress:0,size:'â€”'});
+  library.push({id,version:docById(id).v,status:'downloading',progress:0,size:'—'});
 }
 function setDownload(id){
   const e=libEntry(id);
-  if(!e){library.push({id,version:docById(id).v,status:'downloading',progress:4,size:'â€”'});return}
+  if(!e){library.push({id,version:docById(id).v,status:'downloading',progress:4,size:'—'});return}
   if(e.status==='update'&&e.newVersion)e.targetVersion=e.newVersion;
   e.status='downloading';e.progress=4;
 }
 function startCheckout(dev,kind,id){
   const item=kind==='doc'?docById(id):BUNDLES.find(b=>b.id===id);
   if(!item)return;
-  app.cart={kind,id,title:item.t,price:item.price,meta:kind==='doc'?item.v+' Â· one-time purchase':item.v+' Â· bundle'};
+  app.cart={kind,id,title:item.t,price:item.price,meta:kind==='doc'?item.v+' · one-time purchase':item.v+' · bundle'};
   go(dev,'checkout');
 }
 function processPayment(dev){
@@ -1953,7 +1953,7 @@ function processPayment(dev){
     app.orderSeq=app.orderSeq||2043;
     const order='A-'+(app.orderSeq++);
     app.lastPurchase={kind:c.kind,id:c.id,title:c.title,price:c.price,order,email};
-    const receipt=app.updates.find(n=>n.id==='n3');if(receipt){receipt.title='Receipt for order #'+order;receipt.body=money2(c.price)+' Â· 17 Nov 2026'}
+    const receipt=app.updates.find(n=>n.id==='n3');if(receipt){receipt.title='Receipt for order #'+order;receipt.body=money2(c.price)+' · 17 Nov 2026'}
     app.cart=null;ui[dev].sheet=null;
     nav[dev]={screen:'success',params:{},stack:[]};
     renderDevice(dev);
@@ -1963,7 +1963,7 @@ function processPayment(dev){
 }
 function subscribe(dev){
   app.subscribed=true;
-  DOCS.forEach(d=>{if(!libEntry(d.id))library.push({id:d.id,version:d.v,status:'downloading',progress:0,size:'â€”'})});
+  DOCS.forEach(d=>{if(!libEntry(d.id))library.push({id:d.id,version:d.v,status:'downloading',progress:0,size:'—'})});
   app.orderSeq=app.orderSeq||2043;
   app.renewsOn=Date.now()+(app.billing==='annual'?365:30)*86400000;
   app.lastPurchase={kind:'plan',title:'AmiWho Pro',price:app.billing==='annual'?PLANS.annual:PLANS.monthly,order:'A-'+(app.orderSeq++),email:roleEmail()};
@@ -2017,7 +2017,7 @@ function toggleRotate(){
   const pad=document.querySelector('[data-device="pad"]');
   pad.classList.toggle('landscape',app.ipadLandscape);
   const size=document.getElementById('padSize');
-  if(size)size.textContent=app.ipadLandscape?'1180 Ã— 820':'820 Ã— 1180';
+  if(size)size.textContent=app.ipadLandscape?'1180 × 820':'820 × 1180';
   renderDevice('pad');
   fitStage();
 }
@@ -2074,7 +2074,7 @@ document.addEventListener('click',e=>{
       case 'toggle': {
         const k=el.dataset.key;
         if(k==='compare')app.compare=!app.compare;
-        else if(k.startsWith('acct-')){const n=k.slice(5);app.accountToggles[n]=!app.accountToggles[n];toast(d,(app.accountToggles[n]?'On':'Off')+' Â· '+n)}
+        else if(k.startsWith('acct-')){const n=k.slice(5);app.accountToggles[n]=!app.accountToggles[n];toast(d,(app.accountToggles[n]?'On':'Off')+' · '+n)}
         renderDevice(d);break;
       }
       case 'open-account': go(d,currentApp(nav[d].screen)==='client'?'settings':'account',{},{root:true});break;
@@ -2097,10 +2097,10 @@ document.addEventListener('click',e=>{
       case 'signout': signOut();break;
       case 'reset': location.replace(location.pathname);break;
       case 'rotate': toggleRotate();break;
-      case 'export': toast(d,'CSV exported Â· 42 KB');break;
-      case 'share': toast(d,'Secure link copied Â· expires in 72 hours');break;
+      case 'export': toast(d,'CSV exported · 42 KB');break;
+      case 'share': toast(d,'Secure link copied · expires in 72 hours');break;
       case 'invite': ui[d].sheet={type:'invite'};renderDevice(d);break;
-      case 'new-project': toast(d,'New project â€” use Projects on iPad');break;
+      case 'new-project': toast(d,'New project — use Projects on iPad');break;
       case 'save-draft': toast(d,'Draft saved');break;
       case 'publish': {
         const v=entryValues(d);
@@ -2154,7 +2154,7 @@ document.addEventListener('click',e=>{
         doc.upd='17 Nov 2026';doc.note=(root.querySelector('#noteInput')?.value||'').trim()||'Current release';
         const en=libEntry(doc.id);if(en){en.version=doc.v;en.status='downloaded';en.progress=100;delete en.newVersion;delete en.targetVersion;}
         app.updates.unshift({id:'n'+uid(),type:'file',title:doc.t+' updated to '+doc.v,body:'New version available in your library',unread:true,go:'library'});
-        ui[d].sheet=null;toast(d,'Published '+doc.v+' Â· subscribers notified');renderDevice(d);break;
+        ui[d].sheet=null;toast(d,'Published '+doc.v+' · subscribers notified');renderDevice(d);break;
       }
       case 'price-open': ui[d].sheet={type:'price',docId:el.dataset.id};renderDevice(d);break;
       case 'price-save': {
@@ -2266,7 +2266,7 @@ setInterval(()=>{['phone','pad'].forEach(d=>{if(nav[d].screen==='viewer'&&app.si
   if(q.get('role')&&['customer','client','admin','staff'].includes(q.get('role'))){app.role=q.get('role');document.getElementById('roleSel').value=app.role}
   if(q.get('theme')==='dark')setTheme('dark');
   if(q.get('state')&&['live','empty','loading','error'].includes(q.get('state'))){app.dataState=q.get('state');document.getElementById('stateSel').value=app.dataState}
-  if(q.get('landscape')==='1'){app.ipadLandscape=true;document.querySelector('[data-device="pad"]').classList.add('landscape');document.getElementById('padSize').textContent='1180 Ã— 820'}
+  if(q.get('landscape')==='1'){app.ipadLandscape=true;document.querySelector('[data-device="pad"]').classList.add('landscape');document.getElementById('padSize').textContent='1180 × 820'}
   if(q.get('view')&&['phone','pad','both'].includes(q.get('view')))setView(q.get('view'));
   if(q.get('in')==='1'){
     app.signedIn=true;

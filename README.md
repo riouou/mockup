@@ -28,7 +28,7 @@ Sample data is AUD hospitality data for Marlow & Fern.
 
 ## Design direction
 
-Editorial ledger for hospitality operators: the supplied Dark Paradise serif for mastheads and document titles, Source Sans 3 for interface and tabular figures; deep olive, warm paper and burnt clay; 2–4px radii and hairline rules. The signature is the supplied AMIwho wordmark, the AW oval mark, the 28px clay rule above every masthead and the book spine on every document cover.
+The app follows the supplied AMIwho brand system: Dark Paradise for uppercase mastheads and document titles, Work Sans for interface and figures, charcoal `#232222`, champagne `#DDC6A5`, cream `#F4E6CA` and off-white `#EEECEA`, with an antique-gold `#A57C3F` accent. The signature is the AMIwho wordmark, the AW oval, the double gold rule over mastheads, book-spine covers and the black marble sign-in panel.
 
 ## Hosting
 

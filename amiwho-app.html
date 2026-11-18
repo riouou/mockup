@@ -184,7 +184,7 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
 
 /* ipad shell */
 .pad-body{flex:1;min-height:0;display:flex;gap:0;padding:0}
-.sidebar{flex:none;width:264px;display:flex;flex-direction:column;background:var(--bg);border:0;border-right:1px solid rgba(165,124,63,.28);border-radius:0;padding:var(--s-3) var(--s-2) var(--s-2);overflow:hidden}
+.sidebar{position:relative;flex:none;width:264px;display:flex;flex-direction:column;background:var(--bg);border:0;border-right:1px solid rgba(165,124,63,.28);border-radius:0;padding:var(--s-3) var(--s-2) var(--s-2);overflow:hidden}
 .pad:not(.landscape) .sidebar{width:232px}
 .pad .sidebar.collapsed{width:76px}
 .sidebar{transition:width var(--dur) ease, padding var(--dur) ease}
@@ -217,8 +217,9 @@ kbd{font:inherit;font-size:var(--text-2xs);font-weight:600;background:var(--surf
 .side-sec{font-size:var(--text-2xs);font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);padding:var(--s-3) var(--s-2) var(--s-1)}
 .side-item{display:flex;align-items:center;gap:var(--s-2);height:44px;width:100%;padding:0 var(--s-2);border-radius:var(--r-control);font-size:var(--text-sm);font-weight:500;color:var(--ink-2);text-align:left}
 .side-item svg{color:var(--ink-3);flex:none}
+.side-indicator{position:absolute;left:0;top:0;width:2px;height:44px;background:var(--accent);pointer-events:none;opacity:0;transition:transform var(--dur-2) var(--ease-ios),opacity var(--dur-1);z-index:2;will-change:transform}
 .side-item:hover{background:var(--surface-3)}
-.side-item.active{background:transparent;color:var(--ink);font-weight:600;box-shadow:inset 2px 0 0 var(--accent)}
+.side-item.active{background:transparent;color:var(--ink);font-weight:600}
 .side-item.active svg{color:var(--accent)}
 .side-item .count{margin-left:auto;font-size:var(--text-2xs);font-weight:700;background:var(--neg);color:var(--on-danger);border-radius:var(--r-stamp);min-width:18px;height:18px;display:grid;place-items:center;padding:0 5px}
 .side-foot{margin-top:auto;border-top:1px solid var(--border);padding-top:10px}
@@ -931,7 +932,7 @@ function sidebar(appName,active){
   const items=appName==='doc'?doc:client;
   const admin=role==='admin'?appName==='doc'?[['admin','Dashboard','sliders'],['documents','Documents','file'],['users','Users','users'],['dataentry','Data entry','edit'],['import','Import CSV','upload']]:[['dataentry','Data entry','edit'],['import','Import CSV','upload']]:role==='staff'&&appName==='doc'?[['documents','Documents','file']]:[];
   const workspaces=role==='admin'?[['doc','Document Control'],['client','Client Dashboard']]:[[appName,appName==='doc'?'Document Control':'Client Dashboard']];
-  return `<nav class="sidebar ${app.sidebarCollapsed?'collapsed':''}" aria-label="Sidebar">
+  return `<nav class="sidebar ${app.sidebarCollapsed?'collapsed':''}" aria-label="Sidebar"><span class="side-indicator" aria-hidden="true"></span>
     <div class="side-brand"><span class="logo-word" role="img" aria-label="AmiWho">${LOGO_WORD}</span><span class="brand-mark" aria-hidden="true">${LOGO_OVAL}</span><button class="side-toggle" data-act="sidebar-toggle" aria-label="${app.sidebarCollapsed?'Expand sidebar':'Collapse sidebar'}" aria-expanded="${!app.sidebarCollapsed}" title="${app.sidebarCollapsed?'Expand sidebar':'Collapse sidebar'}">${icon('sidebar',18)}</button></div>
     <div class="side-sec">Workspace</div>
     ${items.map(([s,l,ic])=>`<button class="side-item ${active===s?'active':''}" ${active===s?'aria-current="page"':''} title="${l}" aria-label="${l}" data-act="side" data-screen="${s}" data-app="${appName}">${icon(ic,17)}<span class="side-label">${l}</span>${s==='updates'&&unreadCount()?`<span class="count">${unreadCount()}</span>`:''}</button>`).join('')}
@@ -1239,9 +1240,22 @@ function bindPullRefresh(dev){
   };
   sc.addEventListener('touchend',end);sc.addEventListener('touchcancel',end);
 }
+function syncSideIndicator(dev){
+  if(dev!=='pad')return;
+  const bar=APPS[dev]?.querySelector('.side-indicator');if(!bar)return;
+  const active=APPS[dev].querySelector('.side-item.active');if(!active){bar.style.opacity='0';return}
+  const y=active.offsetTop;bar.style.opacity='1';
+  app.sideIndicatorY=app.sideIndicatorY||{};const prev=app.sideIndicatorY[dev];
+  if(prev==null||prev===y){bar.style.transition='none';bar.style.transform=`translateY(${y}px)`;requestAnimationFrame(()=>{bar.style.transition=''})}
+  else{
+    bar.style.transition='none';bar.style.transform=`translateY(${prev}px)`;void bar.offsetHeight;
+    bar.style.transition='';bar.style.transform=`translateY(${y}px)`;
+  }
+  app.sideIndicatorY[dev]=y;
+}
 function afterRender(dev){
   APPS[dev]?.querySelectorAll('.card-h h4').forEach(h=>{h.setAttribute('role','heading');h.setAttribute('aria-level','2')});
-  animateCounts(dev);bindToast(dev);bindPullRefresh(dev);
+  animateCounts(dev);bindToast(dev);bindPullRefresh(dev);syncSideIndicator(dev);
   const sheet=APPS[dev]?.querySelector('.sheet');
   if(!sheet)return;
   if(!sheet.getAttribute('aria-label'))sheet.setAttribute('aria-label',sheet.querySelector('h3')?.textContent||'Dialog');

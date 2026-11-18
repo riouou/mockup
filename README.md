@@ -33,3 +33,7 @@ The app follows the supplied AMIwho brand system: Dark Paradise for uppercase ma
 ## Hosting
 
 The site is static. `vercel.json` rewrites `/` to `amiwho-app.html`, so importing this repository into Vercel and leaving the framework preset as “Other” is enough; no build step.
+
+## Motion
+
+Durations are 100 / 180 / 280 / 420ms. Screen pushes and pops animate only the content pane with `cubic-bezier(.32,.72,0,1)`; tab changes use a short crossfade (View Transitions when available). Sheets rise and settle on the same iOS curve, follow the handle on drag, and leave on an ease-in. Presses are 100ms in and 200ms out. KPI figures count up once per screen over 500ms; chart lines draw and bars grow in 420ms. All motion is disabled or reduced under `prefers-reduced-motion`.
